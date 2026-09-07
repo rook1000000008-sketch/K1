@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจัดการวัสดุพัสดุ K-MART (K1)</title>
+    <!-- นำเข้า Tailwind CSS เพื่อความสวยงามและความรวดเร็วในการจัดหน้าเว็บ -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- นำเข้า Firebase App และ Realtime Database SDK (v9 Modular) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+
+        // ตั้งค่าการเชื่อมต่อ Firebase ของคุณ
+        const firebaseConfig = {
+            databaseURL: "https://kmart-cf668-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
+
+        // เริ่มต้นระบบ Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        let allMaterialsData = {};
+
+        // ฟังก์ชันดึงข้อมูลจาก Firebase
+        async function loadMaterials() {
+            const container = document.getElementById("material-container");
+            container.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500">กำลังโหลดข้อมูลพัสดุ...</div>`;
+
+            try {
+                const dbRef = ref(db, 'materials');
+                const snapshot = await get(dbRef);
+
+                if (snapshot.exists()) {
+                    allMaterialsData = snapshot.val();
+                    renderDepartments(Object.keys(allMaterialsData));
+                    // โหลดข้อมูลกองแรกเริ่มต้น
+                    const firstDept = Object.keys(allMaterialsData)[0];
+                    renderProducts(firstDept);
+                } else {
+                    container.innerHTML = `<div class="col-span-full text-center py-10 text-red-500">ไม่พบข้อมูลในระบบฐานข้อมูล</div>`;
+                }
+            } catch (error) {
+                console.error("Error loading data:", error);
+                container.innerHTML = `<div class="col-span-full text-center py-10 text-red-500">เกิดข้อผิดพลาดในการโหลดข้อมูล: ${error.message}</div>`;
+            }
+        }
+
+        // สร้างปุ่มเลือกกอง
+        function renderDepartments(deptKeys) {
+            const navContainer = document.getElementById("department-nav");
+            navContainer.innerHTML = "";
+
+            const deptNames = {
+                "01sp": "สำนักปลัด",
+                "02fn": "กองคลัง",
+                "03en": "กองช่าง",
+                "04ed": "กองการศึกษาฯ",
+                "05sw": "กองสวัสดิการสังคม",
+                "06ph": "กองสาธารณสุขฯ"
+            };
+
+            deptKeys.forEach((key, index) => {
+                const btn = document.createElement("button");
+                btn.className = `px-4 py-2 rounded-lg font-medium transition-all ${index === 0 ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`;
+                btn.innerText = deptNames[key] || key;
+                btn.onclick = () => {
+                    // สลับสไตล์ปุ่มแอคทีฟ
+                    document.querySelectorAll("#department-nav button").forEach(b => b.className = "px-4 py-2 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300");
+                    btn.className = "px-4 py-2 rounded-lg font-medium bg-blue-600 text-white shadow-md";
+                    renderProducts(key);
+                };
+                navContainer.appendChild(btn);
+            });
+        }
+
+        // แสดงรายการสินค้าในกองที่เลือก
+        function renderProducts(deptKey) {
+            const container = document.getElementById("material-container");
+            container.innerHTML = "";
+
+            let products = [];
+            const deptContent = allMaterialsData[deptKey];
+
+            // แกะโครงสร้างข้อมูลยืดหยุ่นตามรูปแบบ JSON แต่ละกอง
+            if (Array.isArray(deptContent)) {
+                products = deptContent;
+            } else if (deptContent && deptContent.products) {
+                if (Array.isArray(deptContent.products)) {
+                    products = deptContent.products;
+                } else if (typeof deptContent.products === 'object') {
+                    const innerKeys = Object.keys(deptContent.products);
+                    if (innerKeys.length > 0) {
+                        products = deptContent.products[innerKeys[0]] || [];
+                    }
+                }
+            }
+
+            if (!products || products.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500">ไม่มีรายการพัสดุในกองนี้</div>`;
+                return;
+            }
+
+            products.forEach(item => {
+                const name = item.name_th || item.material_name || "ไม่ระบุชื่อ";
+                const qty = item.quantity !== undefined ? item.quantity : 0;
+                const unit = item.unit || "อัน";
+                const price = item.unit_price !== undefined ? item.unit_price : (item.price_unit_coin || 0);
+                const imageUrl = item.image_url || "https://via.placeholder.com/300?text=No+Image";
+
+                const card = document.createElement("div");
+                card.className = "bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow flex flex-col";
+                card.innerHTML = `
+                    <div class="h-48 bg-gray-100 overflow-hidden relative flex items-center justify-center">
+                        <img src="${imageUrl}" alt="${name}" class="object-cover h-full w-full transition-transform duration-300 hover:scale-105" onerror="this.src='https://via.placeholder.com/300?text=Image+Not+Found'">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-semibold text-gray-800 text-lg mb-2 line-clamp-2">${name}</h3>
+                        <div class="mt-auto space-y-1 text-sm text-gray-600">
+                            <p class="flex justify-between"><span>คงเหลือ:</span> <span class="font-bold text-blue-600">${qty} ${unit}</span></p>
+                            <p class="flex justify-between"><span>ราคาต่อหน่วย:</span> <span class="font-medium text-gray-900">${price} บาท</span></p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // โหลดข้อมูลเมื่อเปิดหน้าเว็บ
+        window.onload = loadMaterials;
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+    <header class="bg-blue-700 text-white shadow-lg py-6 mb-6">
+        <div class="container mx-auto px-4">
+            <h1 class="text-2xl md:text-3xl font-bold">ระบบคลังวัสดุพัสดุ K-MART (K1)</h1>
+            <p class="text-blue-100 text-sm mt-1">ระบบจัดการและตรวจสอบวัสดุประจำหน่วยงาน</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 pb-12">
+        <!-- แถบเมนูกอง / แผนก -->
+        <div id="department-nav" class="flex flex-wrap gap-2 mb-8 justify-center md:justify-start">
+            <!-- สร้างปุ่มอัตโนมัติจาก Script -->
+        </div>
+
+        <!-- พื้นที่แสดงการ์ดรายการพัสดุ -->
+        <div id="material-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- รายการสินค้าจะถูกแทรกลงที่นี่ -->
+        </div>
+    </main>
+</body>
+</html>
