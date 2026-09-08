@@ -1,0 +1,1382 @@
+[
+  {
+    "id": "06ph_01",
+    "name_th": "ลิขวิดแบบน้ำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_01_liquid_liquid.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_01_liquid_liquid.jpg"
+  },
+  {
+    "id": "06ph_02",
+    "name_th": "ลิขวิดแบบเทป(เปลี่ยนรีฟิลได้)",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_02_liquid_tape_type_replaceable_for_refills.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_02_liquid_tape_type_replaceable_for_refills.jpg"
+  },
+  {
+    "id": "06ph_03",
+    "name_th": "รีฟิลลิขวิดแบบเทป",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_03_refill_tape_type.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_03_refill_tape_type.jpg"
+  },
+  {
+    "id": "06ph_04",
+    "name_th": "แท่ง UHU",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_04_uhu_stick.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_04_uhu_stick.jpg"
+  },
+  {
+    "id": "06ph_05",
+    "name_th": "กาวน้ำ (ขวด) ขนาด 150 cc.",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_05_water_glue_bottle_size_150_cc..jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_05_water_glue_bottle_size_150_cc..jpg"
+  },
+  {
+    "id": "06ph_06",
+    "name_th": "กาวน้ำ (หลอด) ขนาด 50 ml.",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_06_liquid_glue_tube_size_50_ml..jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_06_liquid_glue_tube_size_50_ml..jpg"
+  },
+  {
+    "id": "06ph_07",
+    "name_th": "กาว Latax ขนาด 8 ออนซ์",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_07_latax_glue_size_8_ounces.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_07_latax_glue_size_8_ounces.jpg"
+  },
+  {
+    "id": "06ph_08",
+    "name_th": "กาว Latax ขนาด 16 ออนซ์",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_08_latax_glue_size_16_ounces.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_08_latax_glue_size_16_ounces.jpg"
+  },
+  {
+    "id": "06ph_09",
+    "name_th": "ไส้แม็กซ์เย็บกระดาษ เบอร์ 10",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_09_max_stapler_no._10.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_09_max_stapler_no._10.jpg"
+  },
+  {
+    "id": "06ph_10",
+    "name_th": "ไส้แม็กซ์เย็บกระดาษ เบอร์ 35",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_10_max_stapler_no._35.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_10_max_stapler_no._35.jpg"
+  },
+  {
+    "id": "06ph_11",
+    "name_th": "ไส้แม็กซ์เย็บกระดาษ เบอร์ M3",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_11_max_stapler_no._m3.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_11_max_stapler_no._m3.jpg"
+  },
+  {
+    "id": "06ph_12",
+    "name_th": "ไส้แม็กซ์เย็บกระดาษ เบอร์ M8",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_12_max_stapler_no._m8.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_12_max_stapler_no._m8.jpg"
+  },
+  {
+    "id": "06ph_13",
+    "name_th": "ไส้แม็กซ์เย็บกระดาษ เบอร์ 23/10",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_13_max_stapler_no._23_10.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_13_max_stapler_no._23_10.jpg"
+  },
+  {
+    "id": "06ph_14",
+    "name_th": "ไส้แม็กซ์เย็บกระดาษ เบอร์ 23/13",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_14_max_stapler_no._23_13.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_14_max_stapler_no._23_13.jpg"
+  },
+  {
+    "id": "06ph_15",
+    "name_th": "ไส้แม็กซ์เย็บกระดาษ เบอร์ 23/24",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_15_max_stapler_no._23_24.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_15_max_stapler_no._23_24.jpg"
+  },
+  {
+    "id": "06ph_16",
+    "name_th": "ลวดยิง ขนาด T3-10 MB",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_16_shooting_wire_size_t3-10_mb.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_16_shooting_wire_size_t3-10_mb.jpg"
+  },
+  {
+    "id": "06ph_17",
+    "name_th": "ลวดยิง ขนาด T3-13 MB",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_17_shooting_wire_size_t3-13_mb.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_17_shooting_wire_size_t3-13_mb.jpg"
+  },
+  {
+    "id": "06ph_18",
+    "name_th": "แม็กเย็บใหญ่ HD-50R",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_18_large_stapler_hd-50r.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_18_large_stapler_hd-50r.jpg"
+  },
+  {
+    "id": "06ph_19",
+    "name_th": "แม็กเย็บกระดาษ เบอร์ 10",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_19_stapling_mag_no._10.png",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_19_stapling_mag_no._10.png"
+  },
+  {
+    "id": "06ph_20",
+    "name_th": "ปากกาเคมี สีน้ำเงิน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_20_blue_chemical_pen.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_20_blue_chemical_pen.jpg"
+  },
+  {
+    "id": "06ph_21",
+    "name_th": "ปากกาเคมี สีแดง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_21_red_chemical_pen.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_21_red_chemical_pen.jpg"
+  },
+  {
+    "id": "06ph_22",
+    "name_th": "ปากกาเคมี สีดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_22_chemistry_pen_black.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_22_chemistry_pen_black.jpg"
+  },
+  {
+    "id": "06ph_23",
+    "name_th": "ปากไวท์ สีน้ำเงิน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_23_white_lips_blue.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_23_white_lips_blue.jpg"
+  },
+  {
+    "id": "06ph_24",
+    "name_th": "ปากไวท์บอร์ด สีแดง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_24_red_whiteboard_mouth.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_24_red_whiteboard_mouth.jpg"
+  },
+  {
+    "id": "06ph_25",
+    "name_th": "ปากไวท์บอร์ด สีดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_25_whiteboard_mouth_black.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_25_whiteboard_mouth_black.jpg"
+  },
+  {
+    "id": "06ph_26",
+    "name_th": "ปากกาเมจิค สีน้ำเงิน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_26_magic_pen_blue.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_26_magic_pen_blue.jpg"
+  },
+  {
+    "id": "06ph_27",
+    "name_th": "ปากกาลูกลื่น สีน้ำเงิน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_27_blue_ballpoint_pen.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_27_blue_ballpoint_pen.jpg"
+  },
+  {
+    "id": "06ph_28",
+    "name_th": "ปากกาลูกลื่น สีแดง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_28_red_ballpoint_pen.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_28_red_ballpoint_pen.jpg"
+  },
+  {
+    "id": "06ph_29",
+    "name_th": "ปากกาข้อความ คละสี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_29_message_pens_assorted_colors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_29_message_pens_assorted_colors.jpg"
+  },
+  {
+    "id": "06ph_30",
+    "name_th": "ดินสอ 2B",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_30_pencil_2b.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_30_pencil_2b.jpg"
+  },
+  {
+    "id": "06ph_31",
+    "name_th": "ยางลบ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_31_eraser.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_31_eraser.jpg"
+  },
+  {
+    "id": "06ph_32",
+    "name_th": "หมึกเติมปากกาไวท์บอร์ด สีแดง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_32_whiteboard_pen_refill_ink_red.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_32_whiteboard_pen_refill_ink_red.jpg"
+  },
+  {
+    "id": "06ph_33",
+    "name_th": "หมึกเติมปากกาไวท์บอร์ด สีดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_33_whiteboard_pen_refill_ink_black.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_33_whiteboard_pen_refill_ink_black.jpg"
+  },
+  {
+    "id": "06ph_34",
+    "name_th": "แปรงลบกระดานไวท์บอร์ด",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_34_whiteboard_eraser_brush.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_34_whiteboard_eraser_brush.jpg"
+  },
+  {
+    "id": "06ph_35",
+    "name_th": "หมึกเติมตลับชาด สีน้ำเงิน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_35_ink_refill_cartridge_blue.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_35_ink_refill_cartridge_blue.jpg"
+  },
+  {
+    "id": "06ph_36",
+    "name_th": "หมึกเติมตลับชาด สีแดง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_36_red_red_ink_cartridge_refill.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_36_red_red_ink_cartridge_refill.jpg"
+  },
+  {
+    "id": "06ph_37",
+    "name_th": "หมึกเติมตลับชาด สีดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_37_ink_refill_cartridge_black.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_37_ink_refill_cartridge_black.jpg"
+  },
+  {
+    "id": "06ph_38",
+    "name_th": "ตลับหมึกสำหรับตรายางวันที่",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_38_ink_cartridge_for_date_stamps.png",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_38_ink_cartridge_for_date_stamps.png"
+  },
+  {
+    "id": "06ph_39",
+    "name_th": "หมึกเติมตรายางสำหรับตรายางหมึกในตัว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_39_rubber_stamp_refill_ink_for_self-inking_rubber_stamps..jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_39_rubber_stamp_refill_ink_for_self-inking_rubber_stamps..jpg"
+  },
+  {
+    "id": "06ph_40",
+    "name_th": "ลวดเสียบกระดาษ ขนาดใหญ่ No.00",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_40_wire_for_inserting_paper_large_size_no.00.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_40_wire_for_inserting_paper_large_size_no.00.jpg"
+  },
+  {
+    "id": "06ph_41",
+    "name_th": "ลวดเสียบกระดาษ ขนาดเล็ก No.01",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_41_paper_wire_small_size_no.01.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_41_paper_wire_small_size_no.01.jpg"
+  },
+  {
+    "id": "06ph_42",
+    "name_th": "คลิปหนีบสีดำ 2 ขา เบอร์ 108",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_42_black_clip_2_legs_number_108.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_42_black_clip_2_legs_number_108.jpg"
+  },
+  {
+    "id": "06ph_43",
+    "name_th": "คลิปหนีบสีดำ 2 ขา เบอร์ 109",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_43_black_clip_2_legs_number_109.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_43_black_clip_2_legs_number_109.jpg"
+  },
+  {
+    "id": "06ph_44",
+    "name_th": "ปหนีบสีดำ 2 ขา เบอร์ 111",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_44_black_clamp_2_legs_number_111.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_44_black_clamp_2_legs_number_111.jpg"
+  },
+  {
+    "id": "06ph_45",
+    "name_th": "หมุดสำหรับติดบอร์ด หัวพลาสติก",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_45_pins_for_attaching_to_boards_plastic_heads.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_45_pins_for_attaching_to_boards_plastic_heads.jpg"
+  },
+  {
+    "id": "06ph_46",
+    "name_th": "หมุดสำหรับติดบอร์ด หัวเหล็ก",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_46_pins_for_attaching_to_boards_steel_heads.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_46_pins_for_attaching_to_boards_steel_heads.jpg"
+  },
+  {
+    "id": "06ph_47",
+    "name_th": "สก๊อตเทปใส ขนาดเล็ก",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_47_clear_scotch_tape_small_size.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_47_clear_scotch_tape_small_size.jpg"
+  },
+  {
+    "id": "06ph_48",
+    "name_th": "สก๊อตเทปใส ขนาดใหญ่",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_48_clear_scotch_tape_large_size.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_48_clear_scotch_tape_large_size.jpg"
+  },
+  {
+    "id": "06ph_49",
+    "name_th": "กระดาษ A4",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_49_a4_paper.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_49_a4_paper.jpg"
+  },
+  {
+    "id": "06ph_50",
+    "name_th": "กระดาษการ์ด ขนาด 80 แกรม คละสี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_50_card_paper_size_80_grams_assorted_colors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_50_card_paper_size_80_grams_assorted_colors.jpg"
+  },
+  {
+    "id": "06ph_51",
+    "name_th": "กระดาษการ์ด ขนาด 150 แกรม สีขาว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_51_card_paper_size_150_grams_white.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_51_card_paper_size_150_grams_white.jpg"
+  },
+  {
+    "id": "06ph_52",
+    "name_th": "กระดาษการ์ด ขนาด 150 แกรม คละสี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_52_card_paper_size_150_grams_assorted_colors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_52_card_paper_size_150_grams_assorted_colors.jpg"
+  },
+  {
+    "id": "06ph_53",
+    "name_th": "กระดาษโฟโต้ ขนาด 150 แกรม",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_53_photo_paper_size_150_grams.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_53_photo_paper_size_150_grams.jpg"
+  },
+  {
+    "id": "06ph_54",
+    "name_th": "กระดาษสติ้กเกอร์ แบบด้าน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_54_sticker_paper_matte_type.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_54_sticker_paper_matte_type.jpg"
+  },
+  {
+    "id": "06ph_55",
+    "name_th": "กระดาษสติ้กเกอร์ แบบใส",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_55_transparent_sticker_paper.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_55_transparent_sticker_paper.jpg"
+  },
+  {
+    "id": "06ph_56",
+    "name_th": "กระดาษเคลือบร้อน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_56_hot_coated_paper.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_56_hot_coated_paper.jpg"
+  },
+  {
+    "id": "06ph_57",
+    "name_th": "รองปกใส",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_57_clear_cover.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_57_clear_cover.jpg"
+  },
+  {
+    "id": "06ph_58",
+    "name_th": "กระดาษโน๊ตกาวในตัว คละสี Deli",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_58_self-adhesive_note_paper_assorted_colors_deli.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_58_self-adhesive_note_paper_assorted_colors_deli.jpg"
+  },
+  {
+    "id": "06ph_59",
+    "name_th": "ซองจดหมายสีขาว มีครุฑ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_59_white_envelope_with_garuda.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_59_white_envelope_with_garuda.jpg"
+  },
+  {
+    "id": "06ph_60",
+    "name_th": "ซองจดหมายสีขาว ไม่มีครุฑ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_60_white_envelope_no_garuda.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_60_white_envelope_no_garuda.jpg"
+  },
+  {
+    "id": "06ph_61",
+    "name_th": "ซองเอกสารสีน้ำตาล มีครุฑ ขยายข้าง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_61_brown_document_envelope_with_garuda_enlarged_side.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_61_brown_document_envelope_with_garuda_enlarged_side.jpg"
+  },
+  {
+    "id": "06ph_62",
+    "name_th": "ซองเอกสารสีน้ำตาล มีครุฑ ไม่ขยายข้าง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_62_brown_document_envelope_with_garuda_sides_not_expanded..jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_62_brown_document_envelope_with_garuda_sides_not_expanded..jpg"
+  },
+  {
+    "id": "06ph_63",
+    "name_th": "เทปกระดาษกาวย่น สีขาว ขนาด 1 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_63_white_crepe_masking_tape_size_1_inch.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_63_white_crepe_masking_tape_size_1_inch.jpg"
+  },
+  {
+    "id": "06ph_64",
+    "name_th": "เทปกระดาษกาวย่น สีขาว ขนาด 1.5 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_64_white_crepe_masking_tape_size_1.5_inches.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_64_white_crepe_masking_tape_size_1.5_inches.jpg"
+  },
+  {
+    "id": "06ph_65",
+    "name_th": "เทปผ้า ขนาด 1 นิ้ว คละสี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_65_cloth_tape_size_1_inch_assorted_colors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_65_cloth_tape_size_1_inch_assorted_colors.jpg"
+  },
+  {
+    "id": "06ph_66",
+    "name_th": "เทปผ้า ขนาด 2 นิ้ว คละสี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_66_cloth_tape_size_2_inches_assorted_colors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_66_cloth_tape_size_2_inches_assorted_colors.jpg"
+  },
+  {
+    "id": "06ph_67",
+    "name_th": "เทปผ้า ขนาด 3 นิ้ว คละสี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_67_cloth_tape_size_3_inches_assorted_colors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_67_cloth_tape_size_3_inches_assorted_colors.jpg"
+  },
+  {
+    "id": "06ph_68",
+    "name_th": "เทปกาว 2 หน้า (แบบบาง)",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_68_double-sided_adhesive_tape_thin_type.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_68_double-sided_adhesive_tape_thin_type.jpg"
+  },
+  {
+    "id": "06ph_69",
+    "name_th": "เทปกาว 2 หน้า (แบบหนา)",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_69_double-sided_adhesive_tape_thick_type.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_69_double-sided_adhesive_tape_thick_type.jpg"
+  },
+  {
+    "id": "06ph_70",
+    "name_th": "สันรูด ขนาด 5 มม. คละสี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_70_ridge_size_5_mm._assorted_colors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_70_ridge_size_5_mm._assorted_colors.jpg"
+  },
+  {
+    "id": "06ph_71",
+    "name_th": "สันรูด ขนาด 10 มม. คละสี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_71_ridge_size_10_mm._assorted_colors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_71_ridge_size_10_mm._assorted_colors.jpg"
+  },
+  {
+    "id": "06ph_72",
+    "name_th": "สันห่วงกระดูกงู ขนาด 10 มม. คละสี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_72_steel_ring_spine_size_10_mm._assorted_colors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_72_steel_ring_spine_size_10_mm._assorted_colors.jpg"
+  },
+  {
+    "id": "06ph_73",
+    "name_th": "สันห่วงกระดูกงู ขนาด 19 มม. คละสี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_73_steel_ring_spine_size_19_mm._assorted_colors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_73_steel_ring_spine_size_19_mm._assorted_colors.jpg"
+  },
+  {
+    "id": "06ph_74",
+    "name_th": "ธงชาติไทย ขนาด 60*90",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_74_thai_flag_size_60_90.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_74_thai_flag_size_60_90.jpg"
+  },
+  {
+    "id": "06ph_75",
+    "name_th": "ธงชาติไทย ขนาด 200*300",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_75_thai_national_flag_size_200_300.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_75_thai_national_flag_size_200_300.jpg"
+  },
+  {
+    "id": "06ph_76",
+    "name_th": "ธงพระพันปีหลวง ขนาด 60*90",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_76_phra_panpi_luang_flag_size_60_90.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_76_phra_panpi_luang_flag_size_60_90.jpg"
+  },
+  {
+    "id": "06ph_77",
+    "name_th": "ธงรัชกาลที่ 10 ขนาด 60*90",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_77_flag_of_king_rama_x_size_60_90.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_77_flag_of_king_rama_x_size_60_90.jpg"
+  },
+  {
+    "id": "06ph_78",
+    "name_th": "ธงราชินีสุทิดาฯ ขนาด 60*90",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_78_queen_suthida_s_flag_size_60_90.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_78_queen_suthida_s_flag_size_60_90.jpg"
+  },
+  {
+    "id": "06ph_79",
+    "name_th": "ธงครบรอบ 72 พรรษา ร.10 ขนาด 60*90",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_79_flag_for_the_72nd_anniversary_of_rama_10_size_60_90.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_79_flag_for_the_72nd_anniversary_of_rama_10_size_60_90.jpg"
+  },
+  {
+    "id": "06ph_80",
+    "name_th": "ธงสมเด็จพระเทพฯ ขนาด 60*90",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_80_flag_of_her_royal_highness_princess_maha_chakri_sirindhorn_size_60_90.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_80_flag_of_her_royal_highness_princess_maha_chakri_sirindhorn_size_60_90.jpg"
+  },
+  {
+    "id": "06ph_81",
+    "name_th": "ธงพระองค์เจ้าสิริวัณณวรีนารีรัตน์",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_81_flag_of_her_royal_highness_princess_sirivannavari_nariratana.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_81_flag_of_her_royal_highness_princess_sirivannavari_nariratana.jpg"
+  },
+  {
+    "id": "06ph_82",
+    "name_th": "ธงตราสัญลักษณ์ เจ้าฟ้าจุฬาภรณวลัยลักษณ์",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_82_flag_emblem_princess_chulabhorn_walailak.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_82_flag_emblem_princess_chulabhorn_walailak.jpg"
+  },
+  {
+    "id": "06ph_83",
+    "name_th": "มีดเตอร์ ขนาดใหญ่",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_83_large_knife_cutter.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_83_large_knife_cutter.jpg"
+  },
+  {
+    "id": "06ph_84",
+    "name_th": "มีดคัตเตอร์ ขนาดเล็ก",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_84_small_cutter_knife.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_84_small_cutter_knife.jpg"
+  },
+  {
+    "id": "06ph_85",
+    "name_th": "ใบมีดคัตเตอร์ ขนาดใหญ่ No.L",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_85_large_cutter_blade_no.l.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_85_large_cutter_blade_no.l.jpg"
+  },
+  {
+    "id": "06ph_86",
+    "name_th": "ใบมีดคัตเตอร์ ขนาดเล็ก No.A",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_86_cutter_blade_small_size_no.a.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_86_cutter_blade_small_size_no.a.jpg"
+  },
+  {
+    "id": "06ph_87",
+    "name_th": "สมุดลงเวลาปฏิบัติราชการ (หน้าเดี่ยว) จ้าง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_87_official_service_time_book_single_page_hired.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_87_official_service_time_book_single_page_hired.jpg"
+  },
+  {
+    "id": "06ph_88",
+    "name_th": "สมุดลงเวลาปฏิบัติราชการ (หน้าคู่) ขรก.",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_88_official_duty_time_book_double_page.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_88_official_duty_time_book_double_page.jpg"
+  },
+  {
+    "id": "06ph_89",
+    "name_th": "สมุดปกน้ำเงิน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_89_blue_cover_book.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_89_blue_cover_book.jpg"
+  },
+  {
+    "id": "06ph_90",
+    "name_th": "สมุดปกแข็ง ขนาด 2/80",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_90_hard_cover_book_size_2_80.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_90_hard_cover_book_size_2_80.jpg"
+  },
+  {
+    "id": "06ph_91",
+    "name_th": "สมุดปกน้ำเงิน ขนาด 4/100",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_91_blue_cover_notebook_size_4_100.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_91_blue_cover_notebook_size_4_100.jpg"
+  },
+  {
+    "id": "06ph_92",
+    "name_th": "แฟ้มสีดำ สันห่วง ขนาด 1 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_92_black_file_ring_spine_size_1_inch..jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_92_black_file_ring_spine_size_1_inch..jpg"
+  },
+  {
+    "id": "06ph_93",
+    "name_th": "แฟ้มสีดำ สันห่วง ขนาด 2 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_93_black_file_ring_spine_size_2_inches..jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_93_black_file_ring_spine_size_2_inches..jpg"
+  },
+  {
+    "id": "06ph_94",
+    "name_th": "แฟ้มสีดำ สันห่วง ขนาด 3 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_94_black_file_ring_spine_size_3_inches..jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_94_black_file_ring_spine_size_3_inches..jpg"
+  },
+  {
+    "id": "06ph_95",
+    "name_th": "บัตรบันทึกเวลาทำงาน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_95_working_time_record_card.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_95_working_time_record_card.jpg"
+  },
+  {
+    "id": "06ph_96",
+    "name_th": "แฟ้มเสนอเซ็น",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_96_proposal_file_for_signing.png",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_96_proposal_file_for_signing.png"
+  },
+  {
+    "id": "06ph_97",
+    "name_th": "เครื่องคิดเลข",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_97_calculator.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_97_calculator.jpg"
+  },
+  {
+    "id": "06ph_98",
+    "name_th": "กรรไกร",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_98_scissors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_98_scissors.jpg"
+  },
+  {
+    "id": "06ph_99",
+    "name_th": "ลวดเส้นเล็ก (ขดใหญ่)",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_99_small_wire_large_coil.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_99_small_wire_large_coil.jpg"
+  },
+  {
+    "id": "06ph_100",
+    "name_th": "เชือกขาว-แดง ขนาดกลาง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_100_white-red_rope_medium_size.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_100_white-red_rope_medium_size.jpg"
+  },
+  {
+    "id": "06ph_101",
+    "name_th": "ซองใส่บัตรพนักงาน แนวตั้ง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_101_employee_card_holder_vertical.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_101_employee_card_holder_vertical.jpg"
+  },
+  {
+    "id": "06ph_102",
+    "name_th": "ไม้บรรทัดเหล็ก",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_102_steel_ruler.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_102_steel_ruler.jpg"
+  },
+  {
+    "id": "06ph_103",
+    "name_th": "ตะแกรงวางเอกสารพลาสติก 3 ชั้น",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_103_3-layer_plastic_document_rack.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_103_3-layer_plastic_document_rack.jpg"
+  },
+  {
+    "id": "06ph_104",
+    "name_th": "กรอบรูปพร้อมรูปพระราชินี เต็มองค์",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_104_photo_frame_with_picture_of_the_queen_full_body..jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_104_photo_frame_with_picture_of_the_queen_full_body..jpg"
+  },
+  {
+    "id": "06ph_105",
+    "name_th": "กรอบรูปพร้อมรูปพระเจ้าอยู่หัว ครึ่งองค์",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_105_photo_frame_with_picture_of_the_king_half_body..jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_105_photo_frame_with_picture_of_the_king_half_body..jpg"
+  },
+  {
+    "id": "06ph_106",
+    "name_th": "ที่ถอนลวดแบบคีม Eagle",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_106_eagle_plier_style_wire_puller.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_106_eagle_plier_style_wire_puller.jpg"
+  },
+  {
+    "id": "06ph_107",
+    "name_th": "แบตเตอรี่แบบกระดุม CR2032",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_107_button_battery_cr2032.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_107_button_battery_cr2032.jpg"
+  },
+  {
+    "id": "06ph_108",
+    "name_th": "แบตเตอรี่อัลคาไลน์ ขนาด AA",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_108_alkaline_battery_size_aa.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_108_alkaline_battery_size_aa.jpg"
+  },
+  {
+    "id": "06ph_109",
+    "name_th": "แบตเตอรี่อัลคาไลน์ ขนาด AAA",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_109_alkaline_battery_size_aaa.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_109_alkaline_battery_size_aaa.jpg"
+  },
+  {
+    "id": "06ph_110",
+    "name_th": "แบตเตอรี่ ขนาด D",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_110_battery_size_d.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_110_battery_size_d.jpg"
+  },
+  {
+    "id": "06ph_111",
+    "name_th": "ปลั๊กไฟ ขนาด 5 สวิตซ์ 5 ช่อง ยาว 5 เมตร",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_111_power_plug_size_5_switches_5_outlets_length_5_meters..jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_111_power_plug_size_5_switches_5_outlets_length_5_meters..jpg"
+  },
+  {
+    "id": "06ph_112",
+    "name_th": "ถ่านชาร์จได้ ขนาด 3A",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_112_rechargeable_battery_size_3a.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_112_rechargeable_battery_size_3a.jpg"
+  },
+  {
+    "id": "06ph_113",
+    "name_th": "หมึก HP GT53 สีดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_113_hp_gt53_black_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_113_hp_gt53_black_ink.jpg"
+  },
+  {
+    "id": "06ph_114",
+    "name_th": "หมึก HP GT52 สีชมพู",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_114_hp_gt52_pink_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_114_hp_gt52_pink_ink.jpg"
+  },
+  {
+    "id": "06ph_115",
+    "name_th": "หมึก HP GT52 สีฟ้า",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_115_hp_gt52_ink_blue.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_115_hp_gt52_ink_blue.jpg"
+  },
+  {
+    "id": "06ph_116",
+    "name_th": "หมึก HP GT52 สีเหลือง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_116_hp_gt52_yellow_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_116_hp_gt52_yellow_ink.jpg"
+  },
+  {
+    "id": "06ph_117",
+    "name_th": "หมึก Brother BT6000 สีดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_117_brother_bt6000_ink_black.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_117_brother_bt6000_ink_black.jpg"
+  },
+  {
+    "id": "06ph_118",
+    "name_th": "หมึก Brother BT5000 สีชมพู",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_118_ink_brother_bt5000_pink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_118_ink_brother_bt5000_pink.jpg"
+  },
+  {
+    "id": "06ph_119",
+    "name_th": "หมึก Brother BT5000 สีฟ้า",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_119_brother_bt5000_ink_blue.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_119_brother_bt5000_ink_blue.jpg"
+  },
+  {
+    "id": "06ph_120",
+    "name_th": "หมึก Brother BT5000 สีเหลือง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_120_ink_brother_bt5000_yellow.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_120_ink_brother_bt5000_yellow.jpg"
+  },
+  {
+    "id": "06ph_121",
+    "name_th": "หมึก Epson 664 สีดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_121_epson_664_black_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_121_epson_664_black_ink.jpg"
+  },
+  {
+    "id": "06ph_122",
+    "name_th": "หมึก Epson 664 สีชมพู",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_122_epson_664_pink_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_122_epson_664_pink_ink.jpg"
+  },
+  {
+    "id": "06ph_123",
+    "name_th": "หมึก Epson 664 สีฟ้า",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_123_epson_664_ink_blue.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_123_epson_664_ink_blue.jpg"
+  },
+  {
+    "id": "06ph_124",
+    "name_th": "หมึก Epson 664 สีเหลือง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_124_epson_664_yellow_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_124_epson_664_yellow_ink.jpg"
+  },
+  {
+    "id": "06ph_125",
+    "name_th": "หมึก Canon 790 สีดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_125_canon_790_black_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_125_canon_790_black_ink.jpg"
+  },
+  {
+    "id": "06ph_126",
+    "name_th": "หมึก Canon 790 สีชมพู",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_126_canon_790_pink_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_126_canon_790_pink_ink.jpg"
+  },
+  {
+    "id": "06ph_127",
+    "name_th": "หมึก Canon 790 สีฟ้า",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_127_canon_790_ink_blue.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_127_canon_790_ink_blue.jpg"
+  },
+  {
+    "id": "06ph_128",
+    "name_th": "หมึก Canon 790 สีเหลือง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_128_canon_790_yellow_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_128_canon_790_yellow_ink.jpg"
+  },
+  {
+    "id": "06ph_129",
+    "name_th": "หมึก Canon 325",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_129_canon_325_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_129_canon_325_ink.jpg"
+  },
+  {
+    "id": "06ph_130",
+    "name_th": "หมึก HP Laser 85A",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_130_hp_laser_85a_toner.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_130_hp_laser_85a_toner.jpg"
+  },
+  {
+    "id": "06ph_131",
+    "name_th": "USB Adapter TL-WN725N TP-LINK",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_131_usb adapter tl-wn725n tp-link.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_131_usb adapter tl-wn725n tp-link.jpg"
+  },
+  {
+    "id": "06ph_132",
+    "name_th": "ซองใส่ซีดี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_132_cd_case.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_132_cd_case.jpg"
+  },
+  {
+    "id": "06ph_133",
+    "name_th": "แผ่นซีดี",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_133_cd.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_133_cd.jpg"
+  },
+  {
+    "id": "06ph_134",
+    "name_th": "แป้นพิมพ์แบบมีสาย USB",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_134_usb_wired_keyboard.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_134_usb_wired_keyboard.jpg"
+  },
+  {
+    "id": "06ph_135",
+    "name_th": "เม้าส์แบบมีสาย USB",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_135_usb_wired_mouse.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_135_usb_wired_mouse.jpg"
+  },
+  {
+    "id": "06ph_136",
+    "name_th": "แผ่นรองเม้าส์",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_136_mouse_pad.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_136_mouse_pad.jpg"
+  },
+  {
+    "id": "06ph_137",
+    "name_th": "แฟลชไดร์ฟ ขนาด 32 GB",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_137_flash_drive_size_32_gb.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_137_flash_drive_size_32_gb.jpg"
+  },
+  {
+    "id": "06ph_138",
+    "name_th": "ผงหมึกเลเซอร์ รุ่น 110A สีดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "06ph_138_laser_toner_model_110a_black.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/06ph/06ph_138_laser_toner_model_110a_black.jpg"
+  }
+]

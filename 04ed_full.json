@@ -1,0 +1,282 @@
+[
+  {
+    "id": "04ed_01",
+    "name_th": "กระดาษบรุ๊ปสีเทา",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "โหล",
+    "unit_price": 0.0,
+    "image_file": "04ed_01.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_01.jpg"
+  },
+  {
+    "id": "04ed_02",
+    "name_th": "แฟ้มสันกว้าง ขนาด 3 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 12,
+    "unit": "แฟ้ม",
+    "unit_price": 0.0,
+    "image_file": "04ed_02.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_02.jpg"
+  },
+  {
+    "id": "04ed_03",
+    "name_th": "แฟ้มสันกว้าง ขนาด 1 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 4,
+    "unit": "แฟ้ม",
+    "unit_price": 0.0,
+    "image_file": "04ed_03.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_03.jpg"
+  },
+  {
+    "id": "04ed_04",
+    "name_th": "ลวดยิงบอร์ด T3-13MB",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 12,
+    "unit": "กล่อง",
+    "unit_price": 0.0,
+    "image_file": "04ed_04.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_04.jpg"
+  },
+  {
+    "id": "04ed_05",
+    "name_th": "กระดาษ A4 ขนาด 80 แกรม",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "กล่อง",
+    "unit_price": 0.0,
+    "image_file": "04ed_05.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_05.jpg"
+  },
+  {
+    "id": "04ed_06",
+    "name_th": "กระดาษโฟโต้ 120 แกรม",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 6,
+    "unit": "แพ็ค",
+    "unit_price": 0.0,
+    "image_file": "04ed_06.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_06.jpg"
+  },
+  {
+    "id": "04ed_07",
+    "name_th": "กระดาษสติ๊กเกอร์ ขาวด้าน A4",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "ห่อ",
+    "unit_price": 0.0,
+    "image_file": "04ed_07.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_07.jpg"
+  },
+  {
+    "id": "04ed_08",
+    "name_th": "ปากกาลูกลื่นสีน้ำเงิน ขนาด 0.5 มม.",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "กระปุก",
+    "unit_price": 0.0,
+    "image_file": "04ed_08.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_08.jpg"
+  },
+  {
+    "id": "04ed_09",
+    "name_th": "ปากกาเน้นข้อความ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 4,
+    "unit": "ด้าม",
+    "unit_price": 0.0,
+    "image_file": "04ed_09.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_09.jpg"
+  },
+  {
+    "id": "04ed_10",
+    "name_th": "มีดคัตเตอร์ใหญ่ NO ST-20",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "04ed_10.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_10.jpg"
+  },
+  {
+    "id": "04ed_11",
+    "name_th": "เทปลบคำผิด",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "ชิ้น",
+    "unit_price": 0.0,
+    "image_file": "04ed_11.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_11.jpg"
+  },
+  {
+    "id": "04ed_12",
+    "name_th": "กรรไกรขนาด 8 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "04ed_12.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_12.jpg"
+  },
+  {
+    "id": "04ed_13",
+    "name_th": "ที่เย็บกระดาษเบอร์ 10",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "04ed_13.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_13.jpg"
+  },
+  {
+    "id": "04ed_14",
+    "name_th": "ถ่าน AA ชนิด Alkaline",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "แพ็ค",
+    "unit_price": 0.0,
+    "image_file": "04ed_14.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_14.jpg"
+  },
+  {
+    "id": "04ed_15",
+    "name_th": "ถ่าน AAA ชนิด Alkaline",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 18,
+    "unit": "แพ็ค",
+    "unit_price": 0.0,
+    "image_file": "04ed_15.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_15.jpg"
+  },
+  {
+    "id": "04ed_16",
+    "name_th": "ลวดเสียบกระดาษ เล็ก",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "กล่อง",
+    "unit_price": 0.0,
+    "image_file": "04ed_16.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_16.jpg"
+  },
+  {
+    "id": "04ed_17",
+    "name_th": "ลวดเสียบกระดาษ ใหญ่",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "กล่อง",
+    "unit_price": 0.0,
+    "image_file": "04ed_17.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_17.jpg"
+  },
+  {
+    "id": "04ed_18",
+    "name_th": "คลิปดำ 2 ขา 25 มม.",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "กล่อง",
+    "unit_price": 0.0,
+    "image_file": "04ed_18.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_18.jpg"
+  },
+  {
+    "id": "04ed_19",
+    "name_th": "คลิปดำ 2 ขา 50 มม.",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "กล่อง",
+    "unit_price": 0.0,
+    "image_file": "04ed_19.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_19.jpg"
+  },
+  {
+    "id": "04ed_20",
+    "name_th": "หมึกปริ้นเตอร์ EPSON L3110  สีแดง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "ขวด",
+    "unit_price": 0.0,
+    "image_file": "04ed_20.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_20.jpg"
+  },
+  {
+    "id": "04ed_21",
+    "name_th": "หมึกปริ้นเตอร์ EPSON L3110  สีน้ำเงิน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "ขวด",
+    "unit_price": 0.0,
+    "image_file": "04ed_21.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_21.jpg"
+  },
+  {
+    "id": "04ed_22",
+    "name_th": "หมึกปริ้นเตอร์ EPSON L3110  สีเหลือง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "ขวด",
+    "unit_price": 0.0,
+    "image_file": "04ed_22.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_22.jpg"
+  },
+  {
+    "id": "04ed_23",
+    "name_th": "หมึกปริ้นเตอร์ Brother HL-L3270 เหลือง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "ตลับ",
+    "unit_price": 0.0,
+    "image_file": "04ed_23.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_23.jpg"
+  },
+  {
+    "id": "04ed_24",
+    "name_th": "หมึกปริ้นเตอร์ Brother HL-L3270 ดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "ตลับ",
+    "unit_price": 0.0,
+    "image_file": "04ed_24.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_24.jpg"
+  },
+  {
+    "id": "04ed_25",
+    "name_th": "หมึกปริ้นเตอร์ Brother HL-L3270 แดง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "กล่อง",
+    "unit_price": 0.0,
+    "image_file": "04ed_25.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_25.jpg"
+  },
+  {
+    "id": "04ed_26",
+    "name_th": "หมึกปริ้นเตอร์ Brother HL-L3270 น้ำเงิน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "กล่อง",
+    "unit_price": 0.0,
+    "image_file": "04ed_26.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_26.jpg"
+  },
+  {
+    "id": "04ed_27",
+    "name_th": "เม้ามีสาย",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "04ed_27.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_27.jpg"
+  },
+  {
+    "id": "04ed_28",
+    "name_th": "ชุดคีย์บอร์ดพร้อมเมาส์ แบบเชื่อมต่อUSB",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 0.0,
+    "image_file": "04ed_28.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/04ed/04ed_28.jpg"
+  }
+]

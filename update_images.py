@@ -38,7 +38,7 @@ def update_image_links():
             existing_files = os.listdir(dept_folder)
 
         for idx, item in enumerate(products_list, start=1):
-            item_id = str(item.get("id") or f"{dept_key}_{idx:02d}")
+            item_id = item.get("id") or f"{dept_key}_{idx:02d}"
             
             # ค้นหาไฟล์ในโฟลเดอร์ที่ขึ้นต้นด้วยรหัสสินค้า เช่น "01sp_01"
             matched_file = ""

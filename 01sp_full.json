@@ -1,0 +1,207 @@
+{
+  "01sp": [
+    {
+      "id": "01sp_01",
+      "name_th": "กระดาษ A4",
+      "quantity": "54",
+      "unit": "รีม",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_01_a4_paper.jpg"
+    },
+    {
+      "id": "01sp_02",
+      "name_th": "ซองน้ำตาลไม่ขยายข้าง",
+      "quantity": "50",
+      "unit": "ซอง",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_02_sugar_packets_do_not_expand_on_the_sides.jpg"
+    },
+    {
+      "id": "01sp_03",
+      "name_th": "ซองน้ำตาลขยายข้าง",
+      "quantity": "96",
+      "unit": "ซอง",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_03_sugar_envelope_with_side_expansion.jpg"
+    },
+    {
+      "id": "01sp_04",
+      "name_th": "กระดาษการ์ดสี",
+      "quantity": "3",
+      "unit": "รีม",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_04_colored_card_paper.jpg"
+    },
+    {
+      "id": "01sp_05",
+      "name_th": "กระดาษแบงค์",
+      "quantity": "3",
+      "unit": "รีม",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_05_bank_paper.jpg"
+    },
+    {
+      "id": "01sp_06",
+      "name_th": "กระดาษการ์ดขาว",
+      "quantity": "10",
+      "unit": "รีม",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_06_white_card_paper.jpg"
+    },
+    {
+      "id": "01sp_07",
+      "name_th": "สมุดปกน้ำเงิน",
+      "quantity": "9",
+      "unit": "เล่ม",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_07_blue_cover_book.jpg"
+    },
+    {
+      "id": "01sp_08",
+      "name_th": "สมุดลงเวลาปฏิบัติราชการ",
+      "quantity": "3",
+      "unit": "เล่ม",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_08_office_time_book.jpg"
+    },
+    {
+      "id": "01sp_09",
+      "name_th": "แฟ้มขนาด 3 นิ้ว",
+      "quantity": "2",
+      "unit": "อัน",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_09_3_inch_file.jpg"
+    },
+    {
+      "id": "01sp_10",
+      "name_th": "ปากกาไวน์บอร์ด",
+      "quantity": "8",
+      "unit": "ด้าม",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_10_wine_board_pen.jpg"
+    },
+    {
+      "id": "01sp_11",
+      "name_th": "คลิบบอร์ดเอกสาร",
+      "quantity": "1",
+      "unit": "อัน",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_11_document_clipboard.jpg"
+    },
+    {
+      "id": "01sp_12",
+      "name_th": "เทปลบคำผิด",
+      "quantity": "7",
+      "unit": "อัน",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_12_correction_tape.jpg"
+    },
+    {
+      "id": "01sp_13",
+      "name_th": "กระดาษโฟโต้",
+      "quantity": "1",
+      "unit": "รีม",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_13_photo_paper.jpg"
+    },
+    {
+      "id": "01sp_14",
+      "name_th": "ที่ดึงกระดาษ",
+      "quantity": "1",
+      "unit": "อัน",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_14_paper_puller.jpg"
+    },
+    {
+      "id": "01sp_15",
+      "name_th": "ปากกาลูกลื่น",
+      "quantity": "49",
+      "unit": "ด้าม",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_15_ballpoint_pen.jpg"
+    },
+    {
+      "id": "01sp_16",
+      "name_th": "เทปใส ขนาด 3/4 นิ้ว",
+      "quantity": "4",
+      "unit": "อัน",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_16_clear_tape_size_inch.jpg"
+    },
+    {
+      "id": "01sp_17",
+      "name_th": "ซองขาว",
+      "quantity": "50",
+      "unit": "ซอง",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_17_white_envelope.jpg"
+    },
+    {
+      "id": "01sp_18",
+      "name_th": "คลิบดำ เบอร์ 111",
+      "quantity": "4",
+      "unit": "กล่อง",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_18_black_clip_number_111.jpg"
+    },
+    {
+      "id": "01sp_19",
+      "name_th": "ลวดเสียบกระดาษ เบอร์ 00",
+      "quantity": "10",
+      "unit": "กล่อง",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_19_paper_wire_size_00.jpg"
+    },
+    {
+      "id": "01sp_20",
+      "name_th": "ลวดเสียบกระดาษ เบอร์ 1",
+      "quantity": "12",
+      "unit": "กล่อง",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_20_paper_wire_no._1.jpg"
+    },
+    {
+      "id": "01sp_21",
+      "name_th": "คลิบดำ เบอร์ 111",
+      "quantity": "2",
+      "unit": "กล่อง",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_21_black_clip_number_111.jpg"
+    },
+    {
+      "id": "01sp_22",
+      "name_th": "ลวดเย็บกระดาษ เบอร์ 10",
+      "quantity": "12",
+      "unit": "กล่อง",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_22_staple_number_10.jpg"
+    },
+    {
+      "id": "01sp_23",
+      "name_th": "หมึก Canon B",
+      "quantity": "4",
+      "unit": "ขวด",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_23_canon_b_ink.jpg"
+    },
+    {
+      "id": "01sp_24",
+      "name_th": "หมึก Canon C",
+      "quantity": "3",
+      "unit": "ขวด",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_24_canon_c_ink.jpg"
+    },
+    {
+      "id": "01sp_25",
+      "name_th": "หมึก Canon Y",
+      "quantity": "3",
+      "unit": "ขวด",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_25_canon_y_ink.jpg"
+    },
+    {
+      "id": "01sp_26",
+      "name_th": "หมึก Canon M",
+      "quantity": "3",
+      "unit": "ขวด",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_26_canon_m_ink.jpg"
+    },
+    {
+      "id": "01sp_27",
+      "name_th": "หมึก Epson C",
+      "quantity": "2",
+      "unit": "ขวด",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_27_epson_c_ink.jpg"
+    },
+    {
+      "id": "01sp_28",
+      "name_th": "หมึก Epson Y",
+      "quantity": "2",
+      "unit": "ขวด",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_28_epson_y_ink.jpg"
+    },
+    {
+      "id": "01sp_29",
+      "name_th": "หมึก Epson M",
+      "quantity": "2",
+      "unit": "ขวด",
+      "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/01sp/01sp_29_epson_m_ink.jpg"
+    }
+  ]
+}
