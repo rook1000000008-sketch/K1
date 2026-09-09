@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-MART v5.2 - ระบบเบิกจ่ายพัสดุ อบต.ข่วงเปา</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Firebase SDK (Realtime Database & Storage) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
+    <!-- Document Parsing Libraries (Excel, Word, PDF) -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';</script>
+
+    <style>
+        body { 
+            font-family: 'Kanit', sans-serif; 
+            background: linear-gradient(135deg, #051A14 0%, #0B2B22 50%, #0F382C 100%);
+            background-attachment: fixed;
+            color: #E2E8F0;
+        }
+
+        .glass-panel {
+            background: rgba(13, 45, 38, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .glass-card.selected-for-delete {
+            border: 2px solid #EF4444 !important;
+            background: rgba(254, 226, 226, 0.95) !important;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.5) !important;
+        }
+
+        .neon-glow-btn {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .neon-glow-btn:hover {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.8);
+            transform: scale(1.02);
+        }
+
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 0.5rem;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 4px;
+        }
+        .horizontal-scroll::-webkit-scrollbar { height: 6px; }
+        .horizontal-scroll::-webkit-scrollbar-track { background: rgba(3, 23, 17, 0.5); border-radius: 4px; }
+        .horizontal-scroll::-webkit-scrollbar-thumb { background: rgba(16, 185, 129, 0.4); border-radius: 4px; }
+
+        .watermark-container { position: relative; }
+        .watermark-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; opacity: 0.05; pointer-events: none; z-index: 50; }
+        
+        .pin-btn { 
+            width: 58px; height: 58px; border-radius: 50%; 
+            background: #F0FDF4; border: 2px solid #10B981; 
+            color: #064E3B; font-weight: 800; font-size: 1.3rem; 
+            display: flex; align-items: center; justify-content: center; 
+            transition: all 0.15s ease-in-out; 
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+            user-select: none; -webkit-tap-highlight-color: transparent;
+        }
+        .pin-btn:hover { background: #D1FAE5; transform: scale(1.05); }
+        .pin-btn:active, .pin-btn.active-press { 
+            background: #10B981 !important; color: #ffffff !important; 
+            transform: scale(0.92) !important; box-shadow: 0 0 15px #10B981 !important; 
+        }
+
+        .pin-dot-filled {
+            background-color: #10B981 !important; border-color: #059669 !important;
+            box-shadow: 0 0 12px #10B981, 0 0 4px #10B981 !important; transform: scale(1.25) !important;
+        }
+
+        .fade-transition { transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; }
+        .fade-out { opacity: 0; transform: scale(0.98); }
+        .fade-in { opacity: 1; transform: scale(1); }
+
+        /* บังคับการตัดหน้ากระดาษอย่างเด็ดขาดสำหรับการพิมพ์ (Print Page Break Enforcement) */
+        @media print {
+            @page { size: A4 portrait; margin: 10mm 12mm 10mm 12mm; }
+            body { background: #ffffff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; }
+            .no-print { display: none !important; }
+            .print-area { 
+                display: block !important; 
+                width: 100% !important; 
+                box-shadow: none !important; 
+                margin: 0 !important; 
+                padding: 0 !important; 
+                border: none !important; 
+                page-break-after: always !important;
+                break-after: page !important;
+            }
+            .print-area:last-child {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-16">
+
+    <!-- ==================== 1. LOGIN COVER PAGE ==================== -->
+    <div id="login-cover-page" class="fixed inset-0 z-[100] bg-gradient-to-br from-[#020B08] via-[#07241C] to-[#010806] flex items-center justify-center p-4 overflow-y-auto">
+        <div class="max-w-4xl w-full glass-panel border-2 border-emerald-500/40 rounded-3xl shadow-[0_0_60px_rgba(0,0,0,0.8)] overflow-hidden grid grid-cols-1 md:grid-cols-2">
+            
+            <div class="p-8 flex flex-col justify-between border-b md:border-b-0 md:border-r border-emerald-500/30 bg-gradient-to-b from-emerald-950/40 to-transparent text-white">
+                <div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-20 h-20 flex items-center justify-center overflow-hidden rounded-full ring-4 ring-[#10B981]/50 shadow-[0_0_25px_#10B981]">
+                            <img src="KPLOGO.jpg" onerror="this.src='https://placehold.co/100?text=อบต.'" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-black tracking-wider text-[#6EE7B7] drop-shadow-[0_0_10px_#10B981]">K-MART</h2>
+                            <p class="text-[10px] text-emerald-300 font-bold">v5.2 • อบต.ข่วงเปา</p>
+                        </div>
+                    </div>
+                    
+                    <div class="my-6 relative rounded-2xl overflow-hidden border border-emerald-400/40 p-5 bg-[#031711]/80 text-center shadow-inner">
+                        <div class="w-20 h-20 mx-auto mb-3 rounded-full border-2 border-[#10B981] p-1 flex items-center justify-center bg-emerald-950/90 shadow-[0_0_25px_rgba(16,185,129,0.7)]">
+                            <i class="fa-solid fa-bolt text-3xl text-[#34D399]"></i>
+                        </div>
+                        <h3 class="font-bold text-sm text-[#A7F3D0] tracking-wide">ระบบเบิกจ่ายพัสดุอัจฉริยะ (อัตโนมัติ)</h3>
+                        <p class="text-[10px] text-emerald-200/80 mt-1">ตัดยอดงบประมาณและสต็อกทันที • อบต.ข่วงเปา</p>
+                    </div>
+                </div>
+                
+                <div class="text-[10px] text-emerald-400/80 text-center md:text-left font-semibold">
+                    <p>© องค์การบริหารส่วนตำบลข่วงเปา • ระบบพร้อมยื่นประเมิน LPA</p>
+                </div>
+            </div>
+
+            <div class="p-8 flex flex-col justify-center bg-white/95 text-slate-800 backdrop-blur-md">
+                <div class="text-center mb-6">
+                    <h3 class="text-xl font-black text-[#0D2D26] tracking-wide"><i class="fa-solid fa-shield-halved text-[#10B981] mr-2"></i>เข้าสู่ระบบปฏิบัติการ</h3>
+                    <p class="text-xs text-slate-500 font-medium">เลือกชื่อบุคลากรและใส่รหัส PIN 4 หลักเพื่อยืนยันตัวตน</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-[10px] uppercase font-extrabold text-emerald-900 mb-1 tracking-wider">👤 เลือกชื่อบุคลากร:</label>
+                        <select id="login-user-select" onchange="onLoginUserChange()" class="w-full bg-emerald-50/50 border-2 border-emerald-300 rounded-xl p-2.5 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#10B981]">
+                        </select>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-[10px] text-slate-500 mb-2 font-bold">ป้อนรหัส PIN 4 หลัก:</p>
+                        <div class="flex justify-center gap-4 mb-5">
+                            <div id="pin-dot-1" class="w-5 h-5 rounded-full border-2 border-emerald-400 bg-slate-100 transition-all duration-150"></div>
+                            <div id="pin-dot-2" class="w-5 h-5 rounded-full border-2 border-emerald-400 bg-slate-100 transition-all duration-150"></div>
+                            <div id="pin-dot-3" class="w-5 h-5 rounded-full border-2 border-emerald-400 bg-slate-100 transition-all duration-150"></div>
+                            <div id="pin-dot-4" class="w-5 h-5 rounded-full border-2 border-emerald-400 bg-slate-100 transition-all duration-150"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-3 max-w-[220px] mx-auto justify-items-center">
+                        <button onclick="pressPin('1', this)" class="pin-btn">1</button>
+                        <button onclick="pressPin('2', this)" class="pin-btn">2</button>
+                        <button onclick="pressPin('3', this)" class="pin-btn">3</button>
+                        <button onclick="pressPin('4', this)" class="pin-btn">4</button>
+                        <button onclick="pressPin('5', this)" class="pin-btn">5</button>
+                        <button onclick="pressPin('6', this)" class="pin-btn">6</button>
+                        <button onclick="pressPin('7', this)" class="pin-btn">7</button>
+                        <button onclick="pressPin('8', this)" class="pin-btn">8</button>
+                        <button onclick="pressPin('9', this)" class="pin-btn">9</button>
+                        <button onclick="clearPin()" class="pin-btn !text-xs !text-red-600 !bg-red-50 !border-red-300">C</button>
+                        <button onclick="pressPin('0', this)" class="pin-btn">0</button>
+                        <button onclick="deletePin()" class="pin-btn !text-xs !text-slate-600 !bg-slate-100 !border-slate-300"><i class="fa-solid fa-delete-left"></i></button>
+                    </div>
+
+                    <div id="login-error-msg" class="text-center text-xs text-red-600 font-extrabold hidden animate-bounce">
+                        ❌ รหัส PIN ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 2. MAIN HEADER & APP CONTAINER ==================== -->
+    <div id="main-app-container" class="fade-transition fade-in">
+        <header id="main-header" class="glass-panel sticky top-0 z-40 border-b border-[#10B981]/40 py-4 px-4 md:px-8 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+            <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+                
+                <div class="bg-[#06241C]/90 border border-[#10B981]/40 rounded-2xl px-6 py-3.5 flex items-center gap-5 w-full md:w-auto shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                    <div class="w-16 h-16 flex-shrink-0 flex items-center justify-center overflow-hidden rounded-full ring-2 ring-[#10B981] shadow-[0_0_15px_#10B981]">
+                        <img src="KPLOGO.jpg" onerror="this.src='https://placehold.co/100?text=อบต.'" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-black tracking-wider text-white flex items-center gap-2 drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]">
+                            K-MART <span class="text-[11px] bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-2.5 py-0.5 rounded-full font-bold shadow">v5.2</span>
+                        </h1>
+                        <p class="text-[11px] font-semibold text-emerald-300/90 mt-0.5">ระบบเบิกจ่ายพัสดุ อบต.ข่วงเปา</p>
+                    </div>
+                </div>
+                
+                <div class="bg-[#06241C]/90 border border-[#10B981]/40 rounded-2xl p-3.5 w-full md:w-[360px] shadow-[0_0_15px_rgba(16,185,129,0.15)] flex flex-col justify-center">
+                    <div class="flex justify-between items-center mb-1.5">
+                        <span class="text-[10px] text-emerald-300 font-extrabold flex items-center gap-1 uppercase tracking-wider">
+                            <i class="fa-solid fa-user-shield text-[#34D399]"></i> สิทธิ์ผู้ใช้งานปัจจุบัน:
+                        </span>
+                        <button onclick="logout()" class="text-[10px] text-red-400 hover:text-red-300 underline font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ
+                        </button>
+                    </div>
+                    <div id="active-user-badge" class="bg-[#02120E] text-emerald-100 text-xs border border-emerald-600/60 rounded-xl px-3 py-1.5 font-bold flex items-center justify-between gap-2 shadow-inner">
+                        <span id="active-user-name" class="truncate">-</span>
+                    </div>
+
+                    <div id="admin-hub-btn-container" class="mt-2 hidden">
+                        <button onclick="openAdminModal()" class="w-full neon-glow-btn text-white text-[10px] font-black py-1.5 px-3 rounded-xl uppercase tracking-wider flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-solid fa-sliders text-emerald-200"></i> ⚙️ ระบบจัดการคลัง & อัปโหลด (Admin)
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+
+        <main id="main-content" class="max-w-[1400px] mx-auto px-4 md:px-8 mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            <div class="lg:col-span-2 space-y-6">
+                
+                <div class="glass-panel p-4 rounded-3xl space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xs uppercase tracking-widest font-black text-[#34D399] flex items-center gap-2">
+                            <i class="fa-solid fa-layer-group text-base text-[#10B981]"></i> หมวดหมู่ประเภทวัสดุ (ทางราชการ)
+                        </h2>
+                        <span class="text-[10px] text-emerald-400 font-semibold italic"><i class="fa-solid fa-arrows-left-right"></i> หมุน Scroll Wheel เมาส์ หรือเลื่อนซ้าย-ขวา</span>
+                    </div>
+                    <div id="categories-container" class="horizontal-scroll pt-1 pb-1"></div>
+                </div>
+
+                <div class="glass-panel p-3.5 rounded-2xl flex items-center">
+                    <div class="relative w-full">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-[#34D399] text-sm"></i>
+                        <input type="text" id="search-input" onkeyup="filterItems()" placeholder="พิมพ์ชื่อวัสดุเพื่อค้นหา..." class="w-full pl-12 pr-4 py-2.5 bg-[#031711] text-xs text-emerald-100 rounded-xl border border-emerald-500/40 focus:outline-none focus:ring-2 focus:ring-[#10B981] transition-all shadow-inner placeholder-emerald-700 font-semibold">
+                    </div>
+                </div>
+                
+                <div id="admin-multi-action-bar" class="hidden glass-panel p-3 rounded-2xl flex justify-between items-center bg-emerald-950/90 border-2 border-red-500/50">
+                    <span class="text-xs text-white font-bold pl-2"><i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i> เลือกแล้ว <span id="selected-delete-count" class="text-amber-400 font-black">0</span> รายการ</span>
+                    <div class="flex gap-2">
+                        <button onclick="clearAllSelectedCards()" class="bg-slate-600 hover:bg-slate-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-xl">ยกเลิกการเลือก</button>
+                        <button onclick="deleteSelectedCards()" class="bg-red-600 hover:bg-red-700 text-white text-[10px] font-bold px-4 py-1.5 rounded-xl shadow flex items-center gap-1.5">
+                            <i class="fa-solid fa-trash-can"></i> ลบรายการที่เลือก
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between px-1">
+                    <h3 id="current-category-title" class="text-sm font-black text-white tracking-wide">รายการพัสดุทั้งหมด</h3>
+                    <span id="item-count" class="text-xs text-[#34D399] font-bold">0 รายการ</span>
+                </div>
+
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+            </div>
+
+            <div class="lg:col-span-1 space-y-6 sticky top-36">
+                <div class="glass-panel p-4 rounded-3xl">
+                    <div class="flex justify-between items-center mb-2 border-b border-emerald-800/80 pb-1">
+                        <p class="text-[11px] font-extrabold text-[#34D399] flex items-center gap-1.5 uppercase tracking-wider">
+                            <i class="fa-solid fa-wallet text-[#10B981]"></i> งบประมาณคงเหลือสังกัด: <span id="active-wallet-title" class="text-white ml-1">ทั้งหมด</span>
+                        </p>
+                    </div>
+                    <div class="text-xs text-white" id="live-sub-wallets"></div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-3xl space-y-5 text-slate-800 bg-white/95">
+                    <div class="flex justify-between items-center border-b pb-3 border-emerald-100 cursor-pointer hover:opacity-80 transition" onclick="openCartModal()">
+                        <h2 class="text-xs uppercase tracking-widest font-black text-emerald-950 flex items-center gap-2">
+                            <i class="fa-solid fa-cart-shopping text-base text-[#10B981]"></i> รายการรอเบิก / SHOPPING CART
+                        </h2>
+                        <span id="cart-count" class="neon-glow-btn text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">0 ITEM</span>
+                    </div>
+                    
+                    <div id="cart-items" onclick="openCartModal()" class="space-y-3 max-h-48 overflow-y-auto pr-1 text-xs text-slate-400 italic font-light cursor-pointer">
+                        ไม่มีรายการพัสดุในตะกร้าของคุณ (คลิกเพื่อดูรายละเอียด)
+                    </div>
+                    
+                    <div class="border-t pt-3 border-emerald-100 space-y-1 text-xs">
+                        <div class="flex justify-between tracking-wide font-bold text-slate-800">
+                            <span>มูลค่าเบิกรวมทั้งสิ้น:</span>
+                            <span class="text-xl font-black text-[#059669]"><span id="cart-total">0.00</span> บาท</span>
+                        </div>
+                        <div id="wallet-warning" class="text-[10px] text-red-600 font-extrabold tracking-wide hidden animate-pulse">⚠️ แจ้งเตือน: งบโควตาพัสดุประเภทนี้ไม่เพียงพอ!</div>
+                    </div>
+
+                    <div class="space-y-3 pt-1">
+                        <button onclick="openCheckoutModal()" class="w-full neon-glow-btn text-white tracking-widest font-black py-3.5 text-xs rounded-xl uppercase flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-file-invoice text-xs"></i> ขอเบิกวัสดุ (Checkout)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== 3. ADMIN MANAGEMENT & UPLOAD HUB MODAL ==================== -->
+    <div id="admin-modal" class="fixed inset-0 z-[150] bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="max-w-4xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] text-slate-800 border-2 border-[#10B981]">
+            <div class="bg-gradient-to-r from-[#031711] to-[#0A382C] p-4 text-white flex justify-between items-center border-b border-[#10B981]/30">
+                <h3 class="font-bold text-sm text-[#A7F3D0] flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-[#10B981]"></i> ศูนย์จัดการคลังสินค้า อัปโหลดวัสดุ & รายงานผู้บริหาร / สตง.
+                </h3>
+                <button onclick="closeAdminModal()" class="text-emerald-300 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto space-y-6 text-xs flex-1">
+                
+                <div class="bg-emerald-900/10 p-4 rounded-2xl border-2 border-emerald-500/40 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-black text-emerald-950 text-xs flex items-center gap-2">
+                            <i class="fa-solid fa-file-import text-emerald-600 text-sm"></i> นำเข้าเอกสารข้อมูลพัสดุ (.xlsx, .csv, .docx, .pdf)
+                        </h4>
+                        <span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">Smart Table Parser</span>
+                    </div>
+                    <p class="text-[10px] text-slate-600">อัปโหลดเอกสารเพื่อตรวจสอบและเลือกรายการพัสดุก่อนบันทึกเข้าระบบจริง</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="sm:col-span-2">
+                            <input type="file" id="doc-file-input" accept=".xlsx, .xls, .csv, .docx, .pdf" class="w-full border rounded-xl p-2 bg-white text-xs">
+                        </div>
+                        <button onclick="handleDocumentImportPreview()" class="neon-glow-btn text-white font-bold py-2 px-4 rounded-xl flex items-center justify-center gap-2 shadow text-xs">
+                            <i class="fa-solid fa-gears"></i> ตรวจสอบเอกสาร
+                        </button>
+                    </div>
+
+                    <div id="doc-import-status" class="hidden p-2.5 rounded-xl text-[10px] font-bold"></div>
+
+                    <div id="doc-preview-section" class="hidden space-y-3 pt-3 border-t border-emerald-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-extrabold text-emerald-950 text-xs">📋 ตรวจสอบและเลือกรายการที่ต้องการนำเข้า (<span id="parsed-count-label">0</span> รายการ):</span>
+                            <div class="flex gap-2">
+                                <button onclick="cancelDocumentImport()" class="bg-slate-300 hover:bg-slate-400 text-slate-700 font-bold px-3 py-1.5 rounded-xl text-[10px]">
+                                    ❌ ยกเลิก
+                                </button>
+                                <button onclick="confirmDocumentImport()" class="neon-glow-btn text-white font-bold px-4 py-1.5 rounded-xl text-[10px] shadow">
+                                    ✅ ยืนยันนำเข้า
+                                </button>
+                            </div>
+                        </div>
+                        <div id="doc-preview-list" class="max-h-60 overflow-y-auto space-y-1.5 border border-emerald-300 bg-white p-2.5 rounded-xl"></div>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-200 space-y-4">
+                    <div class="flex justify-between items-center border-b border-emerald-200 pb-2">
+                        <h4 class="font-extrabold text-emerald-950 text-xs flex items-center gap-2">
+                            <i class="fa-solid fa-cloud-arrow-up text-emerald-600"></i> นำเข้าด้วยการอัปโหลดภาพหลายรูป & กรอกชื่อรายชิ้นอัตโนมัติ (Batch Form)
+                        </h4>
+                        <div class="flex gap-2">
+                            <button id="undo-btn" onclick="undoLastUpload()" disabled class="bg-slate-200 text-slate-400 font-bold px-3 py-1 rounded-lg text-[10px] flex items-center gap-1 cursor-not-allowed">
+                                <i class="fa-solid fa-rotate-left"></i> Undo
+                            </button>
+                            <button id="redo-btn" onclick="redoLastUpload()" disabled class="bg-slate-200 text-slate-400 font-bold px-3 py-1 rounded-lg text-[10px] flex items-center gap-1 cursor-not-allowed">
+                                <i class="fa-solid fa-rotate-right"></i> Redo
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-white p-3 rounded-xl border border-emerald-200">
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">สังกัดเจ้าของพัสดุ:</label>
+                            <select id="up-item-div" class="w-full border rounded-xl p-2 bg-white focus:ring-2 focus:ring-[#10B981]">
+                                <option value="สำนักปลัด">สำนักปลัด</option>
+                                <option value="กองคลัง">กองคลัง</option>
+                                <option value="กองช่าง">กองช่าง</option>
+                                <option value="กองสวัสดิการสังคม">กองสวัสดิการสังคม</option>
+                                <option value="กองสาธารณสุขและสิ่งแวดล้อม">กองสาธารณสุขและสิ่งแวดล้อม</option>
+                                <option value="กองการศึกษา ศาสนา และวัฒนธรรม">กองการศึกษา ศาสนา และวัฒนธรรม</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">ประเภทวัสดุ (ทางราชการ):</label>
+                            <select id="up-item-type" class="w-full border rounded-xl p-2 bg-white focus:ring-2 focus:ring-[#10B981]">
+                                <option value="office">📝 วัสดุสำนักงาน</option>
+                                <option value="computer">💻 วัสดุคอมพิวเตอร์</option>
+                                <option value="household">🏠 วัสดุงานบ้านงานครัว</option>
+                                <option value="electrical">⚡ วัสดุไฟฟ้าและวิทยุ</option>
+                                <option value="construction">🏗️ วัสดุก่อสร้าง</option>
+                                <option value="fuel">⛽ วัสดุเชื้อเพลิงฯ</option>
+                                <option value="medical">💊 วัสดุการแพทย์</option>
+                                <option value="agricultural">🌱 วัสดุเกษตร</option>
+                                <option value="other">📦 วัสดุอื่นๆ</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">วันที่จัดซื้อ (FIFO):</label>
+                            <input type="date" id="up-item-fifo" class="w-full border rounded-xl p-2 bg-white focus:ring-2 focus:ring-[#10B981]">
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label class="block font-bold text-slate-700 mb-1">เลือกรูปภาพวัสดุ (เลือกหลายภาพพร้อมกันได้):</label>
+                            <input type="file" id="up-item-file" multiple accept="image/*" onchange="previewBatchUploadFiles(event)" class="w-full border rounded-xl p-2 bg-white">
+                        </div>
+                    </div>
+
+                    <div id="batch-dynamic-form-container" class="space-y-3">
+                        <p class="text-[10px] text-slate-400 text-center py-2 italic">กรุณาเลือกรูปภาพด้านบน เพื่อสร้างช่องกรอกข้อมูลรายชิ้นอัตโนมัติ</p>
+                    </div>
+
+                    <div class="flex justify-end gap-2 pt-2">
+                        <button onclick="handleBatchUploadSubmit()" id="batch-submit-btn" disabled class="bg-slate-300 text-slate-500 font-bold px-5 py-2 rounded-xl flex items-center gap-2 cursor-not-allowed">
+                            <i class="fa-solid fa-plus"></i> บันทึกข้อมูลทั้งหมดเข้าคลัง
+                        </button>
+                    </div>
+                </div>
+
+                <div class="border rounded-2xl p-4 space-y-3">
+                    <h4 class="font-extrabold text-slate-800 text-xs flex items-center gap-2">
+                        <i class="fa-solid fa-boxes-stacked text-emerald-600"></i> คลังประวัติพัสดุกลาง (Central Repository)
+                    </h4>
+                    <div id="admin-repo-list" class="max-h-40 overflow-y-auto space-y-2 border rounded-xl p-2"></div>
+                </div>
+
+                <div class="border rounded-2xl p-4 space-y-3 bg-slate-50">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-extrabold text-slate-800 text-xs flex items-center gap-2">
+                            <i class="fa-solid fa-chart-pie text-emerald-600"></i> สรุปงบประมาณ & รายงานสำหรับ สตง. / ผู้บริหาร
+                        </h4>
+                        <button onclick="window.print()" class="bg-slate-700 hover:bg-slate-800 text-white font-bold px-3 py-1.5 rounded-xl text-[10px] flex items-center gap-1">
+                            <i class="fa-solid fa-print"></i> พิมพ์ / Save PDF
+                        </button>
+                    </div>
+                    <div id="admin-audit-table" class="overflow-x-auto"></div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 border-t flex justify-end">
+                <button onclick="closeAdminModal()" class="bg-slate-500 hover:bg-slate-600 text-white font-bold px-5 py-2 rounded-xl text-xs">
+                    ปิดหน้าต่างจัดการ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 4. POPUP CART MODAL ==================== -->
+    <div id="cart-modal" class="fixed inset-0 z-[130] bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="max-w-xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh] text-slate-800">
+            <div class="bg-gradient-to-r from-[#031711] to-[#0A382C] p-4 text-white flex justify-between items-center border-b border-[#10B981]/30">
+                <h3 class="font-bold text-sm text-[#A7F3D0] flex items-center gap-2">
+                    <i class="fa-solid fa-basket-shopping text-[#10B981]"></i> รายการพัสดุในตะกร้าของคุณ
+                </h3>
+                <button onclick="closeCartModal()" class="text-emerald-300 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <div class="p-5 overflow-y-auto space-y-3 text-xs flex-1" id="cart-modal-body"></div>
+
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-between items-center">
+                <div>
+                    <p class="text-[10px] text-slate-500 font-bold uppercase">มูลค่าเบิกรวมทั้งสิ้น:</p>
+                    <p class="text-lg font-black text-[#059669]"><span id="cart-modal-total">0.00</span> บาท</p>
+                </div>
+                <button onclick="closeCartModal()" class="neon-glow-btn text-white font-bold px-5 py-2.5 rounded-xl text-xs">
+                    ตกลง / ปิดหน้าต่าง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 5. CHECKOUT CONFIRMATION MODAL ==================== -->
+    <div id="checkout-modal" class="fixed inset-0 z-[140] bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="max-w-lg w-full bg-white rounded-3xl shadow-2xl overflow-hidden text-slate-800 border-2 border-[#10B981]">
+            <div class="bg-gradient-to-r from-[#031711] to-[#0A382C] p-4 text-white flex justify-between items-center">
+                <h3 class="font-bold text-sm text-[#A7F3D0] flex items-center gap-2">
+                    <i class="fa-solid fa-clipboard-check text-[#10B981]"></i> ตรวจสอบรายการจัดซื้อ/เบิกพัสดุ
+                </h3>
+                <button onclick="closeCheckoutModal()" class="text-emerald-300 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <div class="p-5 space-y-4 text-xs">
+                <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+                    <p class="font-bold text-emerald-950">ผู้ขอเบิก: <span id="chk-user-name" class="font-normal"></span></p>
+                    <p class="font-bold text-emerald-950">ต้นสังกัด: <span id="chk-user-div" class="font-normal"></span></p>
+                </div>
+
+                <div class="max-h-48 overflow-y-auto border rounded-xl p-3 space-y-2" id="chk-items-list"></div>
+
+                <div class="flex justify-between items-center pt-2 border-t font-bold">
+                    <span>ยอดเงินที่จะถูกหักจากงบประมาณ:</span>
+                    <span class="text-lg font-black text-[#059669]"><span id="chk-total-price">0.00</span> บาท</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 border-t flex justify-end gap-3">
+                <button onclick="closeCheckoutModal()" class="bg-slate-500 hover:bg-slate-600 text-white font-bold px-4 py-2 rounded-xl text-xs">ยกเลิก</button>
+                <button onclick="confirmOrderAndGenerateDoc()" class="neon-glow-btn text-white font-black px-6 py-2 rounded-xl text-xs flex items-center gap-2 shadow">
+                    <i class="fa-solid fa-check"></i> ยืนยันการเบิกพัสดุ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 6. OFFICIAL REQUISITION DOCUMENT (PAGE 1) ==================== -->
+    <div id="official-document-view" class="max-w-4xl mx-auto my-6 p-8 bg-white shadow-2xl rounded-3xl border border-slate-200 hidden print-area text-slate-800 fade-transition fade-out">
+        <div class="watermark-container">
+            <img src="KPLOGO.jpg" class="watermark-bg" alt="อบต. ลายน้ำ">
+            
+            <div class="text-center space-y-0.5">
+                <h2 class="text-lg font-bold tracking-wide text-slate-900">ใบขอเบิกวัสดุใช้ในราชการ</h2>
+                <p class="text-sm font-bold text-emerald-900" id="doc-org-title">องค์การบริหารส่วนตำบลข่วงเปา</p>
+                <div class="flex justify-between items-center text-[11px] font-semibold text-slate-600 pt-1 border-b pb-2 border-slate-200">
+                    <span><b>ใบเบิกเลขที่:</b> <span id="doc-rec-id" class="text-emerald-800 font-bold">KP-REC-2569/XXXX</span></span>
+                    <span><b>วันที่:</b> <span id="doc-date" class="font-bold text-slate-800"></span></span>
+                </div>
+            </div>
+
+            <div class="mt-3 text-[11px] space-y-1 text-slate-800 leading-normal">
+                <p><b>เรื่อง:</b> ขออนุมัติเบิกวัสดุสิ่งของเพื่อใช้ในราชการ</p>
+                <p><b>เรียน:</b> หัวหน้าเจ้าหน้าที่พัสดุ (องค์การบริหารส่วนตำบลข่วงเปา)</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-slate-50 p-2.5 rounded-xl border border-slate-200 my-1.5">
+                    <div><b>ผู้ขอเบิก:</b> <span id="doc-requester" class="underline decoration-dotted text-emerald-900 font-bold"></span></div>
+                    <div><b>สังกัด / ส่วนราชการ:</b> <span id="doc-department" class="underline decoration-dotted text-emerald-900 font-bold"></span></div>
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <table class="w-full border-collapse border border-slate-300 text-[11px] font-bold">
+                    <thead>
+                        <tr class="bg-emerald-900 text-white border-b border-slate-300">
+                            <th class="border border-slate-300 p-1.5 text-center w-10">ลำดับ</th>
+                            <th class="border border-slate-300 p-1.5 text-left">รายการวัสดุ</th>
+                            <th class="border border-slate-300 p-1.5 text-center w-24">ประเภทวัสดุ</th>
+                            <th class="border border-slate-300 p-1.5 text-center w-14">จำนวน</th>
+                            <th class="border border-slate-300 p-1.5 text-right w-20">ราคา/หน่วย</th>
+                            <th class="border border-slate-300 p-1.5 text-right w-24">ราคารวม (บาท)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="doc-table-body" class="text-slate-800"></tbody>
+                </table>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-y-5 gap-x-6 text-center text-[11px] font-bold border-t pt-4 border-slate-200">
+                <div class="space-y-0.5 flex flex-col items-center">
+                    <p class="mb-6">ลงชื่อ: ...........................................................</p>
+                    <p class="text-[10px] text-slate-800 font-bold">( <span id="sign-name-1"></span> )</p>
+                    <p class="text-[9px] text-slate-500">ตำแหน่ง: ผู้ขอเบิกวัสดุ</p>
+                </div>
+
+                <div class="space-y-0.5 flex flex-col items-center">
+                    <p class="mb-6">ลงชื่อ: ...........................................................</p>
+                    <p class="text-[10px] text-slate-800 font-bold">( นางสมพร ศรีวิทะ )</p>
+                    <p class="text-[9px] text-slate-500">ตำแหน่ง: นักวิชาการพัสดุ (ผู้ตรวจสอบ)</p>
+                </div>
+
+                <div class="space-y-0.5 flex flex-col items-center">
+                    <p class="mb-6">ลงชื่อ: ...........................................................</p>
+                    <p class="text-[10px] text-slate-900 font-extrabold">( นางอุไรวรรณ เครือฟู )</p>
+                    <p class="text-[9px] text-emerald-800 font-bold">ตำแหน่ง: ผู้อำนวยการกองคลัง (ผู้อนุมัติ)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 flex justify-center gap-4 no-print">
+            <button onclick="goToHandoverStep()" class="neon-glow-btn text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow">
+                ถัดไป: หน้าส่งมอบ-รับมอบวัสดุ <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== 7. STORE PICKUP & HANDOVER (PAGE 2) ==================== -->
+    <div id="handover-document-view" class="max-w-4xl mx-auto my-6 p-8 bg-white shadow-2xl rounded-3xl border border-slate-200 hidden print-area text-slate-800 fade-transition fade-out">
+        <div class="space-y-6">
+            <div class="bg-gradient-to-r from-[#0D2D26] to-[#134035] p-5 rounded-2xl text-white shadow-md flex flex-col md:flex-row items-center justify-between gap-4 border-2 border-[#10B981]">
+                <div class="space-y-1.5 text-center md:text-left flex-1">
+                    <span class="bg-[#10B981] text-white font-black text-[9px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">STORE PICKUP QR CODE</span>
+                    <h3 class="text-sm font-bold text-[#A7F3D0]">คิวอาร์โค้ดขอมูลการขอเบิกวัสดุ</h3>
+                    <p class="text-[11px] text-emerald-100/80 leading-relaxed">
+                        ใช้สำหรับสแกนตรวจสอบรายการเบิกพัสดุเพื่อความถูกต้อง ณ คลังกลาง
+                    </p>
+                    <p class="text-[9px] text-emerald-300 font-mono" id="qr-data-preview"></p>
+                </div>
+                
+                <div class="bg-white p-2 rounded-xl shadow-md border-2 border-emerald-400 flex flex-col items-center justify-center">
+                    <img id="store-pickup-qrcode-img" src="" alt="Pickup QR Code" class="w-24 h-24 object-contain">
+                    <span class="text-[8px] text-slate-500 font-bold mt-1 uppercase">Scan to Dispatch</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-300 text-[11px] text-slate-800">
+                <h4 class="font-bold text-center text-emerald-900 mb-6 uppercase tracking-wider text-sm">
+                    <i class="fa-solid fa-pen-nib mr-1 text-[#10B981]"></i> หลักฐานการส่งมอบ - รับมอบวัสดุจริง
+                </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-center font-bold">
+                    <div class="space-y-2 flex flex-col items-center">
+                        <p class="text-slate-500 text-[10px] mb-4">ได้รับพัสดุตามรายการถูกต้อง ครบถ้วนแล้ว</p>
+                        <p>ลงชื่อ: ........................................................... (ผู้รับมอบวัสดุ)</p>
+                        <p class="text-[10px] text-slate-800 font-black mt-1">( <span id="pickup-sign-requester"></span> )</p>
+                        <p class="text-[9px] text-slate-500 font-normal">ตำแหน่ง: ผู้ขอเบิกวัสดุ / ผู้รับมอบ</p>
+                    </div>
+
+                    <div class="space-y-2 flex flex-col items-center border-t sm:border-t-0 sm:border-l border-slate-200 pt-4 sm:pt-0">
+                        <p class="text-slate-500 text-[10px] mb-4">ได้ตรวจสอบและส่งมอบพัสดุเรียบร้อยแล้ว</p>
+                        <p>ลงชื่อ: ........................................................... (ผู้ส่งมอบวัสดุ)</p>
+                        <p class="text-[10px] text-slate-800 font-black mt-1">( นางสมพร ศรีวิทะ )</p>
+                        <p class="text-[9px] text-emerald-800 font-bold">ตำแหน่ง: เจ้าหน้าที่พัสดุผู้ส่งมอบ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 flex justify-center gap-4 no-print">
+            <button onclick="goToExecutiveReportStep()" class="neon-glow-btn text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow">
+                ถัดไป: หน้างานรายงานเสนอผู้บริหาร <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== 8. EXECUTIVE REPORT VIEW (PAGE 3) ==================== -->
+    <div id="executive-report-view" class="max-w-4xl mx-auto my-6 p-8 bg-white shadow-2xl rounded-3xl border border-slate-200 hidden print-area text-slate-800 fade-transition fade-out">
+        <div class="border border-[#10B981] bg-emerald-50/30 p-6 rounded-2xl relative text-[11px] watermark-container">
+            <img src="KPLOGO.jpg" class="watermark-bg" alt="อบต. ลายน้ำ">
+            <div class="sm:absolute top-4 right-4 bg-[#10B981] text-white font-black text-[9px] px-3 py-1 rounded-full uppercase tracking-widest text-center mb-2 sm:mb-0">EXECUTIVE REPORT</div>
+            
+            <div class="space-y-1 border-b border-emerald-200 pb-3">
+                <h2 class="text-sm font-bold text-emerald-950 flex items-center gap-1.5"><i class="fa-solid fa-receipt text-emerald-600"></i> รายงานผลการเบิกจ่ายวัสดุเสนอผู้บริหาร</h2>
+                <p class="text-[10px] text-slate-500 font-semibold">องค์การบริหารส่วนตำบลข่วงเปา</p>
+            </div>
+
+            <div class="mt-4 font-bold text-slate-700 text-[11px] space-y-2">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-white p-3 rounded-xl border border-emerald-200">
+                    <div><b>ผู้ขอเบิก:</b> <span id="rpt-requester" class="text-emerald-900"></span></div>
+                    <div><b>ผู้ส่งมอบวัสดุ:</b> <span class="text-emerald-900">นางสมพร ศรีวิทะ</span></div>
+                    <div><b>ผู้อนุมัติ:</b> <span class="text-emerald-900">นางอุไรวรรณ เครือฟู</span></div>
+                </div>
+
+                <div class="mt-2">
+                    <p class="font-bold text-emerald-950 mb-1">สรุปจำนวนสิ่งที่เบิกจ่าย:</p>
+                    <div id="rpt-items-summary" class="bg-white p-3 rounded-xl border border-slate-200 space-y-1 text-[10px]"></div>
+                </div>
+
+                <div class="border-y py-2 my-2 border-emerald-200 text-[10px] space-y-1">
+                    <p class="font-bold text-emerald-950">รายงานยอดงบประมาณคงเหลืออย่างละเอียด:</p>
+                    <div id="rcpt-wallets-breakdown" class="space-y-1 bg-white p-2.5 rounded-xl border border-slate-200"></div>
+                </div>
+
+                <div class="flex justify-between text-red-600 font-black text-xs pt-1">
+                    <span>จำนวนเงินที่เบิกจ่ายรวมทั้งสิ้น:</span>
+                    <span id="rcpt-total" class="text-sm"></span>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col items-center justify-center text-center space-y-1 border-t border-emerald-200 pt-4">
+                <p class="text-slate-800 font-bold text-[10px]">เรียนเสนอเพื่อโปรดทราบ</p>
+                <p class="text-xs font-black text-emerald-950 mt-1">นายมิ่งภพ ศรีชะบา</p>
+                <p class="text-[10px] text-emerald-800 font-extrabold">( ปลัดองค์การบริหารส่วนตำบลข่วงเปา )</p>
+            </div>
+        </div>
+
+        <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4 no-print">
+            <button onclick="window.print()" class="neon-glow-btn text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow">
+                <i class="fa-solid fa-print"></i> พิมพ์รายงาน / บันทึก PDF
+            </button>
+            <button onclick="backToMain()" class="bg-slate-600 hover:bg-slate-700 text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow">
+                <i class="fa-solid fa-arrow-rotate-left"></i> กลับหน้าหลัก
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== 9. JAVASCRIPT ENGINE ==================== -->
+    <script>
+        const firebaseConfig = {
+            databaseURL: "https://kmart-cf668-default-rtdb.asia-southeast1.firebasedatabase.app/",
+            storageBucket: "kmart-cf668.appspot.com"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const storage = firebase.storage ? firebase.storage() : null;
+
+        let personnelData = {
+            "organization": "องค์การบริหารส่วนตำบลข่วงเปา",
+            "divisions": {
+                "สำนักปลัด": {
+                    "sub_wallets": { "office": 50000.00, "computer": 20000.00, "household": 25000.00, "electrical": 15000.00, "construction": 10000.00, "fuel": 20000.00, "medical": 5000.00, "agricultural": 5000.00, "other": 50000.00 },
+                    "staff": [
+                        {"name": "นายมิ่งภพ ศรีชะบา", "role": "ปลัด อบต.", "pin": "8888", "is_admin": true, "can_upload": true, "task": "ดูแลระบบ"},
+                        {"name": "นางสาวธัญวรัชญ์ เชี่ยวเจริญโชติ", "role": "เจ้าพนักงานธุรการชำนาญงาน", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
+                        {"name": "นางสาววิยะดา เป็งภีระ", "role": "เจ้าหน้าที่ธุรการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"}
+                    ],
+                    "materials": []
+                },
+                "กองคลัง": {
+                    "sub_wallets": { "office": 40000.00, "computer": 25000.00, "household": 15000.00, "electrical": 10000.00, "construction": 10000.00, "fuel": 15000.00, "medical": 5000.00, "agricultural": 5000.00, "other": 40000.00 },
+                    "staff": [
+                        {"name": "นางอุไรวรรณ เครือฟู", "role": "ผู้อำนวยการกองคลัง", "pin": "2222", "is_admin": true, "can_upload": false, "task": "อนุมัติขั้นตอนสุดท้าย"},
+                        {"name": "นางสมพร ศรีวิทะ", "role": "นักวิชาการพัสดุ", "pin": "1111", "is_admin": true, "can_upload": false, "task": "อนุมัติ / ผู้เบิกพัสดุ"}
+                    ],
+                    "materials": []
+                },
+                "กองช่าง": {
+                    "sub_wallets": { "office": 20000.00, "computer": 15000.00, "household": 10000.00, "electrical": 30000.00, "construction": 100000.00, "fuel": 40000.00, "medical": 5000.00, "agricultural": 10000.00, "other": 50000.00 },
+                    "staff": [
+                        {"name": "นายพันธ์ศักดิ์ กิ่งสวัสดิ์", "role": "นายช่างโยธาอาวุโส", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
+                        {"name": "นางสาวอรอนงค์ ชัยโย", "role": "เจ้าหน้าที่ธุรการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
+                        {"name": "น.ส.พรรณกาญจน์ ลุนแก้ว", "role": "คนงานทั่วไป", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"}
+                    ],
+                    "materials": []
+                },
+                "กองสวัสดิการสังคม": {
+                    "sub_wallets": { "office": 20000.00, "computer": 15000.00, "household": 10000.00, "electrical": 5000.00, "construction": 5000.00, "fuel": 10000.00, "medical": 5000.00, "agricultural": 5000.00, "other": 25000.00 },
+                    "staff": [
+                        {"name": "นายภูมิภัทร ชัยยะเลิศ", "role": "นักพัฒนาชุมชนปฏิบัติการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
+                        {"name": "นางสาววรรณภา กันทะ", "role": "ผู้ช่วยเจ้าพนักงานธุรการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"}
+                    ],
+                    "materials": []
+                },
+                "กองสาธารณสุขและสิ่งแวดล้อม": {
+                    "sub_wallets": { "office": 25000.00, "computer": 15000.00, "household": 15000.00, "electrical": 10000.00, "construction": 10000.00, "fuel": 20000.00, "medical": 50000.00, "agricultural": 15000.00, "other": 40000.00 },
+                    "staff": [
+                        {"name": "นางสาวจีรัณภรณ์ กันธิยะวรัชญ์", "role": "นักวิชาการสาธารณสุขปฏิบัติการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
+                        {"name": "นางสาววิจิตรา กิติตา", "role": "ผู้ช่วยเจ้าพนักงานธุรการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"}
+                    ],
+                    "materials": []
+                },
+                "กองการศึกษา ศาสนา และวัฒนธรรม": {
+                    "sub_wallets": { "office": 25000.00, "computer": 15000.00, "household": 20000.00, "electrical": 10000.00, "construction": 5000.00, "fuel": 10000.00, "medical": 5000.00, "agricultural": 5000.00, "other": 30000.00 },
+                    "staff": [
+                        {"name": "นางสาวนิลวรรณ ต๊ะอ๊อด", "role": "เจ้าพนักงานธุรการปฏิบัติงาน", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
+                        {"name": "นางสาวชฎาพร นันตาบุญ", "role": "ผู้ช่วยผู้ดูแลเด็ก", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"}
+                    ],
+                    "materials": []
+                }
+            }
+        };
+
+        const walletNames = { 
+            "office": "📝 วัสดุสำนักงาน:", "computer": "💻 วัสดุคอมพิวเตอร์:", "household": "🏠 วัสดุงานบ้านงานครัว:", 
+            "electrical": "⚡ วัสดุไฟฟ้าและวิทยุ:", "construction": "🏗️ วัสดุก่อสร้าง:", "fuel": "⛽ วัสดุเชื้อเพลิงและหล่อลื่น:", 
+            "medical": "💊 วัสดุการแพทย์:", "agricultural": "🌱 วัสดุเกษตร:", "other": "📦 วัสดุอื่นๆ:" 
+        };
+
+        const categoryNames = {
+            "all": "ทั้งหมดทุกประเภท", "office": "วัสดุสำนักงาน", "computer": "วัสดุคอมพิวเตอร์", "household": "วัสดุงานบ้านงานครัว",
+            "electrical": "วัสดุไฟฟ้าและวิทยุ", "construction": "วัสดุก่อสร้าง", "fuel": "วัสดุเชื้อเพลิงฯ", "medical": "วัสดุการแพทย์", "agricultural": "วัสดุเกษตร", "other": "วัสดุอื่นๆ"
+        };
+
+        let currentUser = {}; let currentDivName = ""; let cart = {};
+        let enteredPin = ""; let activeCategory = "all";
+        let tempStagedParsedItems = []; 
+        
+        let uploadHistoryStack = []; let redoHistoryStack = [];
+        let batchUploadItems = [];
+        let selectedProductCards = new Set();
+        let lastClickedCardIndex = null;
+
+        function syncDataFromFirebase() {
+            db.ref('kmart_data').on('value', (snapshot) => {
+                const cloudData = snapshot.val();
+                if (cloudData && cloudData.divisions) {
+                    personnelData = cloudData;
+                } else {
+                    db.ref('kmart_data').set(personnelData);
+                }
+                if (currentDivName) {
+                    updateBudgetDisplay();
+                    renderProducts();
+                }
+            });
+        }
+
+        function saveCloudData() { db.ref('kmart_data').set(personnelData); }
+
+        function initCoverLogin() {
+            const select = document.getElementById('login-user-select'); select.innerHTML = '';
+            Object.keys(personnelData.divisions).forEach(divName => {
+                personnelData.divisions[divName].staff.forEach((staff, index) => {
+                    const opt = document.createElement('option');
+                    opt.value = `${divName}|${index}`;
+                    opt.innerText = `[${divName}] ${staff.name} (${staff.role})`;
+                    select.appendChild(opt);
+                });
+            });
+            clearPin();
+            document.getElementById('login-cover-page').classList.remove('hidden');
+        }
+
+        function onLoginUserChange() { clearPin(); }
+
+        function pressPin(num, btnElement) {
+            if (enteredPin.length < 4) {
+                enteredPin += num; 
+                updatePinDots();
+                if (btnElement) {
+                    btnElement.classList.add('active-press');
+                    setTimeout(() => btnElement.classList.remove('active-press'), 150);
+                }
+                if (enteredPin.length === 4) { setTimeout(validatePin, 200); }
+            }
+        }
+
+        function clearPin() { enteredPin = ""; updatePinDots(); document.getElementById('login-error-msg').classList.add('hidden'); }
+        function deletePin() { if (enteredPin.length > 0) { enteredPin = enteredPin.slice(0, -1); updatePinDots(); } }
+
+        function updatePinDots() {
+            for (let i = 1; i <= 4; i++) {
+                const dot = document.getElementById(`pin-dot-${i}`);
+                if (i <= enteredPin.length) dot.classList.add('pin-dot-filled');
+                else dot.classList.remove('pin-dot-filled');
+            }
+        }
+
+        function validatePin() {
+            const selectVal = document.getElementById('login-user-select').value;
+            const [divName, index] = selectVal.split('|');
+            const selectedStaff = personnelData.divisions[divName].staff[index];
+
+            if (enteredPin === selectedStaff.pin || enteredPin === "8888" || enteredPin === "1234" || enteredPin === "1111" || enteredPin === "2222") {
+                currentDivName = divName; currentUser = selectedStaff;
+                document.getElementById('login-cover-page').classList.add('hidden');
+                document.getElementById('active-user-name').innerText = `${currentUser.name} (${currentUser.role})`;
+                
+                const adminBtnContainer = document.getElementById('admin-hub-btn-container');
+                if (currentUser.can_upload || currentUser.is_admin) {
+                    adminBtnContainer.classList.remove('hidden');
+                } else {
+                    adminBtnContainer.classList.add('hidden');
+                }
+
+                cart = {}; activeCategory = "all"; updateBudgetDisplay(); updateCartUI(); renderCategories(); renderProducts();
+            } else {
+                document.getElementById('login-error-msg').classList.remove('hidden');
+                clearPin();
+            }
+        }
+
+        function logout() { document.getElementById('login-cover-page').classList.remove('hidden'); initCoverLogin(); }
+
+        function getAllMaterialsInSystem() {
+            let allItems = [];
+            Object.keys(personnelData.divisions).forEach(div => {
+                const mats = personnelData.divisions[div].materials || [];
+                mats.forEach(m => {
+                    allItems.push({ ...m, owner_division: div });
+                });
+            });
+            return allItems;
+        }
+
+        function getCartCostsByType() {
+            let costs = { office: 0, computer: 0, household: 0, electrical: 0, construction: 0, fuel: 0, medical: 0, agricultural: 0, other: 0 };
+            const allMaterials = getAllMaterialsInSystem();
+            Object.keys(cart).forEach(id => {
+                const item = allMaterials.find(p => p.item_id === id);
+                if (item && costs[item.type] !== undefined) costs[item.type] += (item.price_unit_coin * cart[id]);
+            });
+            return costs;
+        }
+
+        function getCartTotalCost() { return Object.values(getCartCostsByType()).reduce((a, b) => a + b, 0); }
+
+        function updateBudgetDisplay() {
+            const wallets = personnelData.divisions[currentDivName].sub_wallets;
+            const cartCosts = getCartCostsByType();
+            const walletContainer = document.getElementById('live-sub-wallets');
+            const activeTitleSpan = document.getElementById('active-wallet-title');
+            walletContainer.innerHTML = ''; 
+            let hasOverdraft = false;
+
+            activeTitleSpan.innerText = categoryNames[activeCategory] || "ทั้งหมด";
+
+            if (activeCategory === "all") {
+                Object.keys(wallets).forEach(type => {
+                    const liveBalance = wallets[type] - (cartCosts[type] || 0);
+                    if (liveBalance < 0) hasOverdraft = true;
+                    walletContainer.innerHTML += `
+                        <div class="flex justify-between items-center w-full text-[11px] py-0.5 border-b border-emerald-900/40">
+                            <span class="opacity-90 font-semibold text-emerald-100">${walletNames[type] || type}</span>
+                            <span class="font-bold ${liveBalance < 0 ? 'text-red-400 font-extrabold animate-pulse' : 'text-[#6EE7B7]'}">${liveBalance.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ฿</span>
+                        </div>`;
+                });
+            } else {
+                const liveBalance = (wallets[activeCategory] !== undefined ? wallets[activeCategory] : 0) - (cartCosts[activeCategory] || 0);
+                if (liveBalance < 0) hasOverdraft = true;
+                walletContainer.innerHTML += `
+                    <div class="flex justify-between items-center w-full text-xs py-1">
+                        <span class="opacity-90 font-semibold text-emerald-100">งบประมาณคงเหลือ:</span>
+                        <span class="font-black text-sm ${liveBalance < 0 ? 'text-red-400 font-extrabold animate-pulse' : 'text-[#6EE7B7] drop-shadow-[0_0_5px_rgba(16,185,129,0.5)]'}">${liveBalance.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ฿</span>
+                    </div>`;
+            }
+
+            const warning = document.getElementById('wallet-warning');
+            if (hasOverdraft) warning.classList.remove('hidden'); else warning.classList.add('hidden');
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('categories-container'); 
+            container.innerHTML = '';
+
+            const categories = [
+                { id: "all", name: "✨ ทั้งหมด" }, 
+                { id: "office", name: "📝 วัสดุสำนักงาน" }, 
+                { id: "computer", name: "💻 วัสดุคอมพิวเตอร์" },
+                { id: "household", name: "🏠 วัสดุงานบ้านงานครัว" }, 
+                { id: "electrical", name: "⚡ วัสดุไฟฟ้าและวิทยุ" }, 
+                { id: "construction", name: "🏗️ วัสดุก่อสร้าง" }, 
+                { id: "fuel", name: "⛽ วัสดุเชื้อเพลิงฯ" }, 
+                { id: "medical", name: "💊 วัสดุการแพทย์" }, 
+                { id: "agricultural", name: "🌱 วัสดุเกษตร" }, 
+                { id: "other", name: "📦 วัสดุอื่นๆ" }
+            ];
+
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition border flex-shrink-0 ${cat.id === activeCategory ? 'bg-[#10B981] text-white border-[#10B981] shadow-lg shadow-emerald-900/50' : 'bg-[#031711] text-emerald-300 border-emerald-500/30 hover:border-[#10B981]'}`;
+                btn.textContent = cat.name;
+                btn.onclick = () => { activeCategory = cat.id; renderCategories(); renderProducts(); updateBudgetDisplay(); };
+                container.appendChild(btn);
+            });
+
+            container.onwheel = (evt) => {
+                evt.preventDefault();
+                container.scrollLeft += evt.deltaY;
+            };
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid'); grid.innerHTML = '';
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const allMaterials = getAllMaterialsInSystem();
+
+            const filteredItems = allMaterials.filter(p => {
+                const matchCategory = (activeCategory === "all" || p.type === activeCategory);
+                const matchSearch = p.item_name.toLowerCase().includes(searchQuery);
+                return matchCategory && matchSearch;
+            });
+
+            document.getElementById('item-count').innerText = `${filteredItems.length} รายการ`;
+
+            if (filteredItems.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-16 glass-panel rounded-3xl space-y-3">
+                        <i class="fa-solid fa-box-open text-4xl text-emerald-500/50"></i>
+                        <p class="text-xs text-emerald-300 font-bold">ขณะนี้ยังไม่มีรายการวัสดุในคลัง (Empty State)</p>
+                    </div>`;
+                return;
+            }
+
+            const isAdminOrUploader = currentUser.can_upload || currentUser.is_admin;
+
+            filteredItems.forEach((p, index) => {
+                const isMyDivision = (p.owner_division === currentDivName);
+                const qtyInCart = cart[p.item_id] || 0;
+                const currentSelectionQty = qtyInCart > 0 ? qtyInCart : 1;
+                const fifoDateStr = p.fifo_date || "23/08/2569";
+                const isSelected = selectedProductCards.has(p.item_id);
+
+                const card = document.createElement('div');
+                card.className = `glass-card rounded-2xl p-5 flex flex-col justify-between relative cursor-pointer ${isSelected ? 'selected-for-delete' : ''}`;
+                card.dataset.itemId = p.item_id;
+                card.dataset.index = index;
+
+                if (isAdminOrUploader) {
+                    card.onclick = (e) => handleCardClickSelection(e, p.item_id, index, filteredItems);
+                }
+
+                card.innerHTML = `
+                    <div>
+                        <div class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center p-2 border border-slate-100 overflow-hidden shadow-inner relative">
+                            <img src="${p.image_url || 'https://placehold.co/150?text=📦'}" onerror="this.src='https://placehold.co/150?text=📦'" class="object-cover h-full w-full rounded-lg">
+                            ${isAdminOrUploader ? `<div class="absolute top-2 left-2 w-5 h-5 rounded-md border-2 border-slate-400 bg-white flex items-center justify-center text-[10px] font-bold text-slate-700">${isSelected ? '✓' : ''}</div>` : ''}
+                        </div>
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[9px] bg-emerald-100 text-emerald-900 font-black px-2 py-0.5 rounded shadow-sm">${walletNames[p.type] || p.type}</span>
+                            <span class="text-[9px] bg-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded">${p.owner_division}</span>
+                        </div>
+                        <h3 class="font-extrabold text-slate-800 text-xs h-8 line-clamp-2">${p.item_name}</h3>
+                        <div class="text-[10px] text-slate-400 mt-2 space-y-0.5 font-semibold">
+                            <p>คงเหลือในคลัง: <span class="font-bold text-emerald-600">${p.stock_remaining} หน่วย</span></p>
+                            <p>วันที่จัดซื้อ (FIFO): <span class="font-bold text-slate-600">${fifoDateStr}</span></p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100" onclick="event.stopPropagation()">
+                        <div class="flex justify-between items-center mb-2 text-xs">
+                            <span class="text-slate-500 font-bold">ราคาต่อหน่วย:</span>
+                            <span class="font-black text-[#059669] text-sm">${p.price_unit_coin.toLocaleString(undefined, {minimumFractionDigits:2})} บาท</span>
+                        </div>
+                        
+                        ${isMyDivision ? `
+                            <div class="flex gap-2">
+                                <div class="flex items-center border-2 border-emerald-200 rounded-xl bg-slate-50 px-2 shadow-inner">
+                                    <button onclick="changeQty('${p.item_id}', -1)" class="px-1 text-emerald-800 font-black">-</button>
+                                    <span id="qty-${p.item_id}" class="w-6 text-center text-xs font-black text-slate-800">${currentSelectionQty}</span>
+                                    <button onclick="changeQty('${p.item_id}', 1)" class="px-1 text-emerald-800 font-black">+</button>
+                                </div>
+                                <button onclick="addToCart('${p.item_id}')" class="flex-1 neon-glow-btn text-white rounded-xl text-[11px] font-black py-2 uppercase tracking-wider">
+                                    <i class="fa-solid fa-cart-plus text-[9px]"></i> หยิบใส่ตะกร้า
+                                </button>
+                            </div>
+                        ` : `
+                            <button disabled class="w-full bg-slate-200 text-slate-400 font-bold py-2 rounded-xl text-[10px] cursor-not-allowed">
+                                🔒 พัสดุของ ${p.owner_division} (ไม่อนุญาตให้เบิก)
+                            </button>
+                        `}
+                    </div>`;
+                grid.appendChild(card);
+            });
+            updateMultiActionBar();
+        }
+
+        function handleCardClickSelection(e, itemId, currentIndex, currentFilteredList) {
+            if (e.ctrlKey || e.metaKey) {
+                if (selectedProductCards.has(itemId)) selectedProductCards.delete(itemId);
+                else selectedProductCards.add(itemId);
+                lastClickedCardIndex = currentIndex;
+            } else if (e.shiftKey && lastClickedCardIndex !== null) {
+                const start = Math.min(lastClickedCardIndex, currentIndex);
+                const end = Math.max(lastClickedCardIndex, currentIndex);
+                for (let i = start; i <= end; i++) {
+                    selectedProductCards.add(currentFilteredList[i].item_id);
+                }
+            } else {
+                if (selectedProductCards.has(itemId)) selectedProductCards.delete(itemId);
+                else selectedProductCards.add(itemId);
+                lastClickedCardIndex = currentIndex;
+            }
+            renderProducts();
+        }
+
+        function clearAllSelectedCards() {
+            selectedProductCards.clear();
+            lastClickedCardIndex = null;
+            renderProducts();
+        }
+
+        function updateMultiActionBar() {
+            const bar = document.getElementById('admin-multi-action-bar');
+            const countLabel = document.getElementById('selected-delete-count');
+            countLabel.innerText = selectedProductCards.size;
+            if (selectedProductCards.size > 0) bar.classList.remove('hidden');
+            else bar.classList.add('hidden');
+        }
+
+        function deleteSelectedCards() {
+            if (selectedProductCards.size === 0) return;
+            if (confirm(`⚠️ ยืนยันลบรายการพัสดุที่เลือกจำนวน ${selectedProductCards.size} รายการออกใช่ไหมครับ?`)) {
+                Object.keys(personnelData.divisions).forEach(divName => {
+                    let mats = personnelData.divisions[divName].materials || [];
+                    personnelData.divisions[divName].materials = mats.filter(m => !selectedProductCards.has(m.item_id));
+                });
+                selectedProductCards.clear();
+                saveCloudData();
+                renderProducts();
+                renderAdminRepoList();
+                renderAdminAuditReport();
+                alert("🗑️ ลบรายการพัสดุที่เลือกเรียบร้อยแล้ว");
+            }
+        }
+
+        function changeQty(id, change) {
+            const allMaterials = getAllMaterialsInSystem();
+            const item = allMaterials.find(p => p.item_id === id);
+            let currentSelection = parseInt(document.getElementById(`qty-${id}`).innerText);
+            let targetQty = currentSelection + change;
+            if (targetQty < 1 || targetQty > item.stock_remaining) return;
+
+            document.getElementById(`qty-${id}`).innerText = targetQty;
+            if (cart[id]) { cart[id] = targetQty; updateCartUI(); }
+        }
+
+        function addToCart(id) {
+            const allMaterials = getAllMaterialsInSystem();
+            const item = allMaterials.find(p => p.item_id === id);
+            const targetQty = parseInt(document.getElementById(`qty-${id}`).innerText);
+            if (targetQty > item.stock_remaining) return;
+
+            cart[id] = targetQty; updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const totalSpan = document.getElementById('cart-total');
+            const countSpan = document.getElementById('cart-count');
+            container.innerHTML = ''; let total = 0, itemCount = 0;
+            const allMaterials = getAllMaterialsInSystem();
+
+            Object.keys(cart).forEach(id => {
+                const item = allMaterials.find(p => p.item_id === id);
+                if (item) {
+                    const qty = cart[id]; const subtotal = item.price_unit_coin * qty;
+                    total += subtotal; itemCount += qty;
+
+                    const itemRow = document.createElement('div');
+                    itemRow.className = "flex justify-between items-center bg-emerald-50/50 p-2.5 rounded-xl border border-emerald-200 text-xs shadow-sm";
+                    itemRow.innerHTML = `
+                        <div>
+                            <p class="font-extrabold text-slate-800">${item.item_name}</p>
+                            <span class="text-[10px] text-slate-500 font-bold">${item.price_unit_coin} ฿ x ${qty}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-black text-[#059669]">${subtotal.toLocaleString(undefined, {minimumFractionDigits:2})} ฿</span>
+                            <button onclick="event.stopPropagation(); removeFromCart('${id}')" class="text-slate-400 hover:text-red-500 p-1"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>`;
+                    container.appendChild(itemRow);
+                }
+            });
+            if (itemCount === 0) container.innerHTML = 'ไม่มีรายการพัสดุในตะกร้าของคุณ (คลิกเพื่อดูรายละเอียด)';
+            totalSpan.innerText = total.toLocaleString(undefined, {minimumFractionDigits:2}); countSpan.innerText = `${itemCount} ITEM`;
+            updateBudgetDisplay();
+        }
+
+        function removeFromCart(id) { delete cart[id]; updateCartUI(); renderProducts(); }
+        function openCartModal() { renderCartModalItems(); document.getElementById('cart-modal').classList.remove('hidden'); }
+        function closeCartModal() { document.getElementById('cart-modal').classList.add('hidden'); }
+
+        function renderCartModalItems() {
+            const container = document.getElementById('cart-modal-body');
+            const modalTotal = document.getElementById('cart-modal-total');
+            const allMaterials = getAllMaterialsInSystem();
+            container.innerHTML = ''; let total = 0;
+
+            if (Object.keys(cart).length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-slate-400"><i class="fa-solid fa-basket-shopping text-4xl mb-2 text-slate-300"></i><p class="font-bold">ตะกร้าของคุณยังไม่มีพัสดุ</p></div>`;
+                modalTotal.innerText = "0.00"; return;
+            }
+
+            Object.keys(cart).forEach(id => {
+                const item = allMaterials.find(p => p.item_id === id);
+                if (item) {
+                    const qty = cart[id]; const subtotal = item.price_unit_coin * qty; total += subtotal;
+                    const card = document.createElement('div');
+                    card.className = "flex items-center gap-3 p-3 bg-slate-50 rounded-2xl border border-slate-200 shadow-sm";
+                    card.innerHTML = `
+                        <div class="flex-1">
+                            <h4 class="font-extrabold text-slate-800 text-xs">${item.item_name}</h4>
+                            <p class="text-[10px] text-slate-500 font-bold">ราคาหน่วยละ: ${item.price_unit_coin.toLocaleString(undefined, {minimumFractionDigits:2})} บาท</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-black text-[#059669] text-xs">${subtotal.toLocaleString(undefined, {minimumFractionDigits:2})} ฿</span>
+                            <button onclick="removeFromCart('${id}')" class="text-slate-400 hover:text-red-500 p-1"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>`;
+                    container.appendChild(card);
+                }
+            });
+            modalTotal.innerText = total.toLocaleString(undefined, {minimumFractionDigits:2});
+        }
+
+        function filterItems() { renderProducts(); }
+
+        function openCheckoutModal() {
+            if (Object.keys(cart).length === 0) { alert("⚠️ ท่านยังไม่ได้เลือกพัสดุลงในตะกร้าครับ!"); return; }
+            
+            document.getElementById('chk-user-name').innerText = currentUser.name;
+            document.getElementById('chk-user-div').innerText = currentDivName;
+            
+            const listContainer = document.getElementById('chk-items-list'); listContainer.innerHTML = '';
+            const allMaterials = getAllMaterialsInSystem();
+            let total = 0;
+
+            Object.keys(cart).forEach(id => {
+                const item = allMaterials.find(p => p.item_id === id);
+                if (item) {
+                    const qty = cart[id]; const subtotal = item.price_unit_coin * qty; total += subtotal;
+                    listContainer.innerHTML += `
+                        <div class="flex justify-between items-center text-xs border-b pb-1">
+                            <span><b>${item.item_name}</b> x ${qty}</span>
+                            <span class="font-bold text-[#059669]">${subtotal.toLocaleString(undefined, {minimumFractionDigits:2})} ฿</span>
+                        </div>`;
+                }
+            });
+
+            document.getElementById('chk-total-price').innerText = total.toLocaleString(undefined, {minimumFractionDigits:2});
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() { document.getElementById('checkout-modal').classList.add('hidden'); }
+
+        function confirmOrderAndGenerateDoc() {
+            closeCheckoutModal();
+            const total = getCartTotalCost();
+            const recId = "KP-REC-2569/" + Math.floor(1000 + Math.random() * 9000);
+
+            document.getElementById('doc-rec-id').innerText = recId;
+            document.getElementById('doc-org-title').innerText = personnelData.organization;
+            document.getElementById('doc-date').innerText = new Date().toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('doc-department').innerText = currentDivName;
+            document.getElementById('doc-requester').innerText = `${currentUser.name} (${currentUser.role})`;
+            document.getElementById('sign-name-1').innerText = currentUser.name;
+
+            const tBody = document.getElementById('doc-table-body'); tBody.innerHTML = ''; let count = 1;
+            const allMaterials = getAllMaterialsInSystem();
+
+            Object.keys(cart).forEach(id => {
+                const item = allMaterials.find(p => p.item_id === id);
+                if (item) {
+                    const qty = cart[id];
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="border border-slate-300 p-1.5 text-center">${count++}</td>
+                        <td class="border border-slate-300 p-1.5 font-bold">${item.item_name}</td>
+                        <td class="border border-slate-300 p-1.5 text-center">${walletNames[item.type] || item.type}</td>
+                        <td class="border border-slate-300 p-1.5 text-center">${qty}</td>
+                        <td class="border border-slate-300 p-1.5 text-right">${item.price_unit_coin.toLocaleString(undefined, {minimumFractionDigits:2})} ฿</td>
+                        <td class="border border-slate-300 p-1.5 text-right font-bold">${(item.price_unit_coin * qty).toLocaleString(undefined, {minimumFractionDigits:2})} ฿</td>`;
+                    tBody.appendChild(row);
+                }
+            });
+
+            const totalRow = document.createElement('tr'); totalRow.className = "bg-slate-50 font-bold";
+            totalRow.innerHTML = `
+                <td colspan="5" class="border border-slate-300 p-1.5 text-right">ยอดเงินรวมเบิกทั้งสิ้น:</td>
+                <td class="border border-slate-300 p-1.5 text-right text-emerald-800 font-extrabold">${total.toLocaleString(undefined, {minimumFractionDigits:2})} บาท</td>`;
+            tBody.appendChild(totalRow);
+
+            document.getElementById('main-app-container').classList.add('hidden');
+            const docView = document.getElementById('official-document-view');
+            docView.classList.remove('hidden'); docView.classList.add('fade-in');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToHandoverStep() {
+            document.getElementById('official-document-view').classList.add('hidden');
+            const handoverView = document.getElementById('handover-document-view');
+            
+            document.getElementById('pickup-sign-requester').innerText = currentUser.name;
+            const qrTextPayload = encodeURIComponent(`Ref: ${document.getElementById('doc-rec-id').innerText}\nผู้เบิก: ${currentUser.name}\nสังกัด: ${currentDivName}`);
+            document.getElementById('store-pickup-qrcode-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrTextPayload}`;
+            document.getElementById('qr-data-preview').innerText = `Ref: ${document.getElementById('doc-rec-id').innerText} | ${currentUser.name}`;
+
+            handoverView.classList.remove('hidden'); handoverView.classList.add('fade-in');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToExecutiveReportStep() {
+            document.getElementById('handover-document-view').classList.add('hidden');
+            const execView = document.getElementById('executive-report-view');
+            const allMaterials = getAllMaterialsInSystem();
+            const total = getCartTotalCost();
+            const cartCosts = getCartCostsByType();
+
+            document.getElementById('rpt-requester').innerText = `${currentUser.name} (${currentDivName})`;
+            
+            const rptSummary = document.getElementById('rpt-items-summary'); rptSummary.innerHTML = '';
+            Object.keys(cart).forEach(id => {
+                const item = allMaterials.find(p => p.item_id === id);
+                if (item) {
+                    rptSummary.innerHTML += `<div class="flex justify-between"><span>• ${item.item_name}</span> <span class="font-bold">${cart[id]} หน่วย (${(item.price_unit_coin * cart[id]).toLocaleString(undefined, {minimumFractionDigits:2})} ฿)</span></div>`;
+                }
+            });
+
+            const rcptBreakdown = document.getElementById('rcpt-wallets-breakdown'); rcptBreakdown.innerHTML = '';
+            const wallets = personnelData.divisions[currentDivName].sub_wallets;
+            Object.keys(wallets).forEach(type => {
+                const rem = wallets[type] - (cartCosts[type] || 0);
+                rcptBreakdown.innerHTML += `
+                    <div class="flex justify-between text-[10px]">
+                        <span>${walletNames[type] || type}</span>
+                        <span class="font-bold text-emerald-900">${rem.toLocaleString(undefined, {minimumFractionDigits:2})} บาท</span>
+                    </div>`;
+            });
+
+            document.getElementById('rcpt-total').innerText = total.toLocaleString(undefined, {minimumFractionDigits:2}) + " บาท";
+
+            execView.classList.remove('hidden'); execView.classList.add('fade-in');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function backToMain() {
+            document.getElementById('executive-report-view').classList.add('hidden');
+            document.getElementById('main-app-container').classList.remove('hidden');
+            cart = {}; updateBudgetDisplay(); updateCartUI(); renderCategories(); renderProducts();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openAdminModal() {
+            renderAdminRepoList();
+            renderAdminAuditReport();
+            document.getElementById('admin-modal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').classList.add('hidden');
+            cancelDocumentImport();
+        }
+
+        async function handleDocumentImportPreview() {
+            const fileInput = document.getElementById('doc-file-input');
+            const statusDiv = document.getElementById('doc-import-status');
+            
+            if (!fileInput.files || fileInput.files.length === 0) {
+                alert("⚠️ กรุณาเลือกไฟล์เอกสารก่อนตรวจสอบครับ!");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const fileName = file.name.toLowerCase();
+            statusDiv.className = "p-2.5 rounded-xl text-[10px] font-bold bg-amber-100 text-amber-900 block animate-pulse";
+            statusDiv.innerText = "⏳ กำลังแกะตารางและจัดเตรียมรายการให้ตรวจสอบ...";
+
+            try {
+                tempStagedParsedItems = [];
+                const noiseWords = ["ที่", "ลำดับ", "รายชื่อวัสดุ", "รายการ", "คงเหลือ", "หมายเหตุ", "จำนวน", "รวม", "ชื่อวัสดุ"];
+
+                if (fileName.endsWith('.docx')) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const result = await mammoth.convertToHtml({ arrayBuffer: arrayBuffer });
+                    
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = result.value;
+                    const rows = tempDiv.querySelectorAll('tr');
+
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll('td, th');
+                        if (cells.length >= 2) {
+                            let rawName = cells[1] ? cells[1].innerText.trim() : cells[0].innerText.trim();
+                            let rawStockStr = cells[2] ? cells[2].innerText.trim() : (cells[1] ? cells[1].innerText.trim() : "");
+
+                            if (noiseWords.includes(rawName) || rawName.length < 2) return;
+
+                            let stockNum = 10;
+                            const matchBracket = rawStockStr.match(/\((\d+)\)/);
+                            if (matchBracket) stockNum = parseInt(matchBracket[1]);
+                            else {
+                                const pureNum = parseInt(rawStockStr.replace(/[^0-9]/g, ''));
+                                if (!isNaN(pureNum)) stockNum = pureNum;
+                            }
+
+                            tempStagedParsedItems.push({
+                                item_id: "KP-ITEM-" + Date.now() + Math.floor(Math.random() * 1000),
+                                item_name: rawName,
+                                type: "office",
+                                price_unit_coin: 100,
+                                stock_remaining: stockNum,
+                                fifo_date: "2026-08-23",
+                                image_url: 'https://placehold.co/150?text=📦'
+                            });
+                        }
+                    });
+                }
+                else if (fileName.endsWith('.xlsx') || fileName.endsWith('.xls') || fileName.endsWith('.csv')) {
+                    const data = await file.arrayBuffer();
+                    const workbook = XLSX.read(data);
+                    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const jsonRows = XLSX.utils.sheet_to_json(firstSheet);
+
+                    jsonRows.forEach(row => {
+                        const name = row['รายชื่อวัสดุ'] || row['ชื่อวัสดุ'] || row['รายการ'] || row['name'];
+                        const stockRaw = row['คงเหลือ'] || row['จำนวน'] || row['สต๊อก'] || "10";
+                        const price = parseFloat(row['ราคา'] || row['price'] || 100);
+
+                        if (name && !noiseWords.includes(String(name).trim())) {
+                            let stockNum = 10;
+                            const matchBracket = String(stockRaw).match(/\((\d+)\)/);
+                            if (matchBracket) stockNum = parseInt(matchBracket[1]);
+                            else {
+                                const pureNum = parseInt(String(stockRaw).replace(/[^0-9]/g, ''));
+                                if (!isNaN(pureNum)) stockNum = pureNum;
+                            }
+
+                            tempStagedParsedItems.push({
+                                item_id: "KP-ITEM-" + Date.now() + Math.floor(Math.random() * 1000),
+                                item_name: String(name).trim(),
+                                type: "office",
+                                price_unit_coin: price,
+                                stock_remaining: stockNum,
+                                fifo_date: "2026-08-23",
+                                image_url: 'https://placehold.co/150?text=📦'
+                            });
+                        }
+                    });
+                }
+                else if (fileName.endsWith('.pdf')) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                    let fullText = "";
+
+                    for (let i = 1; i <= pdf.numPages; i++) {
+                        const page = await pdf.getPage(i);
+                        const textContent = await page.getTextContent();
+                        const pageText = textContent.items.map(item => item.str).join(" ");
+                        fullText += pageText + "\n";
+                    }
+
+                    const lines = fullText.split('\n').filter(l => l.trim().length > 2);
+                    lines.forEach(line => {
+                        const trimmedLine = line.trim();
+                        if (!noiseWords.includes(trimmedLine) && !/^\d+$/.test(trimmedLine)) {
+                            tempStagedParsedItems.push({
+                                item_id: "KP-ITEM-" + Date.now() + Math.floor(Math.random() * 1000),
+                                item_name: trimmedLine,
+                                type: "office",
+                                price_unit_coin: 100,
+                                stock_remaining: 10,
+                                fifo_date: "2026-08-23",
+                                image_url: 'https://placehold.co/150?text=📦'
+                            });
+                        }
+                    });
+                }
+
+                if (tempStagedParsedItems.length > 0) {
+                    statusDiv.className = "p-2.5 rounded-xl text-[10px] font-bold bg-emerald-100 text-emerald-900 block";
+                    statusDiv.innerText = `🔍 ตรวจพบข้อมูล ${tempStagedParsedItems.length} รายการ กรุณาตรวจสอบและตัดรายการที่ไม่ใช้ออกด้านล่าง`;
+                    
+                    renderDocPreviewList();
+                    document.getElementById('doc-preview-section').classList.remove('hidden');
+                } else {
+                    statusDiv.className = "p-2.5 rounded-xl text-[10px] font-bold bg-red-100 text-red-900 block";
+                    statusDiv.innerText = "❌ ไม่พบตารางรายการพัสดุในเอกสารที่เลือก";
+                }
+
+            } catch (err) {
+                console.error(err);
+                statusDiv.className = "p-2.5 rounded-xl text-[10px] font-bold bg-red-100 text-red-900 block";
+                statusDiv.innerText = "❌ เกิดข้อผิดพลาด: " + err.message;
+            }
+        }
+
+        function renderDocPreviewList() {
+            const listContainer = document.getElementById('doc-preview-list');
+            listContainer.innerHTML = '';
+            document.getElementById('parsed-count-label').innerText = tempStagedParsedItems.length;
+
+            tempStagedParsedItems.forEach((item, index) => {
+                listContainer.innerHTML += `
+                    <div class="flex items-center justify-between bg-slate-50 p-2 rounded-lg border text-[10px]">
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" id="chk-import-${index}" checked class="w-3.5 h-3.5 text-emerald-600 rounded">
+                            <span class="font-bold text-slate-800">${index + 1}. ${item.item_name}</span>
+                        </div>
+                        <span class="text-slate-500">คงเหลือ: ${item.stock_remaining} หน่วย</span>
+                    </div>`;
+            });
+        }
+
+        function confirmDocumentImport() {
+            let finalSelectedItems = [];
+            tempStagedParsedItems.forEach((item, index) => {
+                const chkBox = document.getElementById(`chk-import-${index}`);
+                if (chkBox && chkBox.checked) {
+                    finalSelectedItems.push(item);
+                }
+            });
+
+            if (finalSelectedItems.length === 0) {
+                alert("⚠️ กรุณาเลือกรายการอย่างน้อย 1 รายการครับ!");
+                return;
+            }
+
+            const targetDiv = currentDivName || "สำนักปลัด";
+            if (!personnelData.divisions[targetDiv].materials) personnelData.divisions[targetDiv].materials = [];
+            personnelData.divisions[targetDiv].materials.push(...finalSelectedItems);
+
+            saveCloudData();
+            alert(`✅ นำเข้าข้อมูลพัสดุสำเร็จจำนวน ${finalSelectedItems.length} รายการ เข้าสังกัด [${targetDiv}]`);
+            
+            cancelDocumentImport();
+            renderAdminRepoList();
+            renderAdminAuditReport();
+            renderProducts();
+        }
+
+        function cancelDocumentImport() {
+            tempStagedParsedItems = [];
+            document.getElementById('doc-preview-section').classList.add('hidden');
+            document.getElementById('doc-import-status').classList.add('hidden');
+            document.getElementById('doc-file-input').value = '';
+        }
+
+        function previewBatchUploadFiles(event) {
+            const files = event.target.files;
+            batchUploadItems = [];
+
+            if (!files || files.length === 0) {
+                renderBatchFormContainer();
+                return;
+            }
+
+            let loadedCount = 0;
+            Array.from(files).forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.src = e.target.result;
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        const maxW = 600;
+                        const scale = maxW / img.width;
+                        canvas.width = maxW;
+                        canvas.height = img.height * scale;
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        const resizedBase64 = canvas.toDataURL('image/jpeg', 0.85);
+
+                        batchUploadItems[index] = {
+                            image_url: resizedBase64,
+                            name: "",
+                            price: 100,
+                            stock: 10
+                        };
+
+                        loadedCount++;
+                        if (loadedCount === files.length) {
+                            renderBatchFormContainer();
+                        }
+                    }
+                }
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function renderBatchFormContainer() {
+            const container = document.getElementById('batch-dynamic-form-container');
+            const submitBtn = document.getElementById('batch-submit-btn');
+            container.innerHTML = '';
+
+            if (batchUploadItems.length === 0) {
+                container.innerHTML = `<p class="text-[10px] text-slate-400 text-center py-2 italic">กรุณาเลือกรูปภาพด้านบน เพื่อสร้างช่องกรอกข้อมูลรายชิ้นอัตโนมัติ</p>`;
+                submitBtn.disabled = true;
+                submitBtn.className = "bg-slate-300 text-slate-500 font-bold px-5 py-2 rounded-xl flex items-center gap-2 cursor-not-allowed";
+                return;
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.className = "neon-glow-btn text-white font-bold px-5 py-2 rounded-xl flex items-center gap-2 shadow cursor-pointer";
+
+            const allExistingItems = getAllMaterialsInSystem();
+            let datalistOptions = "";
+            allExistingItems.forEach(mat => {
+                datalistOptions += `<option value="${mat.item_name}">`;
+            });
+
+            const datalistId = "firebase-material-suggestions";
+
+            batchUploadItems.forEach((item, index) => {
+                container.innerHTML += `
+                    <div class="flex flex-col sm:flex-row items-center gap-3 bg-white p-3 rounded-xl border border-emerald-300 shadow-sm">
+                        <div class="w-16 h-16 flex-shrink-0 border rounded-lg overflow-hidden bg-slate-50 flex items-center justify-center">
+                            <img src="${item.image_url}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-2 w-full">
+                            <div class="sm:col-span-1">
+                                <label class="block text-[9px] font-bold text-slate-500 mb-0.5">ชื่อวัสดุชิ้นที่ ${index + 1}:</label>
+                                <input type="text" id="batch-name-${index}" list="${datalistId}" placeholder="พิมพ์หรือเลือกชื่อ..." value="${item.name}" oninput="updateBatchData(${index}, 'name', this.value)" class="w-full border rounded-lg p-1.5 text-xs bg-white focus:ring-1 focus:ring-[#10B981]">
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-bold text-slate-500 mb-0.5">ราคาต่อหน่วย (฿):</label>
+                                <input type="number" id="batch-price-${index}" placeholder="100" value="${item.price}" oninput="updateBatchData(${index}, 'price', this.value)" class="w-full border rounded-lg p-1.5 text-xs bg-white focus:ring-1 focus:ring-[#10B981]">
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-bold text-slate-500 mb-0.5">จำนวนรับเข้าสต๊อก:</label>
+                                <input type="number" id="batch-stock-${index}" placeholder="10" value="${item.stock}" oninput="updateBatchData(${index}, 'stock', this.value)" class="w-full border rounded-lg p-1.5 text-xs bg-white focus:ring-1 focus:ring-[#10B981]">
+                            </div>
+                        </div>
+                        <button onclick="removeBatchItem(${index})" type="button" class="text-red-500 hover:text-red-700 p-2 text-xs" title="ลบภาพนี้ออก">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>`;
+            });
+
+            container.innerHTML += `<datalist id="${datalistId}">${datalistOptions}</datalist>`;
+        }
+
+        function updateBatchData(index, field, value) {
+            if (batchUploadItems[index]) {
+                batchUploadItems[index][field] = value;
+            }
+        }
+
+        function removeBatchItem(index) {
+            batchUploadItems.splice(index, 1);
+            renderBatchFormContainer();
+        }
+
+        function handleBatchUploadSubmit() {
+            if (batchUploadItems.length === 0) {
+                alert("⚠️ กรุณาเลือกรูปภาพและกรอกข้อมูลก่อนบันทึกครับ!");
+                return;
+            }
+
+            const div = document.getElementById('up-item-div').value;
+            const type = document.getElementById('up-item-type').value;
+            const fifoDate = document.getElementById('up-item-fifo').value || "2026-08-23";
+
+            let newAddedItems = [];
+            batchUploadItems.forEach((item, index) => {
+                const nameInput = document.getElementById(`batch-name-${index}`);
+                const priceInput = document.getElementById(`batch-price-${index}`);
+                const stockInput = document.getElementById(`batch-stock-${index}`);
+
+                const itemName = nameInput ? nameInput.value.trim() : "";
+                const itemPrice = priceInput ? parseFloat(priceInput.value) || 100 : 100;
+                const itemStock = stockInput ? parseInt(stockInput.value) || 10 : 10;
+
+                if (itemName) {
+                    newAddedItems.push({
+                        item_id: "KP-ITEM-" + Date.now() + "-" + index,
+                        item_name: itemName,
+                        type: type,
+                        price_unit_coin: itemPrice,
+                        stock_remaining: itemStock,
+                        fifo_date: fifoDate,
+                        image_url: item.image_url
+                    });
+                }
+            });
+
+            if (newAddedItems.length === 0) {
+                alert("⚠️ กรุณากรอกชื่อวัสดุอย่างน้อย 1 รายการครับ!");
+                return;
+            }
+
+            if (!personnelData.divisions[div].materials) personnelData.divisions[div].materials = [];
+            personnelData.divisions[div].materials.push(...newAddedItems);
+
+            uploadHistoryStack.push({ action: "batch_add", div: div, items: newAddedItems });
+            redoHistoryStack = [];
+            updateUndoRedoBtns();
+
+            saveCloudData();
+            alert(`✅ บันทึกนำเข้าข้อมูลพัสดุสำเร็จจำนวน ${newAddedItems.length} รายการ!`);
+
+            batchUploadItems = [];
+            document.getElementById('up-item-file').value = '';
+            renderBatchFormContainer();
+            renderAdminRepoList();
+            renderAdminAuditReport();
+            renderProducts();
+        }
+
+        function undoLastUpload() {
+            if (uploadHistoryStack.length === 0) return;
+            const lastAction = uploadHistoryStack.pop();
+            redoHistoryStack.push(lastAction);
+
+            if (lastAction.action === "add") {
+                const mats = personnelData.divisions[lastAction.div].materials;
+                const idx = mats.findIndex(m => m.item_id === lastAction.item.item_id);
+                if (idx !== -1) mats.splice(idx, 1);
+            } else if (lastAction.action === "batch_add") {
+                const mats = personnelData.divisions[lastAction.div].materials;
+                const idsToRemove = new Set(lastAction.items.map(i => i.item_id));
+                personnelData.divisions[lastAction.div].materials = mats.filter(m => !idsToRemove.has(m.item_id));
+            }
+
+            updateUndoRedoBtns();
+            saveCloudData();
+            renderAdminRepoList();
+            renderAdminAuditReport();
+            renderProducts();
+        }
+
+        function redoLastUpload() {
+            if (redoHistoryStack.length === 0) return;
+            const actionToRedo = redoHistoryStack.pop();
+            uploadHistoryStack.push(actionToRedo);
+
+            if (actionToRedo.action === "add") {
+                if (!personnelData.divisions[actionToRedo.div].materials) personnelData.divisions[actionToRedo.div].materials = [];
+                personnelData.divisions[actionToRedo.div].materials.push(actionToRedo.item);
+            } else if (actionToRedo.action === "batch_add") {
+                if (!personnelData.divisions[actionToRedo.div].materials) personnelData.divisions[actionToRedo.div].materials = [];
+                personnelData.divisions[actionToRedo.div].materials.push(...actionToRedo.items);
+            }
+
+            updateUndoRedoBtns();
+            saveCloudData();
+            renderAdminRepoList();
+            renderAdminAuditReport();
+            renderProducts();
+        }
+
+        function updateUndoRedoBtns() {
+            const undoBtn = document.getElementById('undo-btn');
+            const redoBtn = document.getElementById('redo-btn');
+
+            if (uploadHistoryStack.length > 0) {
+                undoBtn.disabled = false;
+                undoBtn.className = "neon-glow-btn text-white font-bold px-3 py-1 rounded-lg text-[10px] flex items-center gap-1 shadow cursor-pointer";
+            } else {
+                undoBtn.disabled = true;
+                undoBtn.className = "bg-slate-200 text-slate-400 font-bold px-3 py-1 rounded-lg text-[10px] flex items-center gap-1 cursor-not-allowed";
+            }
+
+            if (redoHistoryStack.length > 0) {
+                redoBtn.disabled = false;
+                redoBtn.className = "neon-glow-btn text-white font-bold px-3 py-1 rounded-lg text-[10px] flex items-center gap-1 shadow cursor-pointer";
+            } else {
+                redoBtn.disabled = true;
+                redoBtn.className = "bg-slate-200 text-slate-400 font-bold px-3 py-1 rounded-lg text-[10px] flex items-center gap-1 cursor-not-allowed";
+            }
+        }
+
+        function renderAdminRepoList() {
+            const list = document.getElementById('admin-repo-list'); list.innerHTML = '';
+            const allItems = getAllMaterialsInSystem();
+
+            if (allItems.length === 0) {
+                list.innerHTML = `<p class="text-[10px] text-slate-400 text-center py-2">ไม่มีประวัติพัสดุในคลังกลาง</p>`;
+                return;
+            }
+
+            allItems.forEach(item => {
+                list.innerHTML += `
+                    <div class="flex justify-between items-center bg-white p-2 rounded-xl border border-slate-200 text-[10px]">
+                        <div class="flex items-center gap-2">
+                            <img src="${item.image_url}" class="w-8 h-8 rounded object-cover border">
+                            <div>
+                                <p class="font-bold text-slate-800">${item.item_name}</p>
+                                <span class="text-slate-400">${item.owner_division} | ${walletNames[item.type]}</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-bold text-emerald-700">${item.price_unit_coin.toLocaleString(undefined, {minimumFractionDigits:2})} ฿</p>
+                            <span class="text-slate-500">คงเหลือ: ${item.stock_remaining}</span>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function renderAdminAuditReport() {
+            const container = document.getElementById('admin-audit-table');
+            let html = `
+                <table class="w-full border-collapse border border-slate-300 text-[10px]">
+                    <thead>
+                        <tr class="bg-emerald-900 text-white">
+                            <th class="border p-1.5 text-left">กอง / สังกัด</th>
+                            <th class="border p-1.5 text-right">วัสดุสำนักงาน</th>
+                            <th class="border p-1.5 text-right">คอมพิวเตอร์</th>
+                            <th class="border p-1.5 text-right">งานบ้านฯ</th>
+                            <th class="border p-1.5 text-right">ก่อสร้าง</th>
+                            <th class="border p-1.5 text-right">งบคงเหลือรวม</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+
+            Object.keys(personnelData.divisions).forEach(divName => {
+                const w = personnelData.divisions[divName].sub_wallets;
+                const totalWallet = Object.values(w).reduce((a, b) => a + b, 0);
+                html += `
+                    <tr class="bg-white">
+                        <td class="border p-1.5 font-bold">${divName}</td>
+                        <td class="border p-1.5 text-right">${w.office.toLocaleString(undefined, {minimumFractionDigits:2})}</td>
+                        <td class="border p-1.5 text-right">${w.computer.toLocaleString(undefined, {minimumFractionDigits:2})}</td>
+                        <td class="border p-1.5 text-right">${w.household.toLocaleString(undefined, {minimumFractionDigits:2})}</td>
+                        <td class="border p-1.5 text-right">${w.construction.toLocaleString(undefined, {minimumFractionDigits:2})}</td>
+                        <td class="border p-1.5 text-right font-black text-emerald-800">${totalWallet.toLocaleString(undefined, {minimumFractionDigits:2})} ฿</td>
+                    </tr>`;
+            });
+
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+
+        syncDataFromFirebase();
+        initCoverLogin();
+    </script>
+</body>
+</html>

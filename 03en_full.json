@@ -1,0 +1,752 @@
+[
+  {
+    "id": "03en_01",
+    "name_th": "กระดาษ A4",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 9,
+    "unit": "อัน",
+    "unit_price": 600.0,
+    "image_file": "03en_01_a4_paper.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_01_a4_paper.jpg"
+  },
+  {
+    "id": "03en_02",
+    "name_th": "กระดาษ A3",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 1350.0,
+    "image_file": "03en_02_a3_paper.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_02_a3_paper.jpg"
+  },
+  {
+    "id": "03en_03",
+    "name_th": "กระดาษการ์ดสีขาว 150 แกรม",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 95.0,
+    "image_file": "03en_03_white_card_paper_150_gsm.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_03_white_card_paper_150_gsm.jpg"
+  },
+  {
+    "id": "03en_04",
+    "name_th": "เทปผ้า",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 30.0,
+    "image_file": "03en_04_cloth_tape.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_04_cloth_tape.jpg"
+  },
+  {
+    "id": "03en_05",
+    "name_th": "เทปลบคำผิด",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 9,
+    "unit": "อัน",
+    "unit_price": 75.0,
+    "image_file": "03en_05_correction_tape.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_05_correction_tape.jpg"
+  },
+  {
+    "id": "03en_06",
+    "name_th": "ยางลบ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 7,
+    "unit": "อัน",
+    "unit_price": 10.0,
+    "image_file": "03en_06_eraser.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_06_eraser.jpg"
+  },
+  {
+    "id": "03en_07",
+    "name_th": "ลวดเสียบกระดาษ No.00",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 69.0,
+    "image_file": "03en_07_paper_clips_no_00.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_07_paper_clips_no_00.jpg"
+  },
+  {
+    "id": "03en_08",
+    "name_th": "ลวดเสียบกระดาษ No.01",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 69.0,
+    "image_file": "03en_08_paper_clips_no_01.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_08_paper_clips_no_01.jpg"
+  },
+  {
+    "id": "03en_09",
+    "name_th": "กาว 2 หน้า บาง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 30.0,
+    "image_file": "03en_09_thin_double_sided_tape.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_09_thin_double_sided_tape.jpg"
+  },
+  {
+    "id": "03en_10",
+    "name_th": "คลิปหนีบดำ No.108",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 5,
+    "unit": "อัน",
+    "unit_price": 66.0,
+    "image_file": "03en_10_binder_clips_no_108.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_10_binder_clips_no_108.jpg"
+  },
+  {
+    "id": "03en_11",
+    "name_th": "คลิปหนีบดำ No.109",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 11,
+    "unit": "อัน",
+    "unit_price": 65.0,
+    "image_file": "03en_11_binder_clips_no_109.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_11_binder_clips_no_109.jpg"
+  },
+  {
+    "id": "03en_12",
+    "name_th": "คลิปหนีบดำ No.110",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 40.0,
+    "image_file": "03en_12_binder_clips_no_110.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_12_binder_clips_no_110.jpg"
+  },
+  {
+    "id": "03en_13",
+    "name_th": "คลิปหนีบดำ No.111",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 5,
+    "unit": "อัน",
+    "unit_price": 240.0,
+    "image_file": "03en_13_binder_clips_no_111.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_13_binder_clips_no_111.jpg"
+  },
+  {
+    "id": "03en_14",
+    "name_th": "คลิปหนีบดำ No.112",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 6,
+    "unit": "อัน",
+    "unit_price": 175.0,
+    "image_file": "03en_14_binder_clips_no_112.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_14_binder_clips_no_112.jpg"
+  },
+  {
+    "id": "03en_15",
+    "name_th": "คลิปหนีบดำ No.113",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 175.0,
+    "image_file": "03en_15_binder_clips_no_113.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_15_binder_clips_no_113.jpg"
+  },
+  {
+    "id": "03en_16",
+    "name_th": "มีดคัตเตอร์ขนาดเล็ก",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 20.0,
+    "image_file": "03en_16_small_cutter_knife.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_16_small_cutter_knife.jpg"
+  },
+  {
+    "id": "03en_17",
+    "name_th": "มีดคัตเตอร์ขนาดใหญ่",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 56.0,
+    "image_file": "03en_17_large_cutter_knife.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_17_large_cutter_knife.jpg"
+  },
+  {
+    "id": "03en_18",
+    "name_th": "ใบมีดคัตเตอร์ขนาดเล็ก",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 25.0,
+    "image_file": "03en_18_small_cutter_blades.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_18_small_cutter_blades.jpg"
+  },
+  {
+    "id": "03en_19",
+    "name_th": "ใบมีดคัตเตอร์ขนาดใหญ่",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 25.0,
+    "image_file": "03en_19_large_cutter_blades.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_19_large_cutter_blades.jpg"
+  },
+  {
+    "id": "03en_20",
+    "name_th": "สมุดปกแข็ง สีน้ำเงิน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 5,
+    "unit": "อัน",
+    "unit_price": 30.0,
+    "image_file": "03en_20_blue_hardcover_notebook.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_20_blue_hardcover_notebook.jpg"
+  },
+  {
+    "id": "03en_21",
+    "name_th": "น้ำยาลบคำผิด",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 11,
+    "unit": "อัน",
+    "unit_price": 65.0,
+    "image_file": "03en_21_correction_fluid.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_21_correction_fluid.jpg"
+  },
+  {
+    "id": "03en_22",
+    "name_th": "น้ำยาเติมหมึก สีน้ำเงิน",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 15.0,
+    "image_file": "03en_22_blue_stamp_ink_refill.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_22_blue_stamp_ink_refill.jpg"
+  },
+  {
+    "id": "03en_23",
+    "name_th": "น้ำยาเติมหมึก สีแดง",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 15.0,
+    "image_file": "03en_23_red_stamp_ink_refill.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_23_red_stamp_ink_refill.jpg"
+  },
+  {
+    "id": "03en_24",
+    "name_th": "เครื่องเย็บกระดาษ (เล็ก)",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 90.0,
+    "image_file": "03en_24_small_stapler.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_24_small_stapler.jpg"
+  },
+  {
+    "id": "03en_25",
+    "name_th": "แท่นประทับตรา สีน้ำเงิน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 32.0,
+    "image_file": "03en_25_blue_stamp_pad.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_25_blue_stamp_pad.jpg"
+  },
+  {
+    "id": "03en_26",
+    "name_th": "เทปใส แกนใหญ่ 1 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 6,
+    "unit": "อัน",
+    "unit_price": 39.0,
+    "image_file": "03en_26_clear_tape_1_inch_large_core.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_26_clear_tape_1_inch_large_core.jpg"
+  },
+  {
+    "id": "03en_27",
+    "name_th": "ปากกาลูกลื่นสีน้ำเงิน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 210.0,
+    "image_file": "03en_27_blue_ballpoint_pen.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_27_blue_ballpoint_pen.jpg"
+  },
+  {
+    "id": "03en_28",
+    "name_th": "ปากกาเน้นข้อความ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 45.0,
+    "image_file": "03en_28_highlighter.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_28_highlighter.jpg"
+  },
+  {
+    "id": "03en_29",
+    "name_th": "ลวดเย็บกระดาษ 1220",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 5,
+    "unit": "อัน",
+    "unit_price": 75.0,
+    "image_file": "03en_29_heavy_duty_staples_1220.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_29_heavy_duty_staples_1220.jpg"
+  },
+  {
+    "id": "03en_30",
+    "name_th": "ลวดเย็บกระดาษ 1213",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 5,
+    "unit": "อัน",
+    "unit_price": 98.0,
+    "image_file": "03en_30_heavy_duty_staples_1213.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_30_heavy_duty_staples_1213.jpg"
+  },
+  {
+    "id": "03en_31",
+    "name_th": "ไม้บรรทัด 60 cm.",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 150.0,
+    "image_file": "03en_31_ruler_60_cm.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_31_ruler_60_cm.jpg"
+  },
+  {
+    "id": "03en_32",
+    "name_th": "กล่องล้อลาก ขนาด 100 ลิตร",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 250.0,
+    "image_file": "03en_32_storage_box_with_wheels_100_liters.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_32_storage_box_with_wheels_100_liters.jpg"
+  },
+  {
+    "id": "03en_33",
+    "name_th": "กรรไกร",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 38.0,
+    "image_file": "03en_33_scissors.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_33_scissors.jpg"
+  },
+  {
+    "id": "03en_34",
+    "name_th": "แฟ้มเสนอเซ็นต์",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 8,
+    "unit": "อัน",
+    "unit_price": 180.0,
+    "image_file": "03en_34_presentation_folder.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_34_presentation_folder.jpg"
+  },
+  {
+    "id": "03en_35",
+    "name_th": "กระดาษกาวย่น",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 65.0,
+    "image_file": "03en_35_masking_tape.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_35_masking_tape.jpg"
+  },
+  {
+    "id": "03en_36",
+    "name_th": "แฟ้มห่วงสันกว้าง 3 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 18,
+    "unit": "อัน",
+    "unit_price": 95.0,
+    "image_file": "03en_36_lever_arch_file_3_inches.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_36_lever_arch_file_3_inches.jpg"
+  },
+  {
+    "id": "03en_37",
+    "name_th": "ซองสีน้ำตาลขยายข้าง A4",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 300.0,
+    "image_file": "03en_37_brown_expansion_envelope_a4.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_37_brown_expansion_envelope_a4.jpg"
+  },
+  {
+    "id": "03en_38",
+    "name_th": "ซองสีน้ำตาลไม่ขยายข้าง A4",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 250.0,
+    "image_file": "03en_38_brown_kraft_envelope_a4.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_38_brown_kraft_envelope_a4.jpg"
+  },
+  {
+    "id": "03en_39",
+    "name_th": "ซองจดหมายครุฑขาว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 520.0,
+    "image_file": "03en_39_white_official_envelope.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_39_white_official_envelope.jpg"
+  },
+  {
+    "id": "03en_40",
+    "name_th": "ดินสอ 2B",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 45.0,
+    "image_file": "03en_40_pencil_2b.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_40_pencil_2b.jpg"
+  },
+  {
+    "id": "03en_41",
+    "name_th": "ไม้บรรทัดสเกลสามเหลี่ยม",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 205.0,
+    "image_file": "03en_41_triangular_scale_ruler.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_41_triangular_scale_ruler.jpg"
+  },
+  {
+    "id": "03en_42",
+    "name_th": "กาวแท่ง UHU 21 กรัม",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 67.0,
+    "image_file": "03en_42_uhu_glue_stick_21g.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_42_uhu_glue_stick_21g.jpg"
+  },
+  {
+    "id": "03en_43",
+    "name_th": "แท่นประทับตรา สีแดง",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 75.0,
+    "image_file": "03en_43_red_stamp_pad.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_43_red_stamp_pad.jpg"
+  },
+  {
+    "id": "03en_44",
+    "name_th": "เทปใส แกนใหญ่ 2 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 5,
+    "unit": "อัน",
+    "unit_price": 45.0,
+    "image_file": "03en_44_clear_tape_2_inches_large_core.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_44_clear_tape_2_inches_large_core.jpg"
+  },
+  {
+    "id": "03en_45",
+    "name_th": "แท่นตัดเทป แกนใหญ่",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 0,
+    "unit": "อัน",
+    "unit_price": 110.0,
+    "image_file": "03en_45_tape_dispenser_large_core.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_45_tape_dispenser_large_core.jpg"
+  },
+  {
+    "id": "03en_46",
+    "name_th": "กระดาษโน๊ต กาวในตัว 1x3 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 35.0,
+    "image_file": "03en_46_sticky_notes_1x3_inches.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_46_sticky_notes_1x3_inches.jpg"
+  },
+  {
+    "id": "03en_47",
+    "name_th": "กระดาษโน๊ต กาวในตัว 2x3 นิ้ว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 35.0,
+    "image_file": "03en_47_sticky_notes_2x3_inches.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_47_sticky_notes_2x3_inches.jpg"
+  },
+  {
+    "id": "03en_48",
+    "name_th": "ถ่าน AA",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 45.0,
+    "image_file": "03en_48_aa_batteries.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_48_aa_batteries.jpg"
+  },
+  {
+    "id": "03en_49",
+    "name_th": "ถ่าน AAA",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 5,
+    "unit": "อัน",
+    "unit_price": 45.0,
+    "image_file": "03en_49_aaa_batteries.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_49_aaa_batteries.jpg"
+  },
+  {
+    "id": "03en_50",
+    "name_th": "ปากกาเพ้นท์ หัวกลม 1.2 mm สีดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 62.0,
+    "image_file": "03en_50_black_paint_marker_1_2mm.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_50_black_paint_marker_1_2mm.jpg"
+  },
+  {
+    "id": "03en_51",
+    "name_th": "ปากกาเพ้นท์ หัวกลม 1.2 mm สีขาว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 62.0,
+    "image_file": "03en_51_white_paint_marker_1_2mm.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_51_white_paint_marker_1_2mm.jpg"
+  },
+  {
+    "id": "03en_52",
+    "name_th": "ปากกาเพ้นท์ หัวกลม 2.3 mm สีดำ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 66.0,
+    "image_file": "03en_52_black_paint_marker_2_3mm.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_52_black_paint_marker_2_3mm.jpg"
+  },
+  {
+    "id": "03en_53",
+    "name_th": "ปากกาเพ้นท์ หัวกลม 2.3 mm สีขาว",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 5,
+    "unit": "อัน",
+    "unit_price": 66.0,
+    "image_file": "03en_53_white_paint_marker_2_3mm.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_53_white_paint_marker_2_3mm.jpg"
+  },
+  {
+    "id": "03en_54",
+    "name_th": "ลวดเสียบกระดาษ No.00",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 10,
+    "unit": "อัน",
+    "unit_price": 10.0,
+    "image_file": "03en_54_paper_clips_no_00.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_54_paper_clips_no_00.jpg"
+  },
+  {
+    "id": "03en_55",
+    "name_th": "ลวดเสียบกระดาษ No.1",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 10,
+    "unit": "อัน",
+    "unit_price": 9.0,
+    "image_file": "03en_55_paper_clips_no_1.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_55_paper_clips_no_1.jpg"
+  },
+  {
+    "id": "03en_56",
+    "name_th": "เครื่องเย็บกระดาษ (ใหญ่)",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 425.0,
+    "image_file": "03en_56_large_stapler.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_56_large_stapler.jpg"
+  },
+  {
+    "id": "03en_57",
+    "name_th": "เครื่อเหลาดินสอ",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 265.0,
+    "image_file": "03en_57_pencil_sharpener.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_57_pencil_sharpener.jpg"
+  },
+  {
+    "id": "03en_58",
+    "name_th": "ไม้บรรทัด 30 cm.",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 35.0,
+    "image_file": "03en_58_ruler_30_cm.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_58_ruler_30_cm.jpg"
+  },
+  {
+    "id": "03en_59",
+    "name_th": "สมุดริมลวด A5",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 35.0,
+    "image_file": "03en_59_spiral_notebook_a5.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_59_spiral_notebook_a5.jpg"
+  },
+  {
+    "id": "03en_60",
+    "name_th": "สมุดปกแข็งมุมมัน",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 8,
+    "unit": "อัน",
+    "unit_price": 100.0,
+    "image_file": "03en_60_glossy_corner_hardcover_notebook.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_60_glossy_corner_hardcover_notebook.jpg"
+  },
+  {
+    "id": "03en_61",
+    "name_th": "คลิปบอร์ด พลาสติก",
+    "category": "วัสดุสำนักงาน",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 25.0,
+    "image_file": "03en_61_plastic_clipboard.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_61_plastic_clipboard.jpg"
+  },
+  {
+    "id": "03en_62",
+    "name_th": "ปากกาหมึกเจล สีน้ำเงิน",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 660.0,
+    "image_file": "03en_62_blue_gel_pen.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_62_blue_gel_pen.jpg"
+  },
+  {
+    "id": "03en_63",
+    "name_th": "ตลับหมึก PGBK 750",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 930.0,
+    "image_file": "03en_63_ink_cartridge_pgbk_750.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_63_ink_cartridge_pgbk_750.jpg"
+  },
+  {
+    "id": "03en_64",
+    "name_th": "ตลับหมึก C751",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 790.0,
+    "image_file": "03en_64_ink_cartridge_c751.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_64_ink_cartridge_c751.jpg"
+  },
+  {
+    "id": "03en_65",
+    "name_th": "ตลับหมึก M751",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 4,
+    "unit": "อัน",
+    "unit_price": 790.0,
+    "image_file": "03en_65_ink_cartridge_m751.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_65_ink_cartridge_m751.jpg"
+  },
+  {
+    "id": "03en_66",
+    "name_th": "ตลับหมึก Y751",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 790.0,
+    "image_file": "03en_66_ink_cartridge_y751.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_66_ink_cartridge_y751.jpg"
+  },
+  {
+    "id": "03en_67",
+    "name_th": "ตลับหมึก B751",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 7,
+    "unit": "อัน",
+    "unit_price": 790.0,
+    "image_file": "03en_67_ink_cartridge_b751.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_67_ink_cartridge_b751.jpg"
+  },
+  {
+    "id": "03en_68",
+    "name_th": "หมึก EPSON สีฟ้า",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 310.0,
+    "image_file": "03en_68_epson_cyan_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_68_epson_cyan_ink.jpg"
+  },
+  {
+    "id": "03en_69",
+    "name_th": "หมึก EPSON สีดำ",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 310.0,
+    "image_file": "03en_69_epson_black_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_69_epson_black_ink.jpg"
+  },
+  {
+    "id": "03en_70",
+    "name_th": "หมึก EPSON สีแดง",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 310.0,
+    "image_file": "03en_70_epson_magenta_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_70_epson_magenta_ink.jpg"
+  },
+  {
+    "id": "03en_71",
+    "name_th": "หมึก EPSON สีเหลือง",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 310.0,
+    "image_file": "03en_71_epson_yellow_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_71_epson_yellow_ink.jpg"
+  },
+  {
+    "id": "03en_72",
+    "name_th": "หมึก Epson 003 BK",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 310.0,
+    "image_file": "03en_72_epson_003_bk_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_72_epson_003_bk_ink.jpg"
+  },
+  {
+    "id": "03en_73",
+    "name_th": "หมึก Epson 003 Y",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 3,
+    "unit": "อัน",
+    "unit_price": 310.0,
+    "image_file": "03en_73_epson_003_y_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_73_epson_003_y_ink.jpg"
+  },
+  {
+    "id": "03en_74",
+    "name_th": "หมึก Epson 003 C",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 1,
+    "unit": "อัน",
+    "unit_price": 310.0,
+    "image_file": "03en_74_epson_003_c_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_74_epson_003_c_ink.jpg"
+  },
+  {
+    "id": "03en_75",
+    "name_th": "หมึก Epson 003 M",
+    "category": "วัสดุคอมพิวเตอร์",
+    "quantity": 2,
+    "unit": "อัน",
+    "unit_price": 310.0,
+    "image_file": "03en_75_epson_003_m_ink.jpg",
+    "image_url": "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/03en/03en_75_epson_003_m_ink.jpg"
+  }
+]
