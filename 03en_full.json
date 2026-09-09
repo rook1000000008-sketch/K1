@@ -212,7 +212,11 @@
   {
     "id": "03en_22",
     "name_th": "น้ำยาเติมหมึก สีน้ำเงิน",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 2,
     "unit": "อัน",
     "unit_price": 15.0,
@@ -222,7 +226,11 @@
   {
     "id": "03en_23",
     "name_th": "น้ำยาเติมหมึก สีแดง",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 1,
     "unit": "อัน",
     "unit_price": 15.0,
@@ -612,7 +620,11 @@
   {
     "id": "03en_62",
     "name_th": "ปากกาหมึกเจล สีน้ำเงิน",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 1,
     "unit": "อัน",
     "unit_price": 660.0,
@@ -622,7 +634,11 @@
   {
     "id": "03en_63",
     "name_th": "ตลับหมึก PGBK 750",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 4,
     "unit": "อัน",
     "unit_price": 930.0,
@@ -632,7 +648,11 @@
   {
     "id": "03en_64",
     "name_th": "ตลับหมึก C751",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 4,
     "unit": "อัน",
     "unit_price": 790.0,
@@ -642,7 +662,11 @@
   {
     "id": "03en_65",
     "name_th": "ตลับหมึก M751",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 4,
     "unit": "อัน",
     "unit_price": 790.0,
@@ -652,7 +676,11 @@
   {
     "id": "03en_66",
     "name_th": "ตลับหมึก Y751",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 3,
     "unit": "อัน",
     "unit_price": 790.0,
@@ -662,7 +690,11 @@
   {
     "id": "03en_67",
     "name_th": "ตลับหมึก B751",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 7,
     "unit": "อัน",
     "unit_price": 790.0,
@@ -672,7 +704,11 @@
   {
     "id": "03en_68",
     "name_th": "หมึก EPSON สีฟ้า",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 1,
     "unit": "อัน",
     "unit_price": 310.0,
@@ -682,7 +718,11 @@
   {
     "id": "03en_69",
     "name_th": "หมึก EPSON สีดำ",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 2,
     "unit": "อัน",
     "unit_price": 310.0,
@@ -692,7 +732,11 @@
   {
     "id": "03en_70",
     "name_th": "หมึก EPSON สีแดง",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 1,
     "unit": "อัน",
     "unit_price": 310.0,
@@ -702,7 +746,11 @@
   {
     "id": "03en_71",
     "name_th": "หมึก EPSON สีเหลือง",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 2,
     "unit": "อัน",
     "unit_price": 310.0,
@@ -712,7 +760,11 @@
   {
     "id": "03en_72",
     "name_th": "หมึก Epson 003 BK",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 2,
     "unit": "อัน",
     "unit_price": 310.0,
@@ -722,7 +774,11 @@
   {
     "id": "03en_73",
     "name_th": "หมึก Epson 003 Y",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 3,
     "unit": "อัน",
     "unit_price": 310.0,
@@ -732,7 +788,11 @@
   {
     "id": "03en_74",
     "name_th": "หมึก Epson 003 C",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 1,
     "unit": "อัน",
     "unit_price": 310.0,
@@ -742,7 +802,11 @@
   {
     "id": "03en_75",
     "name_th": "หมึก Epson 003 M",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 2,
     "unit": "อัน",
     "unit_price": 310.0,

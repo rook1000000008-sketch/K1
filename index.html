@@ -8,12 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+<<<<<<< HEAD
     <!-- Firebase SDK (Realtime Database & Storage) -->
+=======
+    <!-- Firebase SDK -->
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 
+<<<<<<< HEAD
     <!-- Document Parsing Libraries (Excel, Word, PDF) -->
+=======
+    <!-- Document Parsing Libraries -->
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
@@ -42,12 +50,15 @@
             transition: all 0.2s ease;
         }
 
+<<<<<<< HEAD
         .glass-card.selected-for-delete {
             border: 2px solid #EF4444 !important;
             background: rgba(254, 226, 226, 0.95) !important;
             box-shadow: 0 0 15px rgba(239, 68, 68, 0.5) !important;
         }
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
         .neon-glow-btn {
             background: linear-gradient(135deg, #10B981 0%, #059669 100%);
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
@@ -75,29 +86,47 @@
         .watermark-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; opacity: 0.05; pointer-events: none; z-index: 50; }
         
         .pin-btn { 
+<<<<<<< HEAD
             width: 58px; height: 58px; border-radius: 50%; 
             background: #F0FDF4; border: 2px solid #10B981; 
             color: #064E3B; font-weight: 800; font-size: 1.3rem; 
             display: flex; align-items: center; justify-content: center; 
             transition: all 0.15s ease-in-out; 
             box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+=======
+            width: 42px; height: 42px; border-radius: 50%; 
+            background: #F0FDF4; border: 2px solid #10B981; 
+            color: #064E3B; font-weight: 700; font-size: 1rem; 
+            display: flex; align-items: center; justify-content: center; 
+            transition: all 0.15s ease-in-out; 
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             user-select: none; -webkit-tap-highlight-color: transparent;
         }
         .pin-btn:hover { background: #D1FAE5; transform: scale(1.05); }
         .pin-btn:active, .pin-btn.active-press { 
             background: #10B981 !important; color: #ffffff !important; 
+<<<<<<< HEAD
             transform: scale(0.92) !important; box-shadow: 0 0 15px #10B981 !important; 
+=======
+            transform: scale(0.92) !important; box-shadow: 0 0 10px #10B981 !important; 
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
         }
 
         .pin-dot-filled {
             background-color: #10B981 !important; border-color: #059669 !important;
+<<<<<<< HEAD
             box-shadow: 0 0 12px #10B981, 0 0 4px #10B981 !important; transform: scale(1.25) !important;
+=======
+            box-shadow: 0 0 8px #10B981 !important; transform: scale(1.2) !important;
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
         }
 
         .fade-transition { transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; }
         .fade-out { opacity: 0; transform: scale(0.98); }
         .fade-in { opacity: 1; transform: scale(1); }
 
+<<<<<<< HEAD
         /* บังคับการตัดหน้ากระดาษอย่างเด็ดขาดสำหรับการพิมพ์ (Print Page Break Enforcement) */
         @media print {
             @page { size: A4 portrait; margin: 10mm 12mm 10mm 12mm; }
@@ -162,10 +191,91 @@
                     <div>
                         <label class="block text-[10px] uppercase font-extrabold text-emerald-900 mb-1 tracking-wider">👤 เลือกชื่อบุคลากร:</label>
                         <select id="login-user-select" onchange="onLoginUserChange()" class="w-full bg-emerald-50/50 border-2 border-emerald-300 rounded-xl p-2.5 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#10B981]">
+=======
+        @media print {
+            @page { size: A4 portrait; margin: 25mm 20mm 20mm 25mm; } /* ตั้งค่าระยะขอบกระดาษตามระเบียบหนังสือราชการ */
+            body { background: #ffffff !important; color: #000 !important; padding: 0 !important; margin: 0 !important; }
+            .no-print { display: none !important; }
+            .print-area { 
+                display: block !important; width: 100% !important; box-shadow: none !important; 
+                margin: 0 !important; padding: 0 !important; border: none !important; 
+                page-break-after: always !important; break-after: page !important;
+            }
+            .print-area:last-child { page-break-after: avoid !important; break-after: avoid !important; }
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+
+    <!-- ==================== FLOATING QUICK CART BAR ==================== -->
+    <div id="floating-cart-bar" class="fixed top-0 left-0 right-0 z-50 bg-[#06241C]/95 backdrop-blur-md border-b border-emerald-500/40 px-4 py-2 shadow-2xl flex justify-between items-center transition-all">
+        <div class="flex items-center gap-3">
+            <div class="relative cursor-pointer" onclick="openCartModal()">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-400 flex items-center justify-center text-emerald-300">
+                    <i class="fa-solid fa-basket-shopping text-base"></i>
+                </div>
+                <span id="floating-cart-badge" class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#06241C] shadow">0</span>
+            </div>
+            <div>
+                <p class="text-[9px] text-emerald-300 font-bold uppercase tracking-wider">ตะกร้าสินค้าด่วน</p>
+                <p class="text-xs font-black text-white"><span id="floating-cart-total">0.00</span> บาท</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="openCartModal()" class="bg-[#10B981]/20 hover:bg-[#10B981]/40 text-emerald-200 border border-emerald-400/50 text-[10px] font-bold px-3 py-1.5 rounded-xl flex items-center gap-1.5 transition">
+                <i class="fa-solid fa-eye"></i> ดูรายการ
+            </button>
+            <button onclick="openCheckoutModal()" class="neon-glow-btn text-white text-[10px] font-black px-4 py-1.5 rounded-xl uppercase tracking-wider flex items-center gap-1.5 shadow">
+                <i class="fa-solid fa-file-invoice"></i> ขอเบิก
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== 1. LOGIN COVER PAGE ==================== -->
+    <div id="login-cover-page" class="fixed inset-0 z-[100] bg-gradient-to-br from-[#020B08] via-[#07241C] to-[#010806] flex items-center justify-center p-3 overflow-y-auto">
+        <div class="max-w-3xl w-full glass-panel border-2 border-emerald-500/40 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden grid grid-cols-1 md:grid-cols-2">
+            
+            <div class="p-5 flex flex-col justify-between border-b md:border-b-0 md:border-r border-emerald-500/30 bg-gradient-to-b from-emerald-950/40 to-transparent text-white">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-12 h-12 flex items-center justify-center overflow-hidden rounded-full ring-2 ring-[#10B981] shadow-[0_0_15px_#10B981]">
+                            <img src="KPLOGO.jpg" onerror="this.src='https://placehold.co/100?text=อบต.'" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-black tracking-wider text-[#6EE7B7]">K-MART</h2>
+                            <p class="text-[9px] text-emerald-300 font-bold">v5.2 • อบต.ข่วงเปา</p>
+                        </div>
+                    </div>
+                    
+                    <div class="my-3 relative rounded-2xl overflow-hidden border border-emerald-400/40 p-3 bg-[#031711]/80 text-center shadow-inner">
+                        <div class="w-12 h-12 mx-auto mb-1.5 rounded-full border-2 border-[#10B981] flex items-center justify-center bg-emerald-950/90 shadow-[0_0_15px_rgba(16,185,129,0.7)]">
+                            <i class="fa-solid fa-bolt text-xl text-[#34D399]"></i>
+                        </div>
+                        <h3 class="font-bold text-[11px] text-[#A7F3D0]">ระบบเบิกจ่ายพัสดุอัจฉริยะ (อัตโนมัติ)</h3>
+                        <p class="text-[9px] text-emerald-200/80 mt-0.5">ตัดยอดงบประมาณและสต็อกทันที</p>
+                    </div>
+                </div>
+                <div class="text-[9px] text-emerald-400/85 text-center md:text-left font-semibold">
+                    <p>© องค์การบริหารส่วนตำบลข่วงเปา • พร้อมประเมิน LPA</p>
+                </div>
+            </div>
+
+            <div class="p-5 flex flex-col justify-center bg-white/95 text-slate-800 backdrop-blur-md">
+                <div class="text-center mb-3">
+                    <h3 class="text-sm font-black text-[#0D2D26]"><i class="fa-solid fa-shield-halved text-[#10B981] mr-1"></i>เข้าสู่ระบบปฏิบัติการ</h3>
+                    <p class="text-[10px] text-slate-500 font-medium">เลือกชื่อบุคลากรและใส่ PIN 4 หลัก</p>
+                </div>
+
+                <div class="space-y-2.5">
+                    <div>
+                        <label class="block text-[9px] uppercase font-extrabold text-emerald-900 mb-1">👤 เลือกชื่อบุคลากร:</label>
+                        <select id="login-user-select" onchange="onLoginUserChange()" class="w-full bg-emerald-50/70 border-2 border-emerald-300 rounded-xl px-2 py-1.5 text-[10px] font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#10B981]">
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                         </select>
                     </div>
 
                     <div class="text-center">
+<<<<<<< HEAD
                         <p class="text-[10px] text-slate-500 mb-2 font-bold">ป้อนรหัส PIN 4 หลัก:</p>
                         <div class="flex justify-center gap-4 mb-5">
                             <div id="pin-dot-1" class="w-5 h-5 rounded-full border-2 border-emerald-400 bg-slate-100 transition-all duration-150"></div>
@@ -176,6 +286,18 @@
                     </div>
 
                     <div class="grid grid-cols-3 gap-3 max-w-[220px] mx-auto justify-items-center">
+=======
+                        <p class="text-[9px] text-slate-500 mb-1 font-bold">ป้อนรหัส PIN 4 หลัก:</p>
+                        <div class="flex justify-center gap-2.5 mb-2.5">
+                            <div id="pin-dot-1" class="w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-slate-100 transition-all duration-150"></div>
+                            <div id="pin-dot-2" class="w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-slate-100 transition-all duration-150"></div>
+                            <div id="pin-dot-3" class="w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-slate-100 transition-all duration-150"></div>
+                            <div id="pin-dot-4" class="w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-slate-100 transition-all duration-150"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-1.5 max-w-[170px] mx-auto justify-items-center">
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                         <button onclick="pressPin('1', this)" class="pin-btn">1</button>
                         <button onclick="pressPin('2', this)" class="pin-btn">2</button>
                         <button onclick="pressPin('3', this)" class="pin-btn">3</button>
@@ -185,6 +307,7 @@
                         <button onclick="pressPin('7', this)" class="pin-btn">7</button>
                         <button onclick="pressPin('8', this)" class="pin-btn">8</button>
                         <button onclick="pressPin('9', this)" class="pin-btn">9</button>
+<<<<<<< HEAD
                         <button onclick="clearPin()" class="pin-btn !text-xs !text-red-600 !bg-red-50 !border-red-300">C</button>
                         <button onclick="pressPin('0', this)" class="pin-btn">0</button>
                         <button onclick="deletePin()" class="pin-btn !text-xs !text-slate-600 !bg-slate-100 !border-slate-300"><i class="fa-solid fa-delete-left"></i></button>
@@ -192,6 +315,15 @@
 
                     <div id="login-error-msg" class="text-center text-xs text-red-600 font-extrabold hidden animate-bounce">
                         ❌ รหัส PIN ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
+=======
+                        <button onclick="clearPin()" class="pin-btn !text-[10px] !text-red-600 !bg-red-50 !border-red-300">C</button>
+                        <button onclick="pressPin('0', this)" class="pin-btn">0</button>
+                        <button onclick="deletePin()" class="pin-btn !text-[10px] !text-slate-600 !bg-slate-100 !border-slate-300"><i class="fa-solid fa-delete-left"></i></button>
+                    </div>
+
+                    <div id="login-error-msg" class="text-center text-[10px] text-red-600 font-extrabold hidden animate-bounce">
+                        ❌ รหัส PIN ไม่ถูกต้อง
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                     </div>
                 </div>
             </div>
@@ -199,6 +331,7 @@
     </div>
 
     <!-- ==================== 2. MAIN HEADER & APP CONTAINER ==================== -->
+<<<<<<< HEAD
     <div id="main-app-container" class="fade-transition fade-in">
         <header id="main-header" class="glass-panel sticky top-0 z-40 border-b border-[#10B981]/40 py-4 px-4 md:px-8 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
             <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
@@ -221,6 +354,30 @@
                             <i class="fa-solid fa-user-shield text-[#34D399]"></i> สิทธิ์ผู้ใช้งานปัจจุบัน:
                         </span>
                         <button onclick="logout()" class="text-[10px] text-red-400 hover:text-red-300 underline font-bold flex items-center gap-1">
+=======
+    <div id="main-app-container" class="fade-transition fade-in mt-14">
+        <header id="main-header" class="glass-panel sticky top-14 z-40 border-b border-[#10B981]/40 py-3 px-4 md:px-8 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+            <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
+                
+                <div class="bg-[#06241C]/90 border border-[#10B981]/40 rounded-2xl px-5 py-2.5 flex items-center gap-4 w-full md:w-auto">
+                    <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center overflow-hidden rounded-full ring-2 ring-[#10B981]">
+                        <img src="KPLOGO.jpg" onerror="this.src='https://placehold.co/100?text=อบต.'" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-black tracking-wider text-white flex items-center gap-2">
+                            K-MART <span class="text-[10px] bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-2 py-0.5 rounded-full font-bold">v5.2</span>
+                        </h1>
+                        <p class="text-[10px] font-semibold text-emerald-300/90">ระบบเบิกจ่ายพัสดุ อบต.ข่วงเปา</p>
+                    </div>
+                </div>
+                
+                <div class="bg-[#06241C]/90 border border-[#10B981]/40 rounded-2xl p-3 w-full md:w-[340px] flex flex-col justify-center">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-[9px] text-emerald-300 font-extrabold uppercase tracking-wider">
+                            <i class="fa-solid fa-user-shield text-[#34D399]"></i> ผู้ใช้งานปัจจุบัน:
+                        </span>
+                        <button onclick="logout()" class="text-[9px] text-red-400 hover:text-red-300 underline font-bold flex items-center gap-1">
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                             <i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ
                         </button>
                     </div>
@@ -230,11 +387,18 @@
 
                     <div id="admin-hub-btn-container" class="mt-2 hidden">
                         <button onclick="openAdminModal()" class="w-full neon-glow-btn text-white text-[10px] font-black py-1.5 px-3 rounded-xl uppercase tracking-wider flex items-center justify-center gap-2 shadow-md">
+<<<<<<< HEAD
                             <i class="fa-solid fa-sliders text-emerald-200"></i> ⚙️ ระบบจัดการคลัง & อัปโหลด (Admin)
                         </button>
                     </div>
                 </div>
 
+=======
+                            <i class="fa-solid fa-sliders text-emerald-200"></i> ⚙️ ระบบจัดการคลัง & รายงาน (Admin)
+                        </button>
+                    </div>
+                </div>
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             </div>
         </header>
 
@@ -244,9 +408,15 @@
                 <div class="glass-panel p-4 rounded-3xl space-y-3">
                     <div class="flex justify-between items-center">
                         <h2 class="text-xs uppercase tracking-widest font-black text-[#34D399] flex items-center gap-2">
+<<<<<<< HEAD
                             <i class="fa-solid fa-layer-group text-base text-[#10B981]"></i> หมวดหมู่ประเภทวัสดุ (ทางราชการ)
                         </h2>
                         <span class="text-[10px] text-emerald-400 font-semibold italic"><i class="fa-solid fa-arrows-left-right"></i> หมุน Scroll Wheel เมาส์ หรือเลื่อนซ้าย-ขวา</span>
+=======
+                            <i class="fa-solid fa-building-columns text-base text-[#10B981]"></i> เลือกดูตามส่วนราชการ / กอง
+                        </h2>
+                        <span class="text-[10px] text-emerald-400 font-semibold italic"><i class="fa-solid fa-arrows-left-right"></i> เลื่อนซ้าย-ขวาเพื่อดูกองอื่นๆ</span>
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                     </div>
                     <div id="categories-container" class="horizontal-scroll pt-1 pb-1"></div>
                 </div>
@@ -257,6 +427,7 @@
                         <input type="text" id="search-input" onkeyup="filterItems()" placeholder="พิมพ์ชื่อวัสดุเพื่อค้นหา..." class="w-full pl-12 pr-4 py-2.5 bg-[#031711] text-xs text-emerald-100 rounded-xl border border-emerald-500/40 focus:outline-none focus:ring-2 focus:ring-[#10B981] transition-all shadow-inner placeholder-emerald-700 font-semibold">
                     </div>
                 </div>
+<<<<<<< HEAD
                 
                 <div id="admin-multi-action-bar" class="hidden glass-panel p-3 rounded-2xl flex justify-between items-center bg-emerald-950/90 border-2 border-red-500/50">
                     <span class="text-xs text-white font-bold pl-2"><i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i> เลือกแล้ว <span id="selected-delete-count" class="text-amber-400 font-black">0</span> รายการ</span>
@@ -267,6 +438,8 @@
                         </button>
                     </div>
                 </div>
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
 
                 <div class="flex items-center justify-between px-1">
                     <h3 id="current-category-title" class="text-sm font-black text-white tracking-wide">รายการพัสดุทั้งหมด</h3>
@@ -276,7 +449,11 @@
                 <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
             </div>
 
+<<<<<<< HEAD
             <div class="lg:col-span-1 space-y-6 sticky top-36">
+=======
+            <div class="lg:col-span-1 space-y-6 sticky top-48">
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 <div class="glass-panel p-4 rounded-3xl">
                     <div class="flex justify-between items-center mb-2 border-b border-emerald-800/80 pb-1">
                         <p class="text-[11px] font-extrabold text-[#34D399] flex items-center gap-1.5 uppercase tracking-wider">
@@ -289,9 +466,18 @@
                 <div class="glass-panel p-6 rounded-3xl space-y-5 text-slate-800 bg-white/95">
                     <div class="flex justify-between items-center border-b pb-3 border-emerald-100 cursor-pointer hover:opacity-80 transition" onclick="openCartModal()">
                         <h2 class="text-xs uppercase tracking-widest font-black text-emerald-950 flex items-center gap-2">
+<<<<<<< HEAD
                             <i class="fa-solid fa-cart-shopping text-base text-[#10B981]"></i> รายการรอเบิก / SHOPPING CART
                         </h2>
                         <span id="cart-count" class="neon-glow-btn text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">0 ITEM</span>
+=======
+                            <i class="fa-solid fa-cart-shopping text-base text-[#10B981]"></i> ตะกร้าสินค้า / SHOPPING CART
+                        </h2>
+                        <div class="flex items-center gap-1.5 bg-emerald-100 border border-emerald-400 px-3 py-1 rounded-full shadow-sm">
+                            <i class="fa-solid fa-basket-shopping text-emerald-800 text-xs"></i>
+                            <span id="cart-count" class="text-emerald-900 text-xs font-black">0 ชิ้น</span>
+                        </div>
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                     </div>
                     
                     <div id="cart-items" onclick="openCartModal()" class="space-y-3 max-h-48 overflow-y-auto pr-1 text-xs text-slate-400 italic font-light cursor-pointer">
@@ -327,6 +513,7 @@
             </div>
             
             <div class="p-6 overflow-y-auto space-y-6 text-xs flex-1">
+<<<<<<< HEAD
                 
                 <div class="bg-emerald-900/10 p-4 rounded-2xl border-2 border-emerald-500/40 space-y-3">
                     <div class="flex justify-between items-center">
@@ -433,13 +620,20 @@
                     <div id="admin-repo-list" class="max-h-40 overflow-y-auto space-y-2 border rounded-xl p-2"></div>
                 </div>
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 <div class="border rounded-2xl p-4 space-y-3 bg-slate-50">
                     <div class="flex justify-between items-center">
                         <h4 class="font-extrabold text-slate-800 text-xs flex items-center gap-2">
                             <i class="fa-solid fa-chart-pie text-emerald-600"></i> สรุปงบประมาณ & รายงานสำหรับ สตง. / ผู้บริหาร
                         </h4>
+<<<<<<< HEAD
                         <button onclick="window.print()" class="bg-slate-700 hover:bg-slate-800 text-white font-bold px-3 py-1.5 rounded-xl text-[10px] flex items-center gap-1">
                             <i class="fa-solid fa-print"></i> พิมพ์ / Save PDF
+=======
+                        <button onclick="handlePrintAction()" class="bg-slate-700 hover:bg-slate-800 text-white font-bold px-3 py-1.5 rounded-xl text-[10px] flex items-center gap-1">
+                            <i class="fa-solid fa-print"></i> พิมพ์ / บันทึก PDF
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                         </button>
                     </div>
                     <div id="admin-audit-table" class="overflow-x-auto"></div>
@@ -463,9 +657,13 @@
                 </h3>
                 <button onclick="closeCartModal()" class="text-emerald-300 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
+<<<<<<< HEAD
             
             <div class="p-5 overflow-y-auto space-y-3 text-xs flex-1" id="cart-modal-body"></div>
 
+=======
+            <div class="p-5 overflow-y-auto space-y-3 text-xs flex-1" id="cart-modal-body"></div>
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-between items-center">
                 <div>
                     <p class="text-[10px] text-slate-500 font-bold uppercase">มูลค่าเบิกรวมทั้งสิ้น:</p>
@@ -487,21 +685,31 @@
                 </h3>
                 <button onclick="closeCheckoutModal()" class="text-emerald-300 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
+<<<<<<< HEAD
             
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             <div class="p-5 space-y-4 text-xs">
                 <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
                     <p class="font-bold text-emerald-950">ผู้ขอเบิก: <span id="chk-user-name" class="font-normal"></span></p>
                     <p class="font-bold text-emerald-950">ต้นสังกัด: <span id="chk-user-div" class="font-normal"></span></p>
                 </div>
+<<<<<<< HEAD
 
                 <div class="max-h-48 overflow-y-auto border rounded-xl p-3 space-y-2" id="chk-items-list"></div>
 
+=======
+                <div class="max-h-48 overflow-y-auto border rounded-xl p-3 space-y-2" id="chk-items-list"></div>
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 <div class="flex justify-between items-center pt-2 border-t font-bold">
                     <span>ยอดเงินที่จะถูกหักจากงบประมาณ:</span>
                     <span class="text-lg font-black text-[#059669]"><span id="chk-total-price">0.00</span> บาท</span>
                 </div>
             </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             <div class="p-4 bg-slate-50 border-t flex justify-end gap-3">
                 <button onclick="closeCheckoutModal()" class="bg-slate-500 hover:bg-slate-600 text-white font-bold px-4 py-2 rounded-xl text-xs">ยกเลิก</button>
                 <button onclick="confirmOrderAndGenerateDoc()" class="neon-glow-btn text-white font-black px-6 py-2 rounded-xl text-xs flex items-center gap-2 shadow">
@@ -512,10 +720,16 @@
     </div>
 
     <!-- ==================== 6. OFFICIAL REQUISITION DOCUMENT (PAGE 1) ==================== -->
+<<<<<<< HEAD
     <div id="official-document-view" class="max-w-4xl mx-auto my-6 p-8 bg-white shadow-2xl rounded-3xl border border-slate-200 hidden print-area text-slate-800 fade-transition fade-out">
         <div class="watermark-container">
             <img src="KPLOGO.jpg" class="watermark-bg" alt="อบต. ลายน้ำ">
             
+=======
+    <div id="official-document-view" class="max-w-4xl mx-auto my-6 pt-10 px-8 pb-8 bg-white shadow-2xl rounded-3xl border border-slate-200 hidden print-area text-slate-800 fade-transition fade-out">
+        <div class="watermark-container">
+            <img src="KPLOGO.jpg" class="watermark-bg" alt="อบต. ลายน้ำ">
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             <div class="text-center space-y-0.5">
                 <h2 class="text-lg font-bold tracking-wide text-slate-900">ใบขอเบิกวัสดุใช้ในราชการ</h2>
                 <p class="text-sm font-bold text-emerald-900" id="doc-org-title">องค์การบริหารส่วนตำบลข่วงเปา</p>
@@ -524,17 +738,26 @@
                     <span><b>วันที่:</b> <span id="doc-date" class="font-bold text-slate-800"></span></span>
                 </div>
             </div>
+<<<<<<< HEAD
 
             <div class="mt-3 text-[11px] space-y-1 text-slate-800 leading-normal">
                 <p><b>เรื่อง:</b> ขออนุมัติเบิกวัสดุสิ่งของเพื่อใช้ในราชการ</p>
                 <p><b>เรียน:</b> หัวหน้าเจ้าหน้าที่พัสดุ (องค์การบริหารส่วนตำบลข่วงเปา)</p>
                 
+=======
+            <div class="mt-3 text-[11px] space-y-1 text-slate-800 leading-normal">
+                <p><b>เรื่อง:</b> ขออนุมัติเบิกวัสดุสิ่งของเพื่อใช้ในราชการ</p>
+                <p><b>เรียน:</b> หัวหน้าเจ้าหน้าที่พัสดุ (องค์การบริหารส่วนตำบลข่วงเปา)</p>
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-slate-50 p-2.5 rounded-xl border border-slate-200 my-1.5">
                     <div><b>ผู้ขอเบิก:</b> <span id="doc-requester" class="underline decoration-dotted text-emerald-900 font-bold"></span></div>
                     <div><b>สังกัด / ส่วนราชการ:</b> <span id="doc-department" class="underline decoration-dotted text-emerald-900 font-bold"></span></div>
                 </div>
             </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             <div class="mt-2">
                 <table class="w-full border-collapse border border-slate-300 text-[11px] font-bold">
                     <thead>
@@ -550,20 +773,29 @@
                     <tbody id="doc-table-body" class="text-slate-800"></tbody>
                 </table>
             </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-y-5 gap-x-6 text-center text-[11px] font-bold border-t pt-4 border-slate-200">
                 <div class="space-y-0.5 flex flex-col items-center">
                     <p class="mb-6">ลงชื่อ: ...........................................................</p>
                     <p class="text-[10px] text-slate-800 font-bold">( <span id="sign-name-1"></span> )</p>
                     <p class="text-[9px] text-slate-500">ตำแหน่ง: ผู้ขอเบิกวัสดุ</p>
                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 <div class="space-y-0.5 flex flex-col items-center">
                     <p class="mb-6">ลงชื่อ: ...........................................................</p>
                     <p class="text-[10px] text-slate-800 font-bold">( นางสมพร ศรีวิทะ )</p>
                     <p class="text-[9px] text-slate-500">ตำแหน่ง: นักวิชาการพัสดุ (ผู้ตรวจสอบ)</p>
                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 <div class="space-y-0.5 flex flex-col items-center">
                     <p class="mb-6">ลงชื่อ: ...........................................................</p>
                     <p class="text-[10px] text-slate-900 font-extrabold">( นางอุไรวรรณ เครือฟู )</p>
@@ -571,7 +803,10 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
         <div class="mt-6 flex justify-center gap-4 no-print">
             <button onclick="goToHandoverStep()" class="neon-glow-btn text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow">
                 ถัดไป: หน้าส่งมอบ-รับมอบวัสดุ <i class="fa-solid fa-arrow-right"></i>
@@ -580,11 +815,16 @@
     </div>
 
     <!-- ==================== 7. STORE PICKUP & HANDOVER (PAGE 2) ==================== -->
+<<<<<<< HEAD
     <div id="handover-document-view" class="max-w-4xl mx-auto my-6 p-8 bg-white shadow-2xl rounded-3xl border border-slate-200 hidden print-area text-slate-800 fade-transition fade-out">
+=======
+    <div id="handover-document-view" class="max-w-4xl mx-auto my-6 pt-10 px-8 pb-8 bg-white shadow-2xl rounded-3xl border border-slate-200 hidden print-area text-slate-800 fade-transition fade-out">
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
         <div class="space-y-6">
             <div class="bg-gradient-to-r from-[#0D2D26] to-[#134035] p-5 rounded-2xl text-white shadow-md flex flex-col md:flex-row items-center justify-between gap-4 border-2 border-[#10B981]">
                 <div class="space-y-1.5 text-center md:text-left flex-1">
                     <span class="bg-[#10B981] text-white font-black text-[9px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">STORE PICKUP QR CODE</span>
+<<<<<<< HEAD
                     <h3 class="text-sm font-bold text-[#A7F3D0]">คิวอาร์โค้ดขอมูลการขอเบิกวัสดุ</h3>
                     <p class="text-[11px] text-emerald-100/80 leading-relaxed">
                         ใช้สำหรับสแกนตรวจสอบรายการเบิกพัสดุเพื่อความถูกต้อง ณ คลังกลาง
@@ -592,12 +832,21 @@
                     <p class="text-[9px] text-emerald-300 font-mono" id="qr-data-preview"></p>
                 </div>
                 
+=======
+                    <h3 class="text-sm font-bold text-[#A7F3D0]">คิวอาร์โค้ดข้อมูลการขอเบิกวัสดุ</h3>
+                    <p class="text-[11px] text-emerald-100/80 leading-relaxed">ใช้สำหรับสแกนตรวจสอบรายการเบิกพัสดุเพื่อความถูกต้อง ณ คลังกลาง</p>
+                    <p class="text-[9px] text-emerald-300 font-mono" id="qr-data-preview"></p>
+                </div>
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 <div class="bg-white p-2 rounded-xl shadow-md border-2 border-emerald-400 flex flex-col items-center justify-center">
                     <img id="store-pickup-qrcode-img" src="" alt="Pickup QR Code" class="w-24 h-24 object-contain">
                     <span class="text-[8px] text-slate-500 font-bold mt-1 uppercase">Scan to Dispatch</span>
                 </div>
             </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             <div class="bg-slate-50 p-6 rounded-2xl border border-slate-300 text-[11px] text-slate-800">
                 <h4 class="font-bold text-center text-emerald-900 mb-6 uppercase tracking-wider text-sm">
                     <i class="fa-solid fa-pen-nib mr-1 text-[#10B981]"></i> หลักฐานการส่งมอบ - รับมอบวัสดุจริง
@@ -609,7 +858,10 @@
                         <p class="text-[10px] text-slate-800 font-black mt-1">( <span id="pickup-sign-requester"></span> )</p>
                         <p class="text-[9px] text-slate-500 font-normal">ตำแหน่ง: ผู้ขอเบิกวัสดุ / ผู้รับมอบ</p>
                     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                     <div class="space-y-2 flex flex-col items-center border-t sm:border-t-0 sm:border-l border-slate-200 pt-4 sm:pt-0">
                         <p class="text-slate-500 text-[10px] mb-4">ได้ตรวจสอบและส่งมอบพัสดุเรียบร้อยแล้ว</p>
                         <p>ลงชื่อ: ........................................................... (ผู้ส่งมอบวัสดุ)</p>
@@ -619,7 +871,10 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
         <div class="mt-6 flex justify-center gap-4 no-print">
             <button onclick="goToExecutiveReportStep()" class="neon-glow-btn text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow">
                 ถัดไป: หน้างานรายงานเสนอผู้บริหาร <i class="fa-solid fa-arrow-right"></i>
@@ -628,48 +883,75 @@
     </div>
 
     <!-- ==================== 8. EXECUTIVE REPORT VIEW (PAGE 3) ==================== -->
+<<<<<<< HEAD
     <div id="executive-report-view" class="max-w-4xl mx-auto my-6 p-8 bg-white shadow-2xl rounded-3xl border border-slate-200 hidden print-area text-slate-800 fade-transition fade-out">
         <div class="border border-[#10B981] bg-emerald-50/30 p-6 rounded-2xl relative text-[11px] watermark-container">
             <img src="KPLOGO.jpg" class="watermark-bg" alt="อบต. ลายน้ำ">
             <div class="sm:absolute top-4 right-4 bg-[#10B981] text-white font-black text-[9px] px-3 py-1 rounded-full uppercase tracking-widest text-center mb-2 sm:mb-0">EXECUTIVE REPORT</div>
             
+=======
+    <div id="executive-report-view" class="max-w-4xl mx-auto my-6 pt-10 px-8 pb-8 bg-white shadow-2xl rounded-3xl border border-slate-200 hidden print-area text-slate-800 fade-transition fade-out">
+        <div class="border border-[#10B981] bg-emerald-50/30 p-6 rounded-2xl relative text-[11px] watermark-container">
+            <img src="KPLOGO.jpg" class="watermark-bg" alt="อบต. ลายน้ำ">
+            <div class="sm:absolute top-4 right-4 bg-[#10B981] text-white font-black text-[9px] px-3 py-1 rounded-full uppercase tracking-widest text-center mb-2 sm:mb-0">EXECUTIVE REPORT</div>
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             <div class="space-y-1 border-b border-emerald-200 pb-3">
                 <h2 class="text-sm font-bold text-emerald-950 flex items-center gap-1.5"><i class="fa-solid fa-receipt text-emerald-600"></i> รายงานผลการเบิกจ่ายวัสดุเสนอผู้บริหาร</h2>
                 <p class="text-[10px] text-slate-500 font-semibold">องค์การบริหารส่วนตำบลข่วงเปา</p>
             </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             <div class="mt-4 font-bold text-slate-700 text-[11px] space-y-2">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-white p-3 rounded-xl border border-emerald-200">
                     <div><b>ผู้ขอเบิก:</b> <span id="rpt-requester" class="text-emerald-900"></span></div>
                     <div><b>ผู้ส่งมอบวัสดุ:</b> <span class="text-emerald-900">นางสมพร ศรีวิทะ</span></div>
                     <div><b>ผู้อนุมัติ:</b> <span class="text-emerald-900">นางอุไรวรรณ เครือฟู</span></div>
                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 <div class="mt-2">
                     <p class="font-bold text-emerald-950 mb-1">สรุปจำนวนสิ่งที่เบิกจ่าย:</p>
                     <div id="rpt-items-summary" class="bg-white p-3 rounded-xl border border-slate-200 space-y-1 text-[10px]"></div>
                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 <div class="border-y py-2 my-2 border-emerald-200 text-[10px] space-y-1">
                     <p class="font-bold text-emerald-950">รายงานยอดงบประมาณคงเหลืออย่างละเอียด:</p>
                     <div id="rcpt-wallets-breakdown" class="space-y-1 bg-white p-2.5 rounded-xl border border-slate-200"></div>
                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 <div class="flex justify-between text-red-600 font-black text-xs pt-1">
                     <span>จำนวนเงินที่เบิกจ่ายรวมทั้งสิ้น:</span>
                     <span id="rcpt-total" class="text-sm"></span>
                 </div>
             </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             <div class="mt-6 flex flex-col items-center justify-center text-center space-y-1 border-t border-emerald-200 pt-4">
                 <p class="text-slate-800 font-bold text-[10px]">เรียนเสนอเพื่อโปรดทราบ</p>
                 <p class="text-xs font-black text-emerald-950 mt-1">นายมิ่งภพ ศรีชะบา</p>
                 <p class="text-[10px] text-emerald-800 font-extrabold">( ปลัดองค์การบริหารส่วนตำบลข่วงเปา )</p>
             </div>
         </div>
+<<<<<<< HEAD
 
         <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4 no-print">
             <button onclick="window.print()" class="neon-glow-btn text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow">
+=======
+        <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4 no-print">
+            <button onclick="handlePrintAction()" class="neon-glow-btn text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow">
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 <i class="fa-solid fa-print"></i> พิมพ์รายงาน / บันทึก PDF
             </button>
             <button onclick="backToMain()" class="bg-slate-600 hover:bg-slate-700 text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow">
@@ -750,6 +1032,7 @@
             "medical": "💊 วัสดุการแพทย์:", "agricultural": "🌱 วัสดุเกษตร:", "other": "📦 วัสดุอื่นๆ:" 
         };
 
+<<<<<<< HEAD
         const categoryNames = {
             "all": "ทั้งหมดทุกประเภท", "office": "วัสดุสำนักงาน", "computer": "วัสดุคอมพิวเตอร์", "household": "วัสดุงานบ้านงานครัว",
             "electrical": "วัสดุไฟฟ้าและวิทยุ", "construction": "วัสดุก่อสร้าง", "fuel": "วัสดุเชื้อเพลิงฯ", "medical": "วัสดุการแพทย์", "agricultural": "วัสดุเกษตร", "other": "วัสดุอื่นๆ"
@@ -763,6 +1046,10 @@
         let batchUploadItems = [];
         let selectedProductCards = new Set();
         let lastClickedCardIndex = null;
+=======
+        let currentUser = {}; let currentDivName = ""; let cart = {};
+        let enteredPin = ""; let activeDivisionTab = "all";
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
 
         function syncDataFromFirebase() {
             db.ref('kmart_data').on('value', (snapshot) => {
@@ -837,7 +1124,11 @@
                     adminBtnContainer.classList.add('hidden');
                 }
 
+<<<<<<< HEAD
                 cart = {}; activeCategory = "all"; updateBudgetDisplay(); updateCartUI(); renderCategories(); renderProducts();
+=======
+                cart = {}; activeDivisionTab = "all"; updateBudgetDisplay(); updateCartUI(); renderDivisionTabs(); renderProducts();
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             } else {
                 document.getElementById('login-error-msg').classList.remove('hidden');
                 clearPin();
@@ -873,6 +1164,7 @@
             const wallets = personnelData.divisions[currentDivName].sub_wallets;
             const cartCosts = getCartCostsByType();
             const walletContainer = document.getElementById('live-sub-wallets');
+<<<<<<< HEAD
             const activeTitleSpan = document.getElementById('active-wallet-title');
             walletContainer.innerHTML = ''; 
             let hasOverdraft = false;
@@ -898,11 +1190,28 @@
                         <span class="font-black text-sm ${liveBalance < 0 ? 'text-red-400 font-extrabold animate-pulse' : 'text-[#6EE7B7] drop-shadow-[0_0_5px_rgba(16,185,129,0.5)]'}">${liveBalance.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ฿</span>
                     </div>`;
             }
+=======
+            walletContainer.innerHTML = ''; 
+            let hasOverdraft = false;
+
+            document.getElementById('active-wallet-title').innerText = currentDivName;
+
+            Object.keys(wallets).forEach(type => {
+                const liveBalance = wallets[type] - (cartCosts[type] || 0);
+                if (liveBalance < 0) hasOverdraft = true;
+                walletContainer.innerHTML += `
+                    <div class="flex justify-between items-center w-full text-[11px] py-0.5 border-b border-emerald-900/40">
+                        <span class="opacity-90 font-semibold text-emerald-100">${walletNames[type] || type}</span>
+                        <span class="font-bold ${liveBalance < 0 ? 'text-red-400 font-extrabold animate-pulse' : 'text-[#6EE7B7]'}">${liveBalance.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ฿</span>
+                    </div>`;
+            });
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
 
             const warning = document.getElementById('wallet-warning');
             if (hasOverdraft) warning.classList.remove('hidden'); else warning.classList.add('hidden');
         }
 
+<<<<<<< HEAD
         function renderCategories() {
             const container = document.getElementById('categories-container'); 
             container.innerHTML = '';
@@ -925,6 +1234,27 @@
                 btn.className = `px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition border flex-shrink-0 ${cat.id === activeCategory ? 'bg-[#10B981] text-white border-[#10B981] shadow-lg shadow-emerald-900/50' : 'bg-[#031711] text-emerald-300 border-emerald-500/30 hover:border-[#10B981]'}`;
                 btn.textContent = cat.name;
                 btn.onclick = () => { activeCategory = cat.id; renderCategories(); renderProducts(); updateBudgetDisplay(); };
+=======
+        function renderDivisionTabs() {
+            const container = document.getElementById('categories-container'); 
+            container.innerHTML = '';
+
+            const divisionsList = [
+                { id: "all", name: "✨ ทุกส่วนราชการ" },
+                { id: "สำนักปลัด", name: "🏛️ สำนักปลัด" },
+                { id: "กองคลัง", name: "💰 กองคลัง" },
+                { id: "กองช่าง", name: "🏗️ กองช่าง" },
+                { id: "กองสวัสดิการสังคม", name: "🤝 กองสวัสดิการสังคม" },
+                { id: "กองสาธารณสุขและสิ่งแวดล้อม", name: "🏥 กองสาธารณสุขฯ" },
+                { id: "กองการศึกษา ศาสนา และวัฒนธรรม", name: "📚 กองการศึกษาฯ" }
+            ];
+
+            divisionsList.forEach(div => {
+                const btn = document.createElement('button');
+                btn.className = `px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition border flex-shrink-0 ${div.id === activeDivisionTab ? 'bg-[#10B981] text-white border-[#10B981] shadow-lg shadow-emerald-900/50' : 'bg-[#031711] text-emerald-300 border-emerald-500/30 hover:border-[#10B981]'}`;
+                btn.textContent = div.name;
+                btn.onclick = () => { activeDivisionTab = div.id; renderDivisionTabs(); renderProducts(); };
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 container.appendChild(btn);
             });
 
@@ -940,9 +1270,15 @@
             const allMaterials = getAllMaterialsInSystem();
 
             const filteredItems = allMaterials.filter(p => {
+<<<<<<< HEAD
                 const matchCategory = (activeCategory === "all" || p.type === activeCategory);
                 const matchSearch = p.item_name.toLowerCase().includes(searchQuery);
                 return matchCategory && matchSearch;
+=======
+                const matchDivision = (activeDivisionTab === "all" || p.owner_division === activeDivisionTab);
+                const matchSearch = p.item_name.toLowerCase().includes(searchQuery);
+                return matchDivision && matchSearch;
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             });
 
             document.getElementById('item-count').innerText = `${filteredItems.length} รายการ`;
@@ -951,17 +1287,25 @@
                 grid.innerHTML = `
                     <div class="col-span-full text-center py-16 glass-panel rounded-3xl space-y-3">
                         <i class="fa-solid fa-box-open text-4xl text-emerald-500/50"></i>
+<<<<<<< HEAD
                         <p class="text-xs text-emerald-300 font-bold">ขณะนี้ยังไม่มีรายการวัสดุในคลัง (Empty State)</p>
+=======
+                        <p class="text-xs text-emerald-300 font-bold">ขณะนี้ยังไม่มีรายการพัสดุในส่วนราชการนี้</p>
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                     </div>`;
                 return;
             }
 
+<<<<<<< HEAD
             const isAdminOrUploader = currentUser.can_upload || currentUser.is_admin;
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             filteredItems.forEach((p, index) => {
                 const isMyDivision = (p.owner_division === currentDivName);
                 const qtyInCart = cart[p.item_id] || 0;
                 const currentSelectionQty = qtyInCart > 0 ? qtyInCart : 1;
+<<<<<<< HEAD
                 const fifoDateStr = p.fifo_date || "23/08/2569";
                 const isSelected = selectedProductCards.has(p.item_id);
 
@@ -973,12 +1317,22 @@
                 if (isAdminOrUploader) {
                     card.onclick = (e) => handleCardClickSelection(e, p.item_id, index, filteredItems);
                 }
+=======
+                const effectiveStock = p.stock_remaining - qtyInCart;
+                const fifoDateStr = p.fifo_date || "23/08/2569";
+
+                const card = document.createElement('div');
+                card.className = `glass-card rounded-2xl p-5 flex flex-col justify-between relative`;
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
 
                 card.innerHTML = `
                     <div>
                         <div class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center p-2 border border-slate-100 overflow-hidden shadow-inner relative">
                             <img src="${p.image_url || 'https://placehold.co/150?text=📦'}" onerror="this.src='https://placehold.co/150?text=📦'" class="object-cover h-full w-full rounded-lg">
+<<<<<<< HEAD
                             ${isAdminOrUploader ? `<div class="absolute top-2 left-2 w-5 h-5 rounded-md border-2 border-slate-400 bg-white flex items-center justify-center text-[10px] font-bold text-slate-700">${isSelected ? '✓' : ''}</div>` : ''}
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                         </div>
                         <div class="flex justify-between items-center mb-1">
                             <span class="text-[9px] bg-emerald-100 text-emerald-900 font-black px-2 py-0.5 rounded shadow-sm">${walletNames[p.type] || p.type}</span>
@@ -986,11 +1340,19 @@
                         </div>
                         <h3 class="font-extrabold text-slate-800 text-xs h-8 line-clamp-2">${p.item_name}</h3>
                         <div class="text-[10px] text-slate-400 mt-2 space-y-0.5 font-semibold">
+<<<<<<< HEAD
                             <p>คงเหลือในคลัง: <span class="font-bold text-emerald-600">${p.stock_remaining} หน่วย</span></p>
                             <p>วันที่จัดซื้อ (FIFO): <span class="font-bold text-slate-600">${fifoDateStr}</span></p>
                         </div>
                     </div>
                     <div class="mt-4 pt-3 border-t border-slate-100" onclick="event.stopPropagation()">
+=======
+                            <p>คงเหลือในคลัง: <span class="font-bold text-emerald-600">${effectiveStock} หน่วย</span> ${qtyInCart > 0 ? `<span class="text-red-500 font-bold">(หยิบแล้ว ${qtyInCart})</span>` : ''}</p>
+                            <p>วันที่จัดซื้อ (FIFO): <span class="font-bold text-slate-600">${fifoDateStr}</span></p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100">
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                         <div class="flex justify-between items-center mb-2 text-xs">
                             <span class="text-slate-500 font-bold">ราคาต่อหน่วย:</span>
                             <span class="font-black text-[#059669] text-sm">${p.price_unit_coin.toLocaleString(undefined, {minimumFractionDigits:2})} บาท</span>
@@ -1004,17 +1366,26 @@
                                     <button onclick="changeQty('${p.item_id}', 1)" class="px-1 text-emerald-800 font-black">+</button>
                                 </div>
                                 <button onclick="addToCart('${p.item_id}')" class="flex-1 neon-glow-btn text-white rounded-xl text-[11px] font-black py-2 uppercase tracking-wider">
+<<<<<<< HEAD
                                     <i class="fa-solid fa-cart-plus text-[9px]"></i> หยิบใส่ตะกร้า
+=======
+                                    <i class="fa-solid fa-cart-shopping text-[9px]"></i> หยิบใส่ตะกร้า
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                                 </button>
                             </div>
                         ` : `
                             <button disabled class="w-full bg-slate-200 text-slate-400 font-bold py-2 rounded-xl text-[10px] cursor-not-allowed">
+<<<<<<< HEAD
                                 🔒 พัสดุของ ${p.owner_division} (ไม่อนุญาตให้เบิก)
+=======
+                                🔒 พัสดุของ ${p.owner_division} (ดูได้แต่ซื้อไม่ได้)
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                             </button>
                         `}
                     </div>`;
                 grid.appendChild(card);
             });
+<<<<<<< HEAD
             updateMultiActionBar();
         }
 
@@ -1065,6 +1436,8 @@
                 renderAdminAuditReport();
                 alert("🗑️ ลบรายการพัสดุที่เลือกเรียบร้อยแล้ว");
             }
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
         }
 
         function changeQty(id, change) {
@@ -1081,16 +1454,36 @@
         function addToCart(id) {
             const allMaterials = getAllMaterialsInSystem();
             const item = allMaterials.find(p => p.item_id === id);
+<<<<<<< HEAD
             const targetQty = parseInt(document.getElementById(`qty-${id}`).innerText);
             if (targetQty > item.stock_remaining) return;
 
             cart[id] = targetQty; updateCartUI();
+=======
+            if (item.owner_division !== currentDivName) {
+                alert("⚠️ ท่านไม่สามารถเบิกพัสดุข้ามสังกัดส่วนราชการได้ครับ!");
+                return;
+            }
+            const targetQty = parseInt(document.getElementById(`qty-${id}`).innerText);
+            if (targetQty > item.stock_remaining) return;
+
+            cart[id] = targetQty; 
+            updateCartUI(); 
+            renderProducts();
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
         }
 
         function updateCartUI() {
             const container = document.getElementById('cart-items');
             const totalSpan = document.getElementById('cart-total');
             const countSpan = document.getElementById('cart-count');
+<<<<<<< HEAD
+=======
+            
+            const floatingTotal = document.getElementById('floating-cart-total');
+            const floatingBadge = document.getElementById('floating-cart-badge');
+
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             container.innerHTML = ''; let total = 0, itemCount = 0;
             const allMaterials = getAllMaterialsInSystem();
 
@@ -1114,12 +1507,32 @@
                     container.appendChild(itemRow);
                 }
             });
+<<<<<<< HEAD
             if (itemCount === 0) container.innerHTML = 'ไม่มีรายการพัสดุในตะกร้าของคุณ (คลิกเพื่อดูรายละเอียด)';
             totalSpan.innerText = total.toLocaleString(undefined, {minimumFractionDigits:2}); countSpan.innerText = `${itemCount} ITEM`;
             updateBudgetDisplay();
         }
 
         function removeFromCart(id) { delete cart[id]; updateCartUI(); renderProducts(); }
+=======
+
+            if (itemCount === 0) container.innerHTML = 'ไม่มีรายการพัสดุในตะกร้าของคุณ (คลิกเพื่อดูรายละเอียด)';
+            totalSpan.innerText = total.toLocaleString(undefined, {minimumFractionDigits:2}); 
+            countSpan.innerText = `${itemCount} ชิ้น`;
+
+            if (floatingTotal) floatingTotal.innerText = total.toLocaleString(undefined, {minimumFractionDigits:2});
+            if (floatingBadge) floatingBadge.innerText = itemCount;
+
+            updateBudgetDisplay();
+        }
+
+        function removeFromCart(id) { 
+            delete cart[id]; 
+            updateCartUI(); 
+            renderProducts();
+        }
+
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
         function openCartModal() { renderCartModalItems(); document.getElementById('cart-modal').classList.remove('hidden'); }
         function closeCartModal() { document.getElementById('cart-modal').classList.add('hidden'); }
 
@@ -1138,6 +1551,7 @@
                 const item = allMaterials.find(p => p.item_id === id);
                 if (item) {
                     const qty = cart[id]; const subtotal = item.price_unit_coin * qty; total += subtotal;
+<<<<<<< HEAD
                     const card = document.createElement('div');
                     card.className = "flex items-center gap-3 p-3 bg-slate-50 rounded-2xl border border-slate-200 shadow-sm";
                     card.innerHTML = `
@@ -1150,6 +1564,19 @@
                             <button onclick="removeFromCart('${id}')" class="text-slate-400 hover:text-red-500 p-1"><i class="fa-solid fa-trash-can"></i></button>
                         </div>`;
                     container.appendChild(card);
+=======
+                    container.innerHTML += `
+                        <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-2xl border border-slate-200 shadow-sm">
+                            <div class="flex-1">
+                                <h4 class="font-extrabold text-slate-800 text-xs">${item.item_name}</h4>
+                                <p class="text-[10px] text-slate-500 font-bold">ราคาหน่วยละ: ${item.price_unit_coin.toLocaleString(undefined, {minimumFractionDigits:2})} บาท</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-black text-[#059669] text-xs">${subtotal.toLocaleString(undefined, {minimumFractionDigits:2})} ฿</span>
+                                <button onclick="removeFromCart('${id}')" class="text-slate-400 hover:text-red-500 p-1"><i class="fa-solid fa-trash-can"></i></button>
+                            </div>
+                        </div>`;
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
                 }
             });
             modalTotal.innerText = total.toLocaleString(undefined, {minimumFractionDigits:2});
@@ -1159,7 +1586,10 @@
 
         function openCheckoutModal() {
             if (Object.keys(cart).length === 0) { alert("⚠️ ท่านยังไม่ได้เลือกพัสดุลงในตะกร้าครับ!"); return; }
+<<<<<<< HEAD
             
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             document.getElementById('chk-user-name').innerText = currentUser.name;
             document.getElementById('chk-user-div').innerText = currentDivName;
             
@@ -1204,6 +1634,7 @@
                 const item = allMaterials.find(p => p.item_id === id);
                 if (item) {
                     const qty = cart[id];
+<<<<<<< HEAD
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td class="border border-slate-300 p-1.5 text-center">${count++}</td>
@@ -1221,6 +1652,25 @@
                 <td colspan="5" class="border border-slate-300 p-1.5 text-right">ยอดเงินรวมเบิกทั้งสิ้น:</td>
                 <td class="border border-slate-300 p-1.5 text-right text-emerald-800 font-extrabold">${total.toLocaleString(undefined, {minimumFractionDigits:2})} บาท</td>`;
             tBody.appendChild(totalRow);
+=======
+                    tBody.innerHTML += `
+                        <tr>
+                            <td class="border border-slate-300 p-1.5 text-center">${count++}</td>
+                            <td class="border border-slate-300 p-1.5 font-bold">${item.item_name}</td>
+                            <td class="border border-slate-300 p-1.5 text-center">${walletNames[item.type] || item.type}</td>
+                            <td class="border border-slate-300 p-1.5 text-center">${qty}</td>
+                            <td class="border border-slate-300 p-1.5 text-right">${item.price_unit_coin.toLocaleString(undefined, {minimumFractionDigits:2})} ฿</td>
+                            <td class="border border-slate-300 p-1.5 text-right font-bold">${(item.price_unit_coin * qty).toLocaleString(undefined, {minimumFractionDigits:2})} ฿</td>
+                        </tr>`;
+                }
+            });
+
+            tBody.innerHTML += `
+                <tr class="bg-slate-50 font-bold">
+                    <td colspan="5" class="border border-slate-300 p-1.5 text-right">ยอดเงินรวมเบิกทั้งสิ้น:</td>
+                    <td class="border border-slate-300 p-1.5 text-right text-emerald-800 font-extrabold">${total.toLocaleString(undefined, {minimumFractionDigits:2})} บาท</td>
+                </tr>`;
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
 
             document.getElementById('main-app-container').classList.add('hidden');
             const docView = document.getElementById('official-document-view');
@@ -1231,12 +1681,18 @@
         function goToHandoverStep() {
             document.getElementById('official-document-view').classList.add('hidden');
             const handoverView = document.getElementById('handover-document-view');
+<<<<<<< HEAD
             
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             document.getElementById('pickup-sign-requester').innerText = currentUser.name;
             const qrTextPayload = encodeURIComponent(`Ref: ${document.getElementById('doc-rec-id').innerText}\nผู้เบิก: ${currentUser.name}\nสังกัด: ${currentDivName}`);
             document.getElementById('store-pickup-qrcode-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrTextPayload}`;
             document.getElementById('qr-data-preview').innerText = `Ref: ${document.getElementById('doc-rec-id').innerText} | ${currentUser.name}`;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             handoverView.classList.remove('hidden'); handoverView.classList.add('fade-in');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -1244,13 +1700,20 @@
         function goToExecutiveReportStep() {
             document.getElementById('handover-document-view').classList.add('hidden');
             const execView = document.getElementById('executive-report-view');
+<<<<<<< HEAD
             const allMaterials = getAllMaterialsInSystem();
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             const total = getCartTotalCost();
             const cartCosts = getCartCostsByType();
 
             document.getElementById('rpt-requester').innerText = `${currentUser.name} (${currentDivName})`;
             
             const rptSummary = document.getElementById('rpt-items-summary'); rptSummary.innerHTML = '';
+<<<<<<< HEAD
+=======
+            const allMaterials = getAllMaterialsInSystem();
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             Object.keys(cart).forEach(id => {
                 const item = allMaterials.find(p => p.item_id === id);
                 if (item) {
@@ -1260,6 +1723,7 @@
 
             const rcptBreakdown = document.getElementById('rcpt-wallets-breakdown'); rcptBreakdown.innerHTML = '';
             const wallets = personnelData.divisions[currentDivName].sub_wallets;
+<<<<<<< HEAD
             Object.keys(wallets).forEach(type => {
                 const rem = wallets[type] - (cartCosts[type] || 0);
                 rcptBreakdown.innerHTML += `
@@ -1269,25 +1733,75 @@
                     </div>`;
             });
 
+=======
+            
+            let budgetTableHtml = `
+                <div class="mb-2 font-black text-emerald-950">สังกัดส่วนราชการ: <span class="text-emerald-700">${currentDivName}</span></div>
+                <table class="w-full border-collapse border border-emerald-200 text-[10px]">
+                    <thead>
+                        <tr class="bg-emerald-900 text-white">
+                            <th class="border border-emerald-300 p-1.5 text-left">ประเภทวัสดุ</th>
+                            <th class="border border-emerald-300 p-1.5 text-right">งบประมาณ</th>
+                            <th class="border border-emerald-300 p-1.5 text-right">เบิกจ่ายแล้ว</th>
+                            <th class="border border-emerald-300 p-1.5 text-right">คงเหลือ</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+
+            Object.keys(wallets).forEach(type => {
+                const initialBudget = wallets[type];
+                const spent = cartCosts[type] || 0;
+                const rem = initialBudget - spent;
+                budgetTableHtml += `
+                    <tr class="bg-white">
+                        <td class="border border-emerald-200 p-1.5 font-bold">${walletNames[type] || type}</td>
+                        <td class="border border-emerald-200 p-1.5 text-right">${initialBudget.toLocaleString(undefined, {minimumFractionDigits:2})}</td>
+                        <td class="border border-emerald-200 p-1.5 text-right text-red-600 font-bold">${spent > 0 ? '-' + spent.toLocaleString(undefined, {minimumFractionDigits:2}) : '0.00'}</td>
+                        <td class="border border-emerald-200 p-1.5 text-right font-black text-emerald-800">${rem.toLocaleString(undefined, {minimumFractionDigits:2})}</td>
+                    </tr>`;
+            });
+
+            budgetTableHtml += `</tbody></table>`;
+            rcptBreakdown.innerHTML = budgetTableHtml;
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             document.getElementById('rcpt-total').innerText = total.toLocaleString(undefined, {minimumFractionDigits:2}) + " บาท";
 
             execView.classList.remove('hidden'); execView.classList.add('fade-in');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+<<<<<<< HEAD
         function backToMain() {
             document.getElementById('executive-report-view').classList.add('hidden');
             document.getElementById('main-app-container').classList.remove('hidden');
             cart = {}; updateBudgetDisplay(); updateCartUI(); renderCategories(); renderProducts();
+=======
+        function handlePrintAction() {
+            try {
+                window.print();
+            } catch (e) {
+                alert("ℹ️ บนอุปกรณ์มือถือแนะนำให้ใช้ฟังก์ชันบันทึกหน้าจอเป็น PDF (Save as PDF) ผ่านเมนูของเบราว์เซอร์ครับ");
+            }
+        }
+
+        function backToMain() {
+            document.getElementById('executive-report-view').classList.add('hidden');
+            document.getElementById('main-app-container').classList.remove('hidden');
+            cart = {}; updateBudgetDisplay(); updateCartUI(); renderDivisionTabs(); renderProducts();
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function openAdminModal() {
+<<<<<<< HEAD
             renderAdminRepoList();
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             renderAdminAuditReport();
             document.getElementById('admin-modal').classList.remove('hidden');
         }
 
+<<<<<<< HEAD
         function closeAdminModal() {
             document.getElementById('admin-modal').classList.add('hidden');
             cancelDocumentImport();
@@ -1727,6 +2241,9 @@
                     </div>`;
             });
         }
+=======
+        function closeAdminModal() { document.getElementById('admin-modal').classList.add('hidden'); }
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
 
         function renderAdminAuditReport() {
             const container = document.getElementById('admin-audit-table');
@@ -1757,7 +2274,10 @@
                         <td class="border p-1.5 text-right font-black text-emerald-800">${totalWallet.toLocaleString(undefined, {minimumFractionDigits:2})} ฿</td>
                     </tr>`;
             });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
             html += `</tbody></table>`;
             container.innerHTML = html;
         }

@@ -192,7 +192,11 @@
   {
     "id": "02fn_20",
     "name_th": "หมึกแท่นประทับตรา  สีน้ำเงิน",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 3,
     "unit": "อัน",
     "unit_price": 15.0,
@@ -202,7 +206,11 @@
   {
     "id": "02fn_21",
     "name_th": "หมึกแท่นประทับตรา  สีแดง",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 1,
     "unit": "อัน",
     "unit_price": 15.0,
@@ -462,7 +470,11 @@
   {
     "id": "02fn_47",
     "name_th": "cannon 325",
+<<<<<<< HEAD
     "category": "วัสดุสำนักงาน",
+=======
+    "category": "วัสดุคอมพิวเตอร์",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 1,
     "unit": "อัน",
     "unit_price": 2250.0,
@@ -561,7 +573,11 @@
   },
   {
     "id": "02fn_57",
+<<<<<<< HEAD
     "name_th": "Brother TN-267 สีฟ้า",
+=======
+    "name_th": "Brother TN-267 สีlฟ้า",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "category": "วัสดุคอมพิวเตอร์",
     "quantity": 1,
     "unit": "อัน",

@@ -312,7 +312,11 @@
   {
     "id": "06ph_32",
     "name_th": "หมึกเติมปากกาไวท์บอร์ด สีแดง",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -322,7 +326,11 @@
   {
     "id": "06ph_33",
     "name_th": "หมึกเติมปากกาไวท์บอร์ด สีดำ",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -342,7 +350,11 @@
   {
     "id": "06ph_35",
     "name_th": "หมึกเติมตลับชาด สีน้ำเงิน",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -352,7 +364,11 @@
   {
     "id": "06ph_36",
     "name_th": "หมึกเติมตลับชาด สีแดง",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -362,7 +378,11 @@
   {
     "id": "06ph_37",
     "name_th": "หมึกเติมตลับชาด สีดำ",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -372,7 +392,11 @@
   {
     "id": "06ph_38",
     "name_th": "ตลับหมึกสำหรับตรายางวันที่",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -382,7 +406,11 @@
   {
     "id": "06ph_39",
     "name_th": "หมึกเติมตรายางสำหรับตรายางหมึกในตัว",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1122,7 +1150,11 @@
   {
     "id": "06ph_113",
     "name_th": "หมึก HP GT53 สีดำ",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1132,7 +1164,11 @@
   {
     "id": "06ph_114",
     "name_th": "หมึก HP GT52 สีชมพู",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1142,7 +1178,11 @@
   {
     "id": "06ph_115",
     "name_th": "หมึก HP GT52 สีฟ้า",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1152,7 +1192,11 @@
   {
     "id": "06ph_116",
     "name_th": "หมึก HP GT52 สีเหลือง",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1162,7 +1206,11 @@
   {
     "id": "06ph_117",
     "name_th": "หมึก Brother BT6000 สีดำ",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1172,7 +1220,11 @@
   {
     "id": "06ph_118",
     "name_th": "หมึก Brother BT5000 สีชมพู",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1182,7 +1234,11 @@
   {
     "id": "06ph_119",
     "name_th": "หมึก Brother BT5000 สีฟ้า",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1192,7 +1248,11 @@
   {
     "id": "06ph_120",
     "name_th": "หมึก Brother BT5000 สีเหลือง",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1202,7 +1262,11 @@
   {
     "id": "06ph_121",
     "name_th": "หมึก Epson 664 สีดำ",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1212,7 +1276,11 @@
   {
     "id": "06ph_122",
     "name_th": "หมึก Epson 664 สีชมพู",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1222,7 +1290,11 @@
   {
     "id": "06ph_123",
     "name_th": "หมึก Epson 664 สีฟ้า",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1232,7 +1304,11 @@
   {
     "id": "06ph_124",
     "name_th": "หมึก Epson 664 สีเหลือง",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1242,7 +1318,11 @@
   {
     "id": "06ph_125",
     "name_th": "หมึก Canon 790 สีดำ",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1252,7 +1332,11 @@
   {
     "id": "06ph_126",
     "name_th": "หมึก Canon 790 สีชมพู",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1262,7 +1346,11 @@
   {
     "id": "06ph_127",
     "name_th": "หมึก Canon 790 สีฟ้า",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1272,7 +1360,11 @@
   {
     "id": "06ph_128",
     "name_th": "หมึก Canon 790 สีเหลือง",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1282,7 +1374,11 @@
   {
     "id": "06ph_129",
     "name_th": "หมึก Canon 325",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1292,7 +1388,11 @@
   {
     "id": "06ph_130",
     "name_th": "หมึก HP Laser 85A",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1302,7 +1402,11 @@
   {
     "id": "06ph_131",
     "name_th": "USB Adapter TL-WN725N TP-LINK",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1332,7 +1436,11 @@
   {
     "id": "06ph_134",
     "name_th": "แป้นพิมพ์แบบมีสาย USB",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1342,7 +1450,11 @@
   {
     "id": "06ph_135",
     "name_th": "เม้าส์แบบมีสาย USB",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1352,7 +1464,11 @@
   {
     "id": "06ph_136",
     "name_th": "แผ่นรองเม้าส์",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1362,7 +1478,11 @@
   {
     "id": "06ph_137",
     "name_th": "แฟลชไดร์ฟ ขนาด 32 GB",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
@@ -1372,7 +1492,11 @@
   {
     "id": "06ph_138",
     "name_th": "ผงหมึกเลเซอร์ รุ่น 110A สีดำ",
+<<<<<<< HEAD
     "category": "วัสดุคอมพิวเตอร์",
+=======
+    "category": "วัสดุสำนักงาน",
+>>>>>>> 6effeebf18d028f6b801081e3ad4bfff7415178d
     "quantity": 0,
     "unit": "อัน",
     "unit_price": 0.0,
