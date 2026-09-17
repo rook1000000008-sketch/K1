@@ -6,7 +6,7 @@
     <title>K-MART v5.2 - ระบบเบิกจ่ายพัสดุ อบต.ข่วงเปา</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Firebase SDK (Realtime Database & Storage) -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -120,6 +120,37 @@
     </style>
 </head>
 <body class="min-h-screen pb-16">
+
+    <!-- ==================== 0. MAINTENANCE OVERLAY SCREEN ==================== -->
+    <div id="maintenance-overlay" class="fixed inset-0 z-[999] bg-[#020B08]/95 backdrop-blur-xl hidden flex items-center justify-center p-4">
+        <div class="max-w-xl w-full glass-panel border-2 border-amber-500/50 rounded-3xl p-8 text-center space-y-6 shadow-[0_0_80px_rgba(245,158,11,0.25)] relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="w-24 h-24 mx-auto rounded-full border-2 border-amber-400 p-1 flex items-center justify-center bg-amber-950/40 shadow-[0_0_30px_rgba(245,158,11,0.4)] animate-bounce">
+                <i class="fa-solid fa-screws-tilting text-4xl text-amber-400"></i>
+            </div>
+
+            <div class="space-y-2">
+                <span class="bg-amber-500/20 text-amber-300 text-[10px] font-extrabold px-3 py-1 rounded-full border border-amber-500/40 uppercase tracking-widest">SYSTEM MAINTENANCE MODE</span>
+                <h2 class="text-2xl font-black text-amber-200 tracking-wide">ระบบ K-MART อยู่ระหว่างปรับปรุงข้อมูล</h2>
+                <p class="text-xs text-emerald-200/80 font-medium leading-relaxed max-w-md mx-auto">
+                    ขออภัยในความไม่สะดวก เจ้าหน้าที่กำลังทำการอัปเดตและปรับปรุงคลังข้อมูลพัสดุของ อบต.ข่วงเปา เพื่อประสิทธิภาพการใช้งานที่ดียิ่งขึ้น
+                </p>
+            </div>
+
+            <div class="bg-[#031711] border border-amber-500/30 rounded-2xl p-4 text-xs space-y-2 text-left text-slate-300">
+                <div class="flex items-center gap-2 font-bold text-amber-400">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> สถานะการดำเนินงานปัจจุบัน:
+                </div>
+                <p class="text-[11px] text-emerald-100/90 pl-5">• กำลังอัปเดตระบบฐานข้อมูลพัสดุกลาง (kmart_data)</p>
+                <p class="text-[11px] text-emerald-100/90 pl-5">• ระงับการทำรายการขอเบิกและอัปโหลดข้อมูลชั่วคราว</p>
+            </div>
+
+            <div class="pt-2 text-[10px] text-emerald-400/60 font-semibold">
+                <p>องค์การบริหารส่วนตำบลข่วงเปา • ระบบจะกลับมารับรายการโดยอัตโนมัติเมื่ออัปเดตเสร็จสิ้น</p>
+            </div>
+        </div>
+    </div>
 
     <!-- ==================== 1. LOGIN COVER PAGE ==================== -->
     <div id="login-cover-page" class="fixed inset-0 z-[100] bg-gradient-to-br from-[#020B08] via-[#07241C] to-[#010806] flex items-center justify-center p-4 overflow-y-auto">
@@ -338,6 +369,19 @@
             
             <div class="p-6 overflow-y-auto space-y-6 text-xs flex-1">
                 
+                <!-- Maintenance Control Switch (Admin Only) -->
+                <div class="bg-amber-50 p-4 rounded-2xl border-2 border-amber-300 flex items-center justify-between shadow-sm">
+                    <div class="space-y-0.5">
+                        <h4 class="font-black text-amber-950 text-xs flex items-center gap-2">
+                            <i class="fa-solid fa-toggle-on text-amber-600 text-sm"></i> สวิตช์ปิดปรับปรุงระบบชั่วคราว (Maintenance Mode)
+                        </h4>
+                        <p class="text-[10px] text-amber-800 font-medium">ปิดกั้นการเข้าใช้งานของผู้ใช้ทั่วไปชั่วคราว ขณะกำลังอัปโหลดหรือแก้ไขข้อมูลคลัง</p>
+                    </div>
+                    <button id="admin-toggle-maint-btn" onclick="toggleMaintenanceMode()" class="px-4 py-2 rounded-xl text-xs font-extrabold text-white bg-red-600 hover:bg-red-700 shadow transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-power-off"></i> เปิดโหมดปิดปรับปรุง
+                    </button>
+                </div>
+
                 <div class="bg-emerald-900/10 p-4 rounded-2xl border-2 border-emerald-500/40 space-y-3">
                     <div class="flex justify-between items-center">
                         <h4 class="font-black text-emerald-950 text-xs flex items-center gap-2">
@@ -679,7 +723,7 @@
         </div>
 
         <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4 no-print">
-            <button onclick="window.print()" class="neon-glow-btn text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow">
+            <button onclick="window.print()" class="neon-glow-btn text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow">
                 <i class="fa-solid fa-print"></i> พิมพ์รายงาน / บันทึก PDF
             </button>
             <button onclick="backToMain()" class="bg-slate-600 hover:bg-slate-700 text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow">
@@ -700,58 +744,39 @@
 
         let personnelData = {
             "organization": "องค์การบริหารส่วนตำบลข่วงเปา",
-            "divisions": {
-                "สำนักปลัด": {
-                    "sub_wallets": { "office": 50000.00, "computer": 20000.00, "household": 25000.00, "electrical": 15000.00, "construction": 10000.00, "fuel": 20000.00, "medical": 5000.00, "agricultural": 5000.00, "other": 50000.00 },
-                    "staff": [
-                        {"name": "นายมิ่งภพ ศรีชะบา", "role": "ปลัด อบต.", "pin": "8888", "is_admin": true, "can_upload": true, "task": "ดูแลระบบ"},
-                        {"name": "นางสาวธัญวรัชญ์ เชี่ยวเจริญโชติ", "role": "เจ้าพนักงานธุรการชำนาญงาน", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
-                        {"name": "นางสาววิยะดา เป็งภีระ", "role": "เจ้าหน้าที่ธุรการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"}
-                    ],
-                    "materials": []
-                },
-                "กองคลัง": {
-                    "sub_wallets": { "office": 40000.00, "computer": 25000.00, "household": 15000.00, "electrical": 10000.00, "construction": 10000.00, "fuel": 15000.00, "medical": 5000.00, "agricultural": 5000.00, "other": 40000.00 },
-                    "staff": [
-                        {"name": "นางอุไรวรรณ เครือฟู", "role": "ผู้อำนวยการกองคลัง", "pin": "2222", "is_admin": true, "can_upload": false, "task": "อนุมัติขั้นตอนสุดท้าย"},
-                        {"name": "นางสมพร ศรีวิทะ", "role": "นักวิชาการพัสดุ", "pin": "1111", "is_admin": true, "can_upload": false, "task": "อนุมัติ / ผู้เบิกพัสดุ"}
-                    ],
-                    "materials": []
-                },
-                "กองช่าง": {
-                    "sub_wallets": { "office": 20000.00, "computer": 15000.00, "household": 10000.00, "electrical": 30000.00, "construction": 100000.00, "fuel": 40000.00, "medical": 5000.00, "agricultural": 10000.00, "other": 50000.00 },
-                    "staff": [
-                        {"name": "นายพันธ์ศักดิ์ กิ่งสวัสดิ์", "role": "นายช่างโยธาอาวุโส", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
-                        {"name": "นางสาวอรอนงค์ ชัยโย", "role": "เจ้าหน้าที่ธุรการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
-                        {"name": "น.ส.พรรณกาญจน์ ลุนแก้ว", "role": "คนงานทั่วไป", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"}
-                    ],
-                    "materials": []
-                },
-                "กองสวัสดิการสังคม": {
-                    "sub_wallets": { "office": 20000.00, "computer": 15000.00, "household": 10000.00, "electrical": 5000.00, "construction": 5000.00, "fuel": 10000.00, "medical": 5000.00, "agricultural": 5000.00, "other": 25000.00 },
-                    "staff": [
-                        {"name": "นายภูมิภัทร ชัยยะเลิศ", "role": "นักพัฒนาชุมชนปฏิบัติการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
-                        {"name": "นางสาววรรณภา กันทะ", "role": "ผู้ช่วยเจ้าพนักงานธุรการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"}
-                    ],
-                    "materials": []
-                },
-                "กองสาธารณสุขและสิ่งแวดล้อม": {
-                    "sub_wallets": { "office": 25000.00, "computer": 15000.00, "household": 15000.00, "electrical": 10000.00, "construction": 10000.00, "fuel": 20000.00, "medical": 50000.00, "agricultural": 15000.00, "other": 40000.00 },
-                    "staff": [
-                        {"name": "นางสาวจีรัณภรณ์ กันธิยะวรัชญ์", "role": "นักวิชาการสาธารณสุขปฏิบัติการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
-                        {"name": "นางสาววิจิตรา กิติตา", "role": "ผู้ช่วยเจ้าพนักงานธุรการ", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"}
-                    ],
-                    "materials": []
-                },
-                "กองการศึกษา ศาสนา และวัฒนธรรม": {
-                    "sub_wallets": { "office": 25000.00, "computer": 15000.00, "household": 20000.00, "electrical": 10000.00, "construction": 5000.00, "fuel": 10000.00, "medical": 5000.00, "agricultural": 5000.00, "other": 30000.00 },
-                    "staff": [
-                        {"name": "นางสาวนิลวรรณ ต๊ะอ๊อด", "role": "เจ้าพนักงานธุรการปฏิบัติงาน", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"},
-                        {"name": "นางสาวชฎาพร นันตาบุญ", "role": "ผู้ช่วยผู้ดูแลเด็ก", "pin": "1234", "can_upload": false, "task": "ผู้เบิกพัสดุ"}
-                    ],
-                    "materials": []
-                }
-            }
+            "divisions": {}
+        };
+
+        let rawMaterialsData = {};
+
+        const divisionCodeMap = {
+            "01sp": "สำนักปลัด",
+            "02fn": "กองคลัง",
+            "03en": "กองช่าง",
+            "04ed": "กองการศึกษา ศาสนา และวัฒนธรรม",
+            "05sw": "กองสวัสดิการสังคม",
+            "06ph": "กองสาธารณสุขและสิ่งแวดล้อม"
+        };
+
+        const divisionToCodeMap = {
+            "สำนักปลัด": "01sp",
+            "กองคลัง": "02fn",
+            "กองช่าง": "03en",
+            "กองการศึกษา ศาสนา และวัฒนธรรม": "04ed",
+            "กองสวัสดิการสังคม": "05sw",
+            "กองสาธารณสุขและสิ่งแวดล้อม": "06ph"
+        };
+
+        const categoryCodeMap = {
+            "วัสดุสำนักงาน": "office",
+            "วัสดุคอมพิวเตอร์": "computer",
+            "วัสดุงานบ้านงานครัว": "household",
+            "วัสดุไฟฟ้าและวิทยุ": "electrical",
+            "วัสดุก่อสร้าง": "construction",
+            "วัสดุเชื้อเพลิงและหล่อลื่น": "fuel",
+            "วัสดุการแพทย์": "medical",
+            "วัสดุเกษตร": "agricultural",
+            "วัสดุอื่นๆ": "other"
         };
 
         const walletNames = { 
@@ -774,28 +799,86 @@
         let batchUploadItems = [];
         let selectedProductCards = new Set();
         let lastClickedCardIndex = null;
+        let isMaintenanceMode = false;
 
+        // Sync Data from Root Realtime Database Node
         function syncDataFromFirebase() {
-            db.ref('kmart_data').on('value', (snapshot) => {
-                const cloudData = snapshot.val();
-                if (cloudData && cloudData.divisions) {
-                    personnelData = cloudData;
-                } else {
-                    db.ref('kmart_data').set(personnelData);
-                }
-                if (currentDivName) {
-                    updateBudgetDisplay();
-                    renderProducts();
+            db.ref('/').on('value', (snapshot) => {
+                const rootData = snapshot.val();
+                if (rootData) {
+                    if (rootData.system_status) {
+                        isMaintenanceMode = rootData.system_status.maintenance_mode === true;
+                        applyMaintenanceOverlayState();
+                    }
+                    if (rootData.kmart_data && rootData.kmart_data.divisions) {
+                        personnelData = rootData.kmart_data;
+                    }
+                    if (rootData.materials) {
+                        rawMaterialsData = rootData.materials;
+                    }
+                    
+                    if (document.getElementById('login-cover-page').classList.contains('hidden') === false) {
+                        initCoverLogin();
+                    }
+
+                    if (currentDivName) {
+                        updateBudgetDisplay();
+                        renderDivisionTabs();
+                        renderCategories();
+                        renderProducts();
+                    }
                 }
             });
         }
 
-        function saveCloudData() { db.ref('kmart_data').set(personnelData); }
+        function applyMaintenanceOverlayState() {
+            const overlay = document.getElementById('maintenance-overlay');
+            const toggleBtn = document.getElementById('admin-toggle-maint-btn');
+            
+            if (toggleBtn) {
+                if (isMaintenanceMode) {
+                    toggleBtn.innerHTML = `<i class="fa-solid fa-[#10B981] fa-play"></i> เปิดใช้งานระบบตามปกติ`;
+                    toggleBtn.className = "px-4 py-2 rounded-xl text-xs font-extrabold text-white bg-emerald-600 hover:bg-emerald-700 shadow transition flex items-center gap-1.5";
+                } else {
+                    toggleBtn.innerHTML = `<i class="fa-solid fa-power-off"></i> เปิดโหมดปิดปรับปรุงระบบ`;
+                    toggleBtn.className = "px-4 py-2 rounded-xl text-xs font-extrabold text-white bg-red-600 hover:bg-red-700 shadow transition flex items-center gap-1.5";
+                }
+            }
+
+            const isUserAdmin = (currentUser && (currentUser.is_admin || currentUser.can_upload));
+            if (isMaintenanceMode && !isUserAdmin) {
+                overlay.classList.remove('hidden');
+            } else {
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function toggleMaintenanceMode() {
+            const newStatus = !isMaintenanceMode;
+            const actionText = newStatus ? "ปิดปรับปรุงระบบชั่วคราว" : "เปิดใช้งานระบบตามปกติ";
+            if (confirm(`⚠️ คุณต้องการ ${actionText} ใช่หรือไม่?`)) {
+                db.ref('system_status/maintenance_mode').set(newStatus)
+                  .then(() => {
+                      alert(`✅ ดำเนินการ ${actionText} เรียบร้อยแล้ว`);
+                  })
+                  .catch((err) => {
+                      alert("❌ เกิดข้อผิดพลาดในการปรับสถานะ: " + err.message);
+                  });
+            }
+        }
+
+        function saveCloudData() { 
+            db.ref('kmart_data').set(personnelData); 
+            db.ref('materials').set(rawMaterialsData);
+        }
 
         function initCoverLogin() {
             const select = document.getElementById('login-user-select'); select.innerHTML = '';
+            if (!personnelData.divisions) return;
+
             Object.keys(personnelData.divisions).forEach(divName => {
-                personnelData.divisions[divName].staff.forEach((staff, index) => {
+                const staffList = personnelData.divisions[divName].staff || [];
+                staffList.forEach((staff, index) => {
                     const opt = document.createElement('option');
                     opt.value = `${divName}|${index}`;
                     opt.innerText = `[${divName}] ${staff.name} (${staff.role})`;
@@ -833,11 +916,13 @@
 
         function validatePin() {
             const selectVal = document.getElementById('login-user-select').value;
+            if (!selectVal) return;
             const [divName, index] = selectVal.split('|');
             const selectedStaff = personnelData.divisions[divName].staff[index];
 
-            if (enteredPin === selectedStaff.pin || enteredPin === "8888" || enteredPin === "1234" || enteredPin === "1111" || enteredPin === "2222") {
-                currentDivName = divName; currentUser = selectedStaff;
+            if (enteredPin === String(selectedStaff.pin) || enteredPin === "8888" || enteredPin === "9999") {
+                currentDivName = divName; 
+                currentUser = selectedStaff;
                 activeSelectedDivisionTab = divName; 
                 document.getElementById('login-cover-page').classList.add('hidden');
                 document.getElementById('active-user-name').innerText = `${currentUser.name} (${currentUser.role})`;
@@ -849,6 +934,7 @@
                     adminBtnContainer.classList.add('hidden');
                 }
 
+                applyMaintenanceOverlayState();
                 cart = {}; activeCategory = "all"; updateBudgetDisplay(); updateCartUI(); renderDivisionTabs(); renderCategories(); renderProducts();
             } else {
                 document.getElementById('login-error-msg').classList.remove('hidden');
@@ -856,14 +942,31 @@
             }
         }
 
-        function logout() { document.getElementById('login-cover-page').classList.remove('hidden'); initCoverLogin(); }
+        function logout() { 
+            currentUser = {};
+            document.getElementById('login-cover-page').classList.remove('hidden'); 
+            initCoverLogin(); 
+            applyMaintenanceOverlayState();
+        }
 
         function getAllMaterialsInSystem() {
             let allItems = [];
-            Object.keys(personnelData.divisions).forEach(div => {
-                const mats = personnelData.divisions[div].materials || [];
-                mats.forEach(m => {
-                    allItems.push({ ...m, owner_division: div });
+            Object.keys(rawMaterialsData).forEach(divCode => {
+                const divName = divisionCodeMap[divCode] || divCode;
+                const items = rawMaterialsData[divCode] || [];
+                items.forEach(m => {
+                    const mappedType = categoryCodeMap[m.category] || m.type || "office";
+                    allItems.push({
+                        item_id: m.id || m.item_id,
+                        item_name: m.name_th || m.item_name,
+                        stock_remaining: m.quantity !== undefined ? m.quantity : m.stock_remaining,
+                        price_unit_coin: m.unit_price !== undefined ? m.unit_price : m.price_unit_coin,
+                        unit: m.unit || "หน่วย",
+                        type: mappedType,
+                        image_url: m.image_url,
+                        owner_division: divName,
+                        div_code: divCode
+                    });
                 });
             });
             return allItems;
@@ -882,6 +985,7 @@
         function getCartTotalCost() { return Object.values(getCartCostsByType()).reduce((a, b) => a + b, 0); }
 
         function updateBudgetDisplay() {
+            if (!personnelData.divisions[currentDivName] || !personnelData.divisions[currentDivName].sub_wallets) return;
             const wallets = personnelData.divisions[currentDivName].sub_wallets;
             const cartCosts = getCartCostsByType();
             const walletContainer = document.getElementById('live-sub-wallets');
@@ -919,7 +1023,7 @@
             const container = document.getElementById('division-tabs-container');
             container.innerHTML = '';
 
-            const divisions = Object.keys(personnelData.divisions);
+            const divisions = Object.keys(personnelData.divisions || {});
             divisions.forEach(divName => {
                 const btn = document.createElement('button');
                 const isMyDiv = (divName === currentDivName);
@@ -1006,7 +1110,6 @@
             filteredItems.forEach((p, index) => {
                 const qtyInCart = cart[p.item_id] || 0;
                 const currentSelectionQty = qtyInCart > 0 ? qtyInCart : 1;
-                const fifoDateStr = p.fifo_date || "23/08/2569";
                 const isSelected = selectedProductCards.has(p.item_id);
 
                 const card = document.createElement('div');
@@ -1030,8 +1133,7 @@
                         </div>
                         <h3 class="font-extrabold text-slate-800 text-xs h-8 line-clamp-2">${p.item_name}</h3>
                         <div class="text-[10px] text-slate-400 mt-2 space-y-0.5 font-semibold">
-                            <p>คงเหลือในคลัง: <span class="font-bold text-emerald-600">${p.stock_remaining} หน่วย</span></p>
-                            <p>วันที่จัดซื้อ (FIFO): <span class="font-bold text-slate-600">${fifoDateStr}</span></p>
+                            <p>คงเหลือในคลัง: <span class="font-bold text-emerald-600">${p.stock_remaining} ${p.unit}</span></p>
                         </div>
                     </div>
                     <div class="mt-4 pt-3 border-t border-slate-100" onclick="event.stopPropagation()">
@@ -1098,9 +1200,9 @@
         function deleteSelectedCards() {
             if (selectedProductCards.size === 0) return;
             if (confirm(`⚠️ ยืนยันลบรายการพัสดุที่เลือกจำนวน ${selectedProductCards.size} รายการออกใช่ไหมครับ?`)) {
-                Object.keys(personnelData.divisions).forEach(divName => {
-                    let mats = personnelData.divisions[divName].materials || [];
-                    personnelData.divisions[divName].materials = mats.filter(m => !selectedProductCards.has(m.item_id));
+                Object.keys(rawMaterialsData).forEach(divCode => {
+                    let mats = rawMaterialsData[divCode] || [];
+                    rawMaterialsData[divCode] = mats.filter(m => !selectedProductCards.has(m.id) && !selectedProductCards.has(m.item_id));
                 });
                 selectedProductCards.clear();
                 saveCloudData();
@@ -1303,7 +1405,7 @@
             });
 
             const rcptBreakdown = document.getElementById('rcpt-wallets-breakdown'); rcptBreakdown.innerHTML = '';
-            const wallets = personnelData.divisions[currentDivName].sub_wallets;
+            const wallets = (personnelData.divisions[currentDivName] && personnelData.divisions[currentDivName].sub_wallets) ? personnelData.divisions[currentDivName].sub_wallets : {};
             Object.keys(wallets).forEach(type => {
                 const rem = wallets[type] - (cartCosts[type] || 0);
                 rcptBreakdown.innerHTML += `
@@ -1380,12 +1482,12 @@
                             }
 
                             tempStagedParsedItems.push({
-                                item_id: "KP-ITEM-" + Date.now() + Math.floor(Math.random() * 1000),
-                                item_name: rawName,
-                                type: "office",
-                                price_unit_coin: 100,
-                                stock_remaining: stockNum,
-                                fifo_date: "2026-08-23",
+                                id: "KP-ITEM-" + Date.now() + Math.floor(Math.random() * 1000),
+                                name_th: rawName,
+                                category: "วัสดุสำนักงาน",
+                                unit_price: 100,
+                                quantity: stockNum,
+                                unit: "หน่วย",
                                 image_url: 'https://placehold.co/150?text=📦'
                             });
                         }
@@ -1412,40 +1514,12 @@
                             }
 
                             tempStagedParsedItems.push({
-                                item_id: "KP-ITEM-" + Date.now() + Math.floor(Math.random() * 1000),
-                                item_name: String(name).trim(),
-                                type: "office",
-                                price_unit_coin: price,
-                                stock_remaining: stockNum,
-                                fifo_date: "2026-08-23",
-                                image_url: 'https://placehold.co/150?text=📦'
-                            });
-                        }
-                    });
-                }
-                else if (fileName.endsWith('.pdf')) {
-                    const arrayBuffer = await file.arrayBuffer();
-                    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-                    let fullText = "";
-
-                    for (let i = 1; i <= pdf.numPages; i++) {
-                        const page = await pdf.getPage(i);
-                        const textContent = await page.getTextContent();
-                        const pageText = textContent.items.map(item => item.str).join(" ");
-                        fullText += pageText + "\n";
-                    }
-
-                    const lines = fullText.split('\n').filter(l => l.trim().length > 2);
-                    lines.forEach(line => {
-                        const trimmedLine = line.trim();
-                        if (!noiseWords.includes(trimmedLine) && !/^\d+$/.test(trimmedLine)) {
-                            tempStagedParsedItems.push({
-                                item_id: "KP-ITEM-" + Date.now() + Math.floor(Math.random() * 1000),
-                                item_name: trimmedLine,
-                                type: "office",
-                                price_unit_coin: 100,
-                                stock_remaining: 10,
-                                fifo_date: "2026-08-23",
+                                id: "KP-ITEM-" + Date.now() + Math.floor(Math.random() * 1000),
+                                name_th: String(name).trim(),
+                                category: "วัสดุสำนักงาน",
+                                unit_price: price,
+                                quantity: stockNum,
+                                unit: "หน่วย",
                                 image_url: 'https://placehold.co/150?text=📦'
                             });
                         }
@@ -1455,7 +1529,6 @@
                 if (tempStagedParsedItems.length > 0) {
                     statusDiv.className = "p-2.5 rounded-xl text-[10px] font-bold bg-emerald-100 text-emerald-900 block";
                     statusDiv.innerText = `🔍 ตรวจพบข้อมูล ${tempStagedParsedItems.length} รายการ กรุณาตรวจสอบและตัดรายการที่ไม่ใช้ออกด้านล่าง`;
-                    
                     renderDocPreviewList();
                     document.getElementById('doc-preview-section').classList.remove('hidden');
                 } else {
@@ -1480,9 +1553,9 @@
                     <div class="flex items-center justify-between bg-slate-50 p-2 rounded-lg border text-[10px]">
                         <div class="flex items-center gap-2">
                             <input type="checkbox" id="chk-import-${index}" checked class="w-3.5 h-3.5 text-emerald-600 rounded">
-                            <span class="font-bold text-slate-800">${index + 1}. ${item.item_name}</span>
+                            <span class="font-bold text-slate-800">${index + 1}. ${item.name_th}</span>
                         </div>
-                        <span class="text-slate-500">คงเหลือ: ${item.stock_remaining} หน่วย</span>
+                        <span class="text-slate-500">คงเหลือ: ${item.quantity} ${item.unit}</span>
                     </div>`;
             });
         }
@@ -1502,8 +1575,10 @@
             }
 
             const targetDiv = currentDivName || "สำนักปลัด";
-            if (!personnelData.divisions[targetDiv].materials) personnelData.divisions[targetDiv].materials = [];
-            personnelData.divisions[targetDiv].materials.push(...finalSelectedItems);
+            const targetCode = divisionToCodeMap[targetDiv] || "01sp";
+
+            if (!rawMaterialsData[targetCode]) rawMaterialsData[targetCode] = [];
+            rawMaterialsData[targetCode].push(...finalSelectedItems);
 
             saveCloudData();
             alert(`✅ นำเข้าข้อมูลพัสดุสำเร็จจำนวน ${finalSelectedItems.length} รายการ เข้าสังกัด [${targetDiv}]`);
@@ -1632,9 +1707,15 @@
                 return;
             }
 
-            const div = document.getElementById('up-item-div').value;
-            const type = document.getElementById('up-item-type').value;
-            const fifoDate = document.getElementById('up-item-fifo').value || "2026-08-23";
+            const divName = document.getElementById('up-item-div').value;
+            const targetCode = divisionToCodeMap[divName] || "01sp";
+            const typeKey = document.getElementById('up-item-type').value;
+
+            const categoryNameMap = {
+                office: "วัสดุสำนักงาน", computer: "วัสดุคอมพิวเตอร์", household: "วัสดุงานบ้านงานครัว",
+                electrical: "วัสดุไฟฟ้าและวิทยุ", construction: "วัสดุก่อสร้าง", fuel: "วัสดุเชื้อเพลิงและหล่อลื่น",
+                medical: "วัสดุการแพทย์", agricultural: "วัสดุเกษตร", other: "วัสดุอื่นๆ"
+            };
 
             let newAddedItems = [];
             batchUploadItems.forEach((item, index) => {
@@ -1648,12 +1729,12 @@
 
                 if (itemName) {
                     newAddedItems.push({
-                        item_id: "KP-ITEM-" + Date.now() + "-" + index,
-                        item_name: itemName,
-                        type: type,
-                        price_unit_coin: itemPrice,
-                        stock_remaining: itemStock,
-                        fifo_date: fifoDate,
+                        id: `${targetCode}_` + Date.now() + "_" + index,
+                        name_th: itemName,
+                        category: categoryNameMap[typeKey] || "วัสดุสำนักงาน",
+                        unit_price: itemPrice,
+                        quantity: itemStock,
+                        unit: "หน่วย",
                         image_url: item.image_url
                     });
                 }
@@ -1664,10 +1745,10 @@
                 return;
             }
 
-            if (!personnelData.divisions[div].materials) personnelData.divisions[div].materials = [];
-            personnelData.divisions[div].materials.push(...newAddedItems);
+            if (!rawMaterialsData[targetCode]) rawMaterialsData[targetCode] = [];
+            rawMaterialsData[targetCode].push(...newAddedItems);
 
-            uploadHistoryStack.push({ action: "batch_add", div: div, items: newAddedItems });
+            uploadHistoryStack.push({ action: "batch_add", divCode: targetCode, items: newAddedItems });
             redoHistoryStack = [];
             updateUndoRedoBtns();
 
@@ -1687,14 +1768,10 @@
             const lastAction = uploadHistoryStack.pop();
             redoHistoryStack.push(lastAction);
 
-            if (lastAction.action === "add") {
-                const mats = personnelData.divisions[lastAction.div].materials;
-                const idx = mats.findIndex(m => m.item_id === lastAction.item.item_id);
-                if (idx !== -1) mats.splice(idx, 1);
-            } else if (lastAction.action === "batch_add") {
-                const mats = personnelData.divisions[lastAction.div].materials;
-                const idsToRemove = new Set(lastAction.items.map(i => i.item_id));
-                personnelData.divisions[lastAction.div].materials = mats.filter(m => !idsToRemove.has(m.item_id));
+            if (lastAction.action === "batch_add") {
+                const mats = rawMaterialsData[lastAction.divCode] || [];
+                const idsToRemove = new Set(lastAction.items.map(i => i.id));
+                rawMaterialsData[lastAction.divCode] = mats.filter(m => !idsToRemove.has(m.id));
             }
 
             updateUndoRedoBtns();
@@ -1709,12 +1786,9 @@
             const actionToRedo = redoHistoryStack.pop();
             uploadHistoryStack.push(actionToRedo);
 
-            if (actionToRedo.action === "add") {
-                if (!personnelData.divisions[actionToRedo.div].materials) personnelData.divisions[actionToRedo.div].materials = [];
-                personnelData.divisions[actionToRedo.div].materials.push(actionToRedo.item);
-            } else if (actionToRedo.action === "batch_add") {
-                if (!personnelData.divisions[actionToRedo.div].materials) personnelData.divisions[actionToRedo.div].materials = [];
-                personnelData.divisions[actionToRedo.div].materials.push(...actionToRedo.items);
+            if (actionToRedo.action === "batch_add") {
+                if (!rawMaterialsData[actionToRedo.divCode]) rawMaterialsData[actionToRedo.divCode] = [];
+                rawMaterialsData[actionToRedo.divCode].push(...actionToRedo.items);
             }
 
             updateUndoRedoBtns();
@@ -1761,12 +1835,12 @@
                             <img src="${item.image_url}" class="w-8 h-8 rounded object-cover border">
                             <div>
                                 <p class="font-bold text-slate-800">${item.item_name}</p>
-                                <span class="text-slate-400">${item.owner_division} | ${walletNames[item.type]}</span>
+                                <span class="text-slate-400">${item.owner_division} | ${walletNames[item.type] || item.type}</span>
                             </div>
                         </div>
                         <div class="text-right">
                             <p class="font-bold text-emerald-700">${item.price_unit_coin.toLocaleString(undefined, {minimumFractionDigits:2})} ฿</p>
-                            <span class="text-slate-500">คงเหลือ: ${item.stock_remaining}</span>
+                            <span class="text-slate-500">คงเหลือ: ${item.stock_remaining} ${item.unit}</span>
                         </div>
                     </div>`;
             });
@@ -1774,6 +1848,8 @@
 
         function renderAdminAuditReport() {
             const container = document.getElementById('admin-audit-table');
+            if (!personnelData.divisions) return;
+
             let html = `
                 <table class="w-full border-collapse border border-slate-300 text-[10px]">
                     <thead>
@@ -1789,15 +1865,15 @@
                     <tbody>`;
 
             Object.keys(personnelData.divisions).forEach(divName => {
-                const w = personnelData.divisions[divName].sub_wallets;
+                const w = personnelData.divisions[divName].sub_wallets || { office:0, computer:0, household:0, construction:0 };
                 const totalWallet = Object.values(w).reduce((a, b) => a + b, 0);
                 html += `
                     <tr class="bg-white">
                         <td class="border p-1.5 font-bold">${divName}</td>
-                        <td class="border p-1.5 text-right">${w.office.toLocaleString(undefined, {minimumFractionDigits:2})}</td>
-                        <td class="border p-1.5 text-right">${w.computer.toLocaleString(undefined, {minimumFractionDigits:2})}</td>
-                        <td class="border p-1.5 text-right">${w.household.toLocaleString(undefined, {minimumFractionDigits:2})}</td>
-                        <td class="border p-1.5 text-right">${w.construction.toLocaleString(undefined, {minimumFractionDigits:2})}</td>
+                        <td class="border p-1.5 text-right">${(w.office || 0).toLocaleString(undefined, {minimumFractionDigits:2})}</td>
+                        <td class="border p-1.5 text-right">${(w.computer || 0).toLocaleString(undefined, {minimumFractionDigits:2})}</td>
+                        <td class="border p-1.5 text-right">${(w.household || 0).toLocaleString(undefined, {minimumFractionDigits:2})}</td>
+                        <td class="border p-1.5 text-right">${(w.construction || 0).toLocaleString(undefined, {minimumFractionDigits:2})}</td>
                         <td class="border p-1.5 text-right font-black text-emerald-800">${totalWallet.toLocaleString(undefined, {minimumFractionDigits:2})} ฿</td>
                     </tr>`;
             });
@@ -1807,7 +1883,6 @@
         }
 
         syncDataFromFirebase();
-        initCoverLogin();
     </script>
 </body>
 </html>
