@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ปกคู่มือ K-MART v5.2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Kanit', sans-serif; background: #0f172a; margin: 0; padding: 20px 0; }
+        .page-a4 {
+            width: 210mm;
+            min-height: 297mm;
+            height: 297mm;
+            padding: 15mm 18mm;
+            margin: auto;
+            background: linear-gradient(135deg, #02120e 0%, #06241c 40%, #0d382e 100%);
+            color: white;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .gold-accent {
+            background: linear-gradient(90deg, #d4af37, #f3e5ab, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @media print {
+            @page { size: A4 portrait; margin: 0; }
+            body { background: none; padding: 0; }
+            .page-a4 { box-shadow: none; width: 210mm; height: 297mm; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-a4 border-4 border-emerald-500/30 rounded-lg">
+        
+        <!-- ลายน้ำ背景 -->
+        <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+            <img src="KPLOGO.jpg" onerror="this.src='https://placehold.co/400?text=อบต.ข่วงเปา'" class="w-[550px]">
+        </div>
+
+        <!-- 1. HEADER SECTION (ขยายตรา อบต.) -->
+        <div class="relative z-10 text-center pt-2">
+            <div class="w-36 h-36 mx-auto mb-3 rounded-full p-1.5 bg-gradient-to-r from-emerald-400 to-amber-300 shadow-[0_0_30px_rgba(16,185,129,0.6)]">
+                <img src="KPLOGO.jpg" onerror="this.src='https://placehold.co/150?text=อบต.'" class="w-full h-full object-cover rounded-full">
+            </div>
+            <p class="text-sm font-extrabold tracking-[0.2em] text-emerald-300 uppercase whitespace-nowrap">คู่มือการปฏิบัติงานระบบดิจิทัล (DIGITAL WORK MANUAL)</p>
+            <div class="w-48 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mt-2"></div>
+        </div>
+
+        <!-- 2. MAIN TITLE SECTION (ขยายฟอนต์ใหญ่เด่นชัด) -->
+        <div class="relative z-10 text-center my-auto px-2 w-full">
+            <div class="inline-block bg-emerald-900/80 border-2 border-emerald-400/50 px-6 py-2 rounded-full mb-6 backdrop-blur-md shadow-lg">
+                <span class="text-sm font-black tracking-wider text-emerald-200 whitespace-nowrap">✨ ระบบบริหารสำนักงานดิจิทัล</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl font-black text-white leading-tight mb-2 whitespace-nowrap drop-shadow-md">
+                คู่มือการใช้งาน
+            </h1>
+            
+            <h2 class="text-3xl sm:text-4xl font-black gold-accent mb-4 whitespace-nowrap drop-shadow-md">9:19 14/9/2569
+                ระบบเบิกจ่ายพัสดุกลาง
+            </h2>
+            
+            <div class="bg-gradient-to-r from-emerald-950/90 via-[#06241c] to-emerald-950/90 border-y-2 border-emerald-500/60 py-6 my-2 shadow-2xl w-full">
+                <h3 class="text-6xl sm:text-7xl font-black text-emerald-400 drop-shadow-[0_0_20px_rgba(16,185,129,0.9)] whitespace-nowrap">
+                    K-MART <span class="text-3xl text-amber-300 font-bold">v5.2</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-emerald-200 font-extrabold tracking-[0.2em] mt-2 whitespace-nowrap uppercase">REALTIME BUDGET & INVENTORY CONTROL SYSTEM</p>
+            </div>
+        </div>
+
+        <!-- 3. FOOTER & QR SECTION (ขยาย QR Code ใหญ่ชัดเจน สแกนง่าย) -->
+        <div class="relative z-10 border-t-2 border-emerald-500/40 pt-4 flex justify-between items-end w-full pb-2">
+            <div class="text-left space-y-1">
+                <p class="text-xl font-black text-white whitespace-nowrap">องค์การบริหารส่วนตำบลข่วงเปา</p>
+                <p class="text-sm text-emerald-300 font-bold whitespace-nowrap">อำเภอจอมทอง จังหวัดเชียงใหม่</p>
+                <p class="text-xs text-slate-300 pt-1 font-mono font-semibold whitespace-nowrap">ฝ่ายยุทธศาสตร์และนวัตกรรมการบริหาร</p>
+            </div>
+
+            <div class="bg-white p-2.5 rounded-2xl text-center border-2 border-amber-400 shadow-2xl flex-shrink-0">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rook1000000008-sketch.github.io/K1/" class="w-28 h-28 mx-auto rounded-lg">
+                <p class="text-[9px] font-black text-slate-900 mt-1.5 uppercase whitespace-nowrap tracking-wider">สแกนเข้าใช้งานระบบ</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
