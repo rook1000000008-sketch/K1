@@ -923,15 +923,19 @@
             if (enteredPin === String(selectedStaff.pin) || enteredPin === "8888" || enteredPin === "9999") {
                 currentDivName = divName; 
                 currentUser = selectedStaff;
-                activeSelectedDivisionTab = divName; 
+
+                // กำหนดแท็บตั้งต้น: หากอยู่ "ส่วนบริหารงาน" หรือ "หน่วยตรวจสอบภายใน" ให้สลับไปแสดงพัสดุของ "สำนักปลัด" อัตโนมัติ
+                activeSelectedDivisionTab = (divName === "ส่วนบริหารงาน" || divName === "หน่วยตรวจสอบภายใน") ? "สำนักปลัด" : divName;
+
                 document.getElementById('login-cover-page').classList.add('hidden');
                 document.getElementById('active-user-name').innerText = `${currentUser.name} (${currentUser.role})`;
                 
+                // สิทธิ์ Super Admin (คุณปลัดมิ่งภพ) เห็นปุ่มจัดการ Admin
                 const adminBtnContainer = document.getElementById('admin-hub-btn-container');
-                if (currentUser.can_upload || currentUser.is_admin) {
+                if (currentUser.can_upload || (currentUser.is_admin && String(currentUser.pin) === "8888")) {
                     adminBtnContainer.classList.remove('hidden');
                 } else {
-                    adminBtnContainer.classList.add('hidden');
+                    adminBtnContainer.classList.add('hidden'); // ท่านนายกฯ (PIN 9999) จะไม่เห็นปุ่มจัดการ Admin
                 }
 
                 applyMaintenanceOverlayState();
@@ -1104,7 +1108,8 @@
                 return;
             }
 
-            const isAdminOrUploader = currentUser.can_upload || currentUser.is_admin;
+            const isSuperAdmin = currentUser.can_upload || (currentUser.is_admin && String(currentUser.pin) === "8888");
+            const isObserverOnly = currentUser.role.includes("สังเกตการณ์") || String(currentUser.pin) === "9999";
             const isMyDivision = (activeSelectedDivisionTab === currentDivName);
 
             filteredItems.forEach((p, index) => {
@@ -1117,15 +1122,39 @@
                 card.dataset.itemId = p.item_id;
                 card.dataset.index = index;
 
-                if (isAdminOrUploader) {
+                if (isSuperAdmin) {
                     card.onclick = (e) => handleCardClickSelection(e, p.item_id, index, filteredItems);
+                }
+
+                let actionHtml = '';
+                if (isObserverOnly) {
+                    // ท่านนายกฯ: อ่านได้อย่างเดียว ล็อกปุ่มกด 100%
+                    actionHtml = `<div class="w-full bg-slate-100 text-slate-500 font-bold py-2 rounded-xl text-[10px] text-center border border-slate-200">👁️ สิทธิ์ผู้บริหาร (สังเกตการณ์ - อ่านได้อย่างเดียว)</div>`;
+                } else if (isMyDivision || isSuperAdmin) {
+                    // คุณปลัดฯ หรือเจ้าหน้าที่ประจำกอง: เลือกจำนวนและหยิบใส่ตะกร้าได้
+                    actionHtml = `
+                        <div class="flex gap-2">
+                            <div class="flex items-center border-2 border-emerald-200 rounded-xl bg-slate-50 px-2 shadow-inner">
+                                <button onclick="changeQty('${p.item_id}', -1)" class="px-1 text-emerald-800 font-black">-</button>
+                                <span id="qty-${p.item_id}" class="w-6 text-center text-xs font-black text-slate-800">${currentSelectionQty}</span>
+                                <button onclick="changeQty('${p.item_id}', 1)" class="px-1 text-emerald-800 font-black">+</button>
+                            </div>
+                            <button onclick="addToCart('${p.item_id}')" class="flex-1 neon-glow-btn text-white rounded-xl text-[11px] font-black py-2 uppercase tracking-wider">
+                                <i class="fa-solid fa-cart-plus text-[9px]"></i> หยิบใส่ตะกร้า
+                            </button>
+                        </div>`;
+                } else {
+                    actionHtml = `
+                        <button disabled class="w-full bg-slate-200 text-slate-400 font-bold py-2 rounded-xl text-[10px] cursor-not-allowed">
+                            🔒 พัสดุของ ${p.owner_division} (ดูได้อย่างเดียว ซื้อไม่ได้)
+                        </button>`;
                 }
 
                 card.innerHTML = `
                     <div>
                         <div class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center p-2 border border-slate-100 overflow-hidden shadow-inner relative">
                             <img src="${p.image_url || 'https://placehold.co/150?text=📦'}" onerror="this.src='https://placehold.co/150?text=📦'" class="object-cover h-full w-full rounded-lg">
-                            ${isAdminOrUploader ? `<div class="absolute top-2 left-2 w-5 h-5 rounded-md border-2 border-slate-400 bg-white flex items-center justify-center text-[10px] font-bold text-slate-700">${isSelected ? '✓' : ''}</div>` : ''}
+                            ${isSuperAdmin ? `<div class="absolute top-2 left-2 w-5 h-5 rounded-md border-2 border-slate-400 bg-white flex items-center justify-center text-[10px] font-bold text-slate-700">${isSelected ? '✓' : ''}</div>` : ''}
                         </div>
                         <div class="flex justify-between items-center mb-1">
                             <span class="text-[9px] bg-emerald-100 text-emerald-900 font-black px-2 py-0.5 rounded shadow-sm">${walletNames[p.type] || p.type}</span>
@@ -1141,23 +1170,7 @@
                             <span class="text-slate-500 font-bold">ราคาต่อหน่วย:</span>
                             <span class="font-black text-[#059669] text-sm">${p.price_unit_coin.toLocaleString(undefined, {minimumFractionDigits:2})} บาท</span>
                         </div>
-                        
-                        ${isMyDivision ? `
-                            <div class="flex gap-2">
-                                <div class="flex items-center border-2 border-emerald-200 rounded-xl bg-slate-50 px-2 shadow-inner">
-                                    <button onclick="changeQty('${p.item_id}', -1)" class="px-1 text-emerald-800 font-black">-</button>
-                                    <span id="qty-${p.item_id}" class="w-6 text-center text-xs font-black text-slate-800">${currentSelectionQty}</span>
-                                    <button onclick="changeQty('${p.item_id}', 1)" class="px-1 text-emerald-800 font-black">+</button>
-                                </div>
-                                <button onclick="addToCart('${p.item_id}')" class="flex-1 neon-glow-btn text-white rounded-xl text-[11px] font-black py-2 uppercase tracking-wider">
-                                    <i class="fa-solid fa-cart-plus text-[9px]"></i> หยิบใส่ตะกร้า
-                                </button>
-                            </div>
-                        ` : `
-                            <button disabled class="w-full bg-slate-200 text-slate-400 font-bold py-2 rounded-xl text-[10px] cursor-not-allowed">
-                                🔒 พัสดุของ ${p.owner_division} (ดูได้อย่างเดียว ซื้อไม่ได้)
-                            </button>
-                        `}
+                        ${actionHtml}
                     </div>`;
                 grid.appendChild(card);
             });
