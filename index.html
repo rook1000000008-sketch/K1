@@ -955,11 +955,35 @@
 
         function getAllMaterialsInSystem() {
             let allItems = [];
+            const cdnBaseUrl = "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/";
+
             Object.keys(rawMaterialsData).forEach(divCode => {
                 const divName = divisionCodeMap[divCode] || divCode;
                 const items = rawMaterialsData[divCode] || [];
                 items.forEach(m => {
                     const mappedType = categoryCodeMap[m.category] || m.type || "office";
+                    const fallbackImg = getCategoryFallbackImage(mappedType, m.name_th || m.item_name);
+                    
+                    let finalImageUrl = "";
+
+                    if (m.image_url && m.image_url.trim() !== '') {
+                        if (m.image_url.startsWith('http://') || m.image_url.startsWith('https://') || m.image_url.startsWith('data:image/')) {
+                            // กรณีเป็น Full URL หรือ Base64 อยู่แล้ว
+                            finalImageUrl = m.image_url;
+                        } else if (m.image_file && m.image_file.trim() !== '') {
+                            // กรณีมี image_file ให้ต่อ URL จาก jsDelivr CDN ตามรหัสกอง (เช่น 01sp, 04ed)
+                            finalImageUrl = `${cdnBaseUrl}${divCode}/${m.image_file}`;
+                        } else {
+                            // กรณี image_url เป็น path สั้นๆ เช่น images/04ed/xxx.jpg หรือ 04ed/xxx.jpg
+                            let cleanPath = m.image_url.replace(/^images\//, '');
+                            finalImageUrl = `${cdnBaseUrl}${cleanPath}`;
+                        }
+                    } else if (m.image_file && m.image_file.trim() !== '') {
+                        finalImageUrl = `${cdnBaseUrl}${divCode}/${m.image_file}`;
+                    } else {
+                        finalImageUrl = fallbackImg;
+                    }
+
                     allItems.push({
                         item_id: m.id || m.item_id,
                         item_name: m.name_th || m.item_name,
@@ -967,7 +991,8 @@
                         price_unit_coin: m.unit_price !== undefined ? m.unit_price : m.price_unit_coin,
                         unit: m.unit || "หน่วย",
                         type: mappedType,
-                        image_url: m.image_url,
+                        image_url: finalImageUrl,
+                        fallback_url: fallbackImg,
                         owner_division: divName,
                         div_code: divCode
                     });
