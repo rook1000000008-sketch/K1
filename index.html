@@ -872,12 +872,12 @@
             db.ref('materials').set(rawMaterialsData);
         }
 
-function initCoverLogin() {
+        function initCoverLogin() {
             const select = document.getElementById('login-user-select'); 
             select.innerHTML = '';
             if (!personnelData.divisions) return;
 
-            // 1. เพิ่มตัวเลือกเริ่มต้นเป็นค่าว่าง
+            // เพิ่มตัวเลือกเริ่มต้นเป็นค่าว่าง
             const defaultOpt = document.createElement('option');
             defaultOpt.value = "";
             defaultOpt.innerText = "-- กรุณาเลือกบุคลากร --";
@@ -885,7 +885,7 @@ function initCoverLogin() {
             defaultOpt.selected = true;
             select.appendChild(defaultOpt);
 
-            // 2. โหลดรายชื่อบุคลากรทั้งหมดตามปกติ
+            // โหลดรายชื่อบุคลากรทั้งหมด
             Object.keys(personnelData.divisions).forEach(divName => {
                 const staffList = personnelData.divisions[divName].staff || [];
                 staffList.forEach((staff, index) => {
@@ -927,7 +927,6 @@ function initCoverLogin() {
         function validatePin() {
             const selectVal = document.getElementById('login-user-select').value;
             
-            // หากผู้ใช้ยังไม่ได้เลือกรายชื่อบุคลากร ให้เตือนและไม่ทำรายการต่อ
             if (!selectVal) {
                 alert("⚠️ กรุณาเลือกรายชื่อบุคลากรก่อนป้อนรหัส PIN ครับ!");
                 clearPin();
@@ -1091,7 +1090,7 @@ function initCoverLogin() {
             if (hasOverdraft) warning.classList.remove('hidden'); else warning.classList.add('hidden');
         }
 
-function renderDivisionTabs() {
+        function renderDivisionTabs() {
             const container = document.getElementById('division-tabs-container');
             container.innerHTML = '';
 
@@ -1116,7 +1115,7 @@ function renderDivisionTabs() {
                 container.appendChild(btn);
             });
 
-            // เพิ่มคำสั่งดักจับลูกกลิ้งเมาส์ (Scroll Wheel) ให้เลื่อนซ้าย-ขวาได้เหมือนแถบหมวดหมู่
+            // เปิดให้ใช้ Scroll Wheel เมาส์เลื่อนซ้าย-ขวาได้
             container.onwheel = (evt) => {
                 evt.preventDefault();
                 container.scrollLeft += evt.deltaY;
