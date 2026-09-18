@@ -160,7 +160,7 @@
                 <div>
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-20 h-20 flex items-center justify-center overflow-hidden rounded-full ring-4 ring-[#10B981]/50 shadow-[0_0_25px_#10B981]">
-                            <img src="KPLOGO.jpg" onerror="this.src='https://placehold.co/100?text=อบต.'" class="w-full h-full object-cover">
+                            <img src="KPLOGO.jpg" onerror="this.onerror=null; this.src='https://via.placeholder.com/100?text=อบต.';" class="w-full h-full object-cover">
                         </div>
                         <div>
                             <h2 class="text-2xl font-black tracking-wider text-[#6EE7B7] drop-shadow-[0_0_10px_#10B981]">K-MART</h2>
@@ -235,7 +235,7 @@
                 
                 <div class="bg-[#06241C]/90 border border-[#10B981]/40 rounded-2xl px-6 py-3.5 flex items-center gap-5 w-full md:w-auto shadow-[0_0_15px_rgba(16,185,129,0.15)]">
                     <div class="w-16 h-16 flex-shrink-0 flex items-center justify-center overflow-hidden rounded-full ring-2 ring-[#10B981] shadow-[0_0_15px_#10B981]">
-                        <img src="KPLOGO.jpg" onerror="this.src='https://placehold.co/100?text=อบต.'" class="w-full h-full object-cover">
+                        <img src="KPLOGO.jpg" onerror="this.onerror=null; this.src='https://via.placeholder.com/100?text=อบต.';" class="w-full h-full object-cover">
                     </div>
                     <div>
                         <h1 class="text-2xl font-black tracking-wider text-white flex items-center gap-2 drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]">
@@ -792,7 +792,7 @@
 
         let currentUser = {}; let currentDivName = ""; let cart = {};
         let enteredPin = ""; let activeCategory = "all";
-        let activeSelectedDivisionTab = ""; 
+        let activeSelectedDivisionTab = "สำนักปลัด"; 
         let tempStagedParsedItems = []; 
         
         let uploadHistoryStack = []; let redoHistoryStack = [];
@@ -837,10 +837,10 @@
             
             if (toggleBtn) {
                 if (isMaintenanceMode) {
-                    toggleBtn.innerHTML = `<i class="fa-solid fa-[#10B981] fa-play"></i> เปิดใช้งานระบบตามปกติ`;
+                    toggleBtn.innerHTML = `<i class="fa-solid fa-play mr-1"></i> เปิดใช้งานระบบตามปกติ`;
                     toggleBtn.className = "px-4 py-2 rounded-xl text-xs font-extrabold text-white bg-emerald-600 hover:bg-emerald-700 shadow transition flex items-center gap-1.5";
                 } else {
-                    toggleBtn.innerHTML = `<i class="fa-solid fa-power-off"></i> เปิดโหมดปิดปรับปรุงระบบ`;
+                    toggleBtn.innerHTML = `<i class="fa-solid fa-power-off mr-1"></i> เปิดโหมดปิดปรับปรุงระบบ`;
                     toggleBtn.className = "px-4 py-2 rounded-xl text-xs font-extrabold text-white bg-red-600 hover:bg-red-700 shadow transition flex items-center gap-1.5";
                 }
             }
@@ -872,10 +872,20 @@
             db.ref('materials').set(rawMaterialsData);
         }
 
-        function initCoverLogin() {
-            const select = document.getElementById('login-user-select'); select.innerHTML = '';
+function initCoverLogin() {
+            const select = document.getElementById('login-user-select'); 
+            select.innerHTML = '';
             if (!personnelData.divisions) return;
 
+            // 1. เพิ่มตัวเลือกเริ่มต้นเป็นค่าว่าง
+            const defaultOpt = document.createElement('option');
+            defaultOpt.value = "";
+            defaultOpt.innerText = "-- กรุณาเลือกบุคลากร --";
+            defaultOpt.disabled = true;
+            defaultOpt.selected = true;
+            select.appendChild(defaultOpt);
+
+            // 2. โหลดรายชื่อบุคลากรทั้งหมดตามปกติ
             Object.keys(personnelData.divisions).forEach(divName => {
                 const staffList = personnelData.divisions[divName].staff || [];
                 staffList.forEach((staff, index) => {
@@ -916,26 +926,41 @@
 
         function validatePin() {
             const selectVal = document.getElementById('login-user-select').value;
-            if (!selectVal) return;
+            
+            // หากผู้ใช้ยังไม่ได้เลือกรายชื่อบุคลากร ให้เตือนและไม่ทำรายการต่อ
+            if (!selectVal) {
+                alert("⚠️ กรุณาเลือกรายชื่อบุคลากรก่อนป้อนรหัส PIN ครับ!");
+                clearPin();
+                return;
+            }
+
             const [divName, index] = selectVal.split('|');
             const selectedStaff = personnelData.divisions[divName].staff[index];
 
             if (enteredPin === String(selectedStaff.pin) || enteredPin === "8888" || enteredPin === "9999") {
                 currentDivName = divName; 
                 currentUser = selectedStaff;
-                activeSelectedDivisionTab = divName; 
+
+                activeSelectedDivisionTab = (divName === "ส่วนบริหารงาน" || divName === "หน่วยตรวจสอบภายใน") ? "สำนักปลัด" : divName;
+
                 document.getElementById('login-cover-page').classList.add('hidden');
                 document.getElementById('active-user-name').innerText = `${currentUser.name} (${currentUser.role})`;
                 
                 const adminBtnContainer = document.getElementById('admin-hub-btn-container');
-                if (currentUser.can_upload || currentUser.is_admin) {
+                if (currentUser.can_upload || (currentUser.is_admin && String(currentUser.pin) === "8888")) {
                     adminBtnContainer.classList.remove('hidden');
                 } else {
                     adminBtnContainer.classList.add('hidden');
                 }
 
                 applyMaintenanceOverlayState();
-                cart = {}; activeCategory = "all"; updateBudgetDisplay(); updateCartUI(); renderDivisionTabs(); renderCategories(); renderProducts();
+                cart = {}; 
+                activeCategory = "all"; 
+                updateBudgetDisplay(); 
+                updateCartUI(); 
+                renderDivisionTabs(); 
+                renderCategories(); 
+                renderProducts();
             } else {
                 document.getElementById('login-error-msg').classList.remove('hidden');
                 clearPin();
@@ -949,13 +974,59 @@
             applyMaintenanceOverlayState();
         }
 
+        function getCategoryFallbackImage(categoryKey, name) {
+            const bgColors = {
+                office: '#10B981', computer: '#3B82F6', household: '#F59E0B',
+                electrical: '#EF4444', construction: '#8B5CF6', fuel: '#EC4899',
+                medical: '#14B8A6', agricultural: '#84CC16', other: '#64748B'
+            };
+            const icons = {
+                office: '📝', computer: '💻', household: '🏠',
+                electrical: '⚡', construction: '🏗️', fuel: '⛽',
+                medical: '💊', agricultural: '🌱', other: '📦'
+            };
+            const bg = bgColors[categoryKey] || '#10B981';
+            const icon = icons[categoryKey] || '📦';
+            const cleanName = (name || 'พัสดุ').substring(0, 15);
+
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+                <rect width="100%" height="100%" fill="${bg}" opacity="0.15"/>
+                <rect x="5" y="5" width="290" height="190" rx="15" fill="none" stroke="${bg}" stroke-width="2" stroke-dasharray="6,6"/>
+                <text x="50%" y="42%" dominant-baseline="middle" text-anchor="middle" font-size="48">${icon}</text>
+                <text x="50%" y="75%" dominant-baseline="middle" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155" font-family="sans-serif">${cleanName}</text>
+            </svg>`;
+
+            return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+        }
+
         function getAllMaterialsInSystem() {
             let allItems = [];
+            const cdnBaseUrl = "https://cdn.jsdelivr.net/gh/rook1000000008-sketch/K1@main/";
+
             Object.keys(rawMaterialsData).forEach(divCode => {
                 const divName = divisionCodeMap[divCode] || divCode;
                 const items = rawMaterialsData[divCode] || [];
                 items.forEach(m => {
                     const mappedType = categoryCodeMap[m.category] || m.type || "office";
+                    const fallbackImg = getCategoryFallbackImage(mappedType, m.name_th || m.item_name);
+                    
+                    let finalImageUrl = "";
+
+                    if (m.image_url && m.image_url.trim() !== '') {
+                        if (m.image_url.startsWith('http://') || m.image_url.startsWith('https://') || m.image_url.startsWith('data:image/')) {
+                            finalImageUrl = m.image_url;
+                        } else if (m.image_file && m.image_file.trim() !== '') {
+                            finalImageUrl = `${cdnBaseUrl}${divCode}/${m.image_file}`;
+                        } else {
+                            let cleanPath = m.image_url.replace(/^images\//, '');
+                            finalImageUrl = `${cdnBaseUrl}${cleanPath}`;
+                        }
+                    } else if (m.image_file && m.image_file.trim() !== '') {
+                        finalImageUrl = `${cdnBaseUrl}${divCode}/${m.image_file}`;
+                    } else {
+                        finalImageUrl = fallbackImg;
+                    }
+
                     allItems.push({
                         item_id: m.id || m.item_id,
                         item_name: m.name_th || m.item_name,
@@ -963,7 +1034,8 @@
                         price_unit_coin: m.unit_price !== undefined ? m.unit_price : m.price_unit_coin,
                         unit: m.unit || "หน่วย",
                         type: mappedType,
-                        image_url: m.image_url,
+                        image_url: finalImageUrl,
+                        fallback_url: fallbackImg,
                         owner_division: divName,
                         div_code: divCode
                     });
@@ -1019,7 +1091,7 @@
             if (hasOverdraft) warning.classList.remove('hidden'); else warning.classList.add('hidden');
         }
 
-        function renderDivisionTabs() {
+function renderDivisionTabs() {
             const container = document.getElementById('division-tabs-container');
             container.innerHTML = '';
 
@@ -1043,6 +1115,12 @@
                 };
                 container.appendChild(btn);
             });
+
+            // เพิ่มคำสั่งดักจับลูกกลิ้งเมาส์ (Scroll Wheel) ให้เลื่อนซ้าย-ขวาได้เหมือนแถบหมวดหมู่
+            container.onwheel = (evt) => {
+                evt.preventDefault();
+                container.scrollLeft += evt.deltaY;
+            };
         }
 
         function renderCategories() {
@@ -1104,7 +1182,8 @@
                 return;
             }
 
-            const isAdminOrUploader = currentUser.can_upload || currentUser.is_admin;
+            const isSuperAdmin = currentUser.can_upload || (currentUser.is_admin && String(currentUser.pin) === "8888");
+            const isObserverOnly = currentUser.role.includes("สังเกตการณ์") || String(currentUser.pin) === "9999";
             const isMyDivision = (activeSelectedDivisionTab === currentDivName);
 
             filteredItems.forEach((p, index) => {
@@ -1117,15 +1196,37 @@
                 card.dataset.itemId = p.item_id;
                 card.dataset.index = index;
 
-                if (isAdminOrUploader) {
+                if (isSuperAdmin) {
                     card.onclick = (e) => handleCardClickSelection(e, p.item_id, index, filteredItems);
+                }
+
+                let actionHtml = '';
+                if (isObserverOnly) {
+                    actionHtml = `<div class="w-full bg-slate-100 text-slate-500 font-bold py-2 rounded-xl text-[10px] text-center border border-slate-200">👁️ สิทธิ์ผู้บริหาร (สังเกตการณ์ - อ่านได้อย่างเดียว)</div>`;
+                } else if (isMyDivision || isSuperAdmin) {
+                    actionHtml = `
+                        <div class="flex gap-2">
+                            <div class="flex items-center border-2 border-emerald-200 rounded-xl bg-slate-50 px-2 shadow-inner">
+                                <button onclick="changeQty('${p.item_id}', -1)" class="px-1 text-emerald-800 font-black">-</button>
+                                <span id="qty-${p.item_id}" class="w-6 text-center text-xs font-black text-slate-800">${currentSelectionQty}</span>
+                                <button onclick="changeQty('${p.item_id}', 1)" class="px-1 text-emerald-800 font-black">+</button>
+                            </div>
+                            <button onclick="addToCart('${p.item_id}')" class="flex-1 neon-glow-btn text-white rounded-xl text-[11px] font-black py-2 uppercase tracking-wider">
+                                <i class="fa-solid fa-cart-plus text-[9px]"></i> หยิบใส่ตะกร้า
+                            </button>
+                        </div>`;
+                } else {
+                    actionHtml = `
+                        <button disabled class="w-full bg-slate-200 text-slate-400 font-bold py-2 rounded-xl text-[10px] cursor-not-allowed">
+                            🔒 พัสดุของ ${p.owner_division} (ดูได้อย่างเดียว ซื้อไม่ได้)
+                        </button>`;
                 }
 
                 card.innerHTML = `
                     <div>
                         <div class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center p-2 border border-slate-100 overflow-hidden shadow-inner relative">
-                            <img src="${p.image_url || 'https://placehold.co/150?text=📦'}" onerror="this.src='https://placehold.co/150?text=📦'" class="object-cover h-full w-full rounded-lg">
-                            ${isAdminOrUploader ? `<div class="absolute top-2 left-2 w-5 h-5 rounded-md border-2 border-slate-400 bg-white flex items-center justify-center text-[10px] font-bold text-slate-700">${isSelected ? '✓' : ''}</div>` : ''}
+                            <img src="${p.image_url}" onerror="this.onerror=null; this.src='${p.fallback_url}';" class="object-cover h-full w-full rounded-lg">
+                            ${isSuperAdmin ? `<div class="absolute top-2 left-2 w-5 h-5 rounded-md border-2 border-slate-400 bg-white flex items-center justify-center text-[10px] font-bold text-slate-700">${isSelected ? '✓' : ''}</div>` : ''}
                         </div>
                         <div class="flex justify-between items-center mb-1">
                             <span class="text-[9px] bg-emerald-100 text-emerald-900 font-black px-2 py-0.5 rounded shadow-sm">${walletNames[p.type] || p.type}</span>
@@ -1141,23 +1242,7 @@
                             <span class="text-slate-500 font-bold">ราคาต่อหน่วย:</span>
                             <span class="font-black text-[#059669] text-sm">${p.price_unit_coin.toLocaleString(undefined, {minimumFractionDigits:2})} บาท</span>
                         </div>
-                        
-                        ${isMyDivision ? `
-                            <div class="flex gap-2">
-                                <div class="flex items-center border-2 border-emerald-200 rounded-xl bg-slate-50 px-2 shadow-inner">
-                                    <button onclick="changeQty('${p.item_id}', -1)" class="px-1 text-emerald-800 font-black">-</button>
-                                    <span id="qty-${p.item_id}" class="w-6 text-center text-xs font-black text-slate-800">${currentSelectionQty}</span>
-                                    <button onclick="changeQty('${p.item_id}', 1)" class="px-1 text-emerald-800 font-black">+</button>
-                                </div>
-                                <button onclick="addToCart('${p.item_id}')" class="flex-1 neon-glow-btn text-white rounded-xl text-[11px] font-black py-2 uppercase tracking-wider">
-                                    <i class="fa-solid fa-cart-plus text-[9px]"></i> หยิบใส่ตะกร้า
-                                </button>
-                            </div>
-                        ` : `
-                            <button disabled class="w-full bg-slate-200 text-slate-400 font-bold py-2 rounded-xl text-[10px] cursor-not-allowed">
-                                🔒 พัสดุของ ${p.owner_division} (ดูได้อย่างเดียว ซื้อไม่ได้)
-                            </button>
-                        `}
+                        ${actionHtml}
                     </div>`;
                 grid.appendChild(card);
             });
@@ -1488,7 +1573,7 @@
                                 unit_price: 100,
                                 quantity: stockNum,
                                 unit: "หน่วย",
-                                image_url: 'https://placehold.co/150?text=📦'
+                                image_url: ''
                             });
                         }
                     });
@@ -1520,7 +1605,7 @@
                                 unit_price: price,
                                 quantity: stockNum,
                                 unit: "หน่วย",
-                                image_url: 'https://placehold.co/150?text=📦'
+                                image_url: ''
                             });
                         }
                     });
@@ -1832,7 +1917,7 @@
                 list.innerHTML += `
                     <div class="flex justify-between items-center bg-white p-2 rounded-xl border border-slate-200 text-[10px]">
                         <div class="flex items-center gap-2">
-                            <img src="${item.image_url}" class="w-8 h-8 rounded object-cover border">
+                            <img src="${item.image_url}" onerror="this.onerror=null; this.src='${item.fallback_url}';" class="w-8 h-8 rounded object-cover border">
                             <div>
                                 <p class="font-bold text-slate-800">${item.item_name}</p>
                                 <span class="text-slate-400">${item.owner_division} | ${walletNames[item.type] || item.type}</span>
